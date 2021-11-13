@@ -1,0 +1,168 @@
+.login__main_container {
+  position: relative;
+  top: 110px;
+}
+
+.login__container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Wallet */
+.login__logo {
+  margin-bottom: 50px;
+  width: 119.46px;
+  height: 30px;
+}
+
+.login__form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login__form_container {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.login__icons {
+  position: absolute;
+  top: 5px;
+}
+
+.login__input {
+  width: 280px;
+  height: 34px;
+
+  padding-left: 44px;
+
+  border: none;
+  border-bottom: 1px solid var(--fourth-text-color);
+}
+
+.login__input:focus {
+  outline: none;
+}
+
+.login__input::placeholder {
+  color: var(--seventh-text-color);
+  /* Gray 5 */
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.login__button {
+  width: 280px;
+  height: 50px;
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+
+  text-align: center;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  margin-bottom: 20px;
+  border: 1px solid var(--fifth-text-color);
+  background-color: var(--second-text-color);
+  border-radius: 20px;
+  margin-bottom: 0;
+}
+
+.login__button_login {
+  width: 280px;
+  height: 50px;
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+
+  text-align: center;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--second-text-color);
+  background: var(--third-text-color);
+
+  border: none;
+
+  border-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .login__main_container {
+    top: 0;
+    margin: 0;
+    height: 100vh;
+    background-color: var(--fifth-bg-color);
+    padding: 0;
+    background-image: url(../../images/registration-login/FrameTablet.png),
+      url(../../images/registration-login/FinanceApp.png),
+      url(../../images/registration-login/EllipsePinkTablet.png),
+      url(../../images/registration-login/EllipsePurpuleDesc.png);
+
+    background-position: top 60px left 114px, left 414.26px top 167px,
+      top 0 right 0, bottom 0 left 0;
+    background-repeat: no-repeat;
+  }
+
+  .login__container {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 540px;
+    padding: 40px 65px 60px 65px;
+    margin: 0 auto;
+    background: var(--main-bg-color);
+    border-radius: 20px;
+  }
+
+  .login__input {
+    width: 409px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .login__main_container {
+    /* padding: 136px 85px 116px 655px; */
+    /* overflow: hidden; */
+
+    padding: 0 85px 0 655px;
+
+    background-image: url(../../images/registration-login/FrameDesc.png),
+      url(../../images/registration-login/FinanceApp.png),
+      url(../../images/registration-login/EllipsePurpuleDesc.png),
+      url(../../images/registration-login/ElipsePinkDesc.png);
+
+    background-position: left 76px top 150px, left 200px top 570.5px,
+      left 0 bottom 0, right 0 top 0px;
+  }
+
+  .login__container {
+    position: relative;
+    margin: 0;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 409px;
+  }
+
+  .login__container {
+  }
+}
