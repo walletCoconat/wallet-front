@@ -112,7 +112,7 @@
     background-color: var(--fifth-bg-color);
     padding: 0;
     background-image: url(../../images/registration-login/FrameTablet.png),
-      url(../../images/registration-login/FinanceApp.png),
+      url(../../images/registration-login/FinanceApp.svg),
       url(../../images/registration-login/EllipsePinkTablet.png),
       url(../../images/registration-login/EllipsePurpuleDesc.png);
 
@@ -146,7 +146,7 @@
     padding: 0 85px 0 655px;
 
     background-image: url(../../images/registration-login/FrameDesc.png),
-      url(../../images/registration-login/FinanceApp.png),
+      url(../../images/registration-login/FinanceApp.svg),
       url(../../images/registration-login/EllipsePurpuleDesc.png),
       url(../../images/registration-login/ElipsePinkDesc.png);
 
