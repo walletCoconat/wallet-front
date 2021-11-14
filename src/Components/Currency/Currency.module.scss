@@ -1,0 +1,61 @@
+@import '../../styles/variables.scss';
+
+.CurrencyContainer {
+  font-family: Circe;
+  background: linear-gradient(to bottom, #6e78e8 25%, #4a56e2 25% 100%);
+  color: $second-text-color;
+  border-radius: 30px;
+
+  max-width: 280px;
+  padding-top: 11px;
+  padding-left: 17px;
+  padding-right: 17px;
+  padding-bottom: 22px;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 334px;
+    padding-top: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 348px;
+    padding-top: 17px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 149px;
+    background: linear-gradient(to bottom, #6e78e8 18%, #4a56e2 18% 100%);
+  }
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.TableHeading {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.TableList {
+  margin-top: 22px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 36px;
+  }
+}
+
+.ListItem {
+  &:not(:last-child) {
+    padding-bottom: 10px;
+    @media screen and (min-width: $desktop) {
+      padding-bottom: 23px;
+    }
+  }
+}

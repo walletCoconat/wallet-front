@@ -1,6 +1,5 @@
 @import url('./stylesheet/fonts.css');
-@import url("./stylesheet/colors_varibles.module.css");
-@import url('./stylesheet/breakpoint.scss');
+@import './variables';
 
 body {
   margin: 0;
@@ -16,4 +15,31 @@ code {
     monospace;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
