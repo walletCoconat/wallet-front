@@ -1,6 +1,6 @@
 @import url('./stylesheet/fonts.css');
 @import url("./stylesheet/colors_varibles.module.css");
-@import url('./stylesheet/breakpoint.scss');
+@import url('./stylesheet/breakpoint.css');
 
 body {
   margin: 0;
