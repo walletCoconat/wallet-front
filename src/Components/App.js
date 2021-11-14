@@ -8,6 +8,8 @@ import PublicRoute from './PublicRoute/PublicRoute.js';
 import { useDispatch } from 'react-redux';
 import { getToken } from '../redux/auth/authSelector.js';
 import * as authOperation from '../redux/auth/authOperation';
+import Header from './Header/Header.js';
+import Container from './Container/Container';
 
 
 function App() {
@@ -25,11 +27,18 @@ function App() {
 
   return (
     <>
+  
     <Suspense>
 
       <Switch>
    
-      <PrivateRoute exact path="/"><h1>Home</h1></PrivateRoute>
+      <PrivateRoute exact path="/">
+      <>
+      <Header/>
+      <Container>
+
+      <h1>Home</h1></Container>
+      </></PrivateRoute>
       <PublicRoute exact
             path="/login"
             urlFToRedirect="/"><Login/></PublicRoute>
