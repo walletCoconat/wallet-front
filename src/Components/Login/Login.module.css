@@ -82,28 +82,15 @@
   background-color: var(--second-text-color);
   border-radius: 20px;
   margin-bottom: 0;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.login__button_login {
-  width: 280px;
-  height: 50px;
-
-  font-family: Circe;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 27px;
-
-  text-align: center;
-
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.login__button:hover,
+.login__button:focus {
   color: var(--second-text-color);
   background: var(--third-text-color);
-
-  border: none;
-
-  border-radius: 20px;
+  border-color: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -113,13 +100,42 @@
     height: 100vh;
     background-color: var(--fifth-bg-color);
     padding: 0;
-    background-image: url(../../images/registration-login/FrameTablet.png),
-      url(../../images/registration-login/FinanceApp.svg),
-      url(../../images/registration-login/EllipsePinkTablet.png),
-      url(../../images/registration-login/EllipsePurpuleDesc.png);
+  }
 
-    background-position: top 60px left 114px, left 414.26px top 167px,
-      top 0 right 0, bottom 0 left 0;
+  .login__man {
+    position: absolute;
+    width: 260.26px;
+    height: 250px;
+    left: 114px;
+    top: 60px;
+
+    background-image: url(../../images/registration-login/FrameTablet.png);
+    background-repeat: no-repeat;
+  }
+
+  .login__purple {
+    position: absolute;
+    width: 515px;
+    height: 347px;
+    background-size: contain;
+    bottom: 0;
+    left: -53.33px;
+
+    background-image: url(../../images/registration-login/EllipsePurpuleDesc.png);
+
+    background-repeat: no-repeat;
+  }
+
+  .login__pink {
+    position: absolute;
+    width: 368px;
+    height: 447px;
+    right: 0;
+    top: 0;
+
+    background-image: url(../../images/registration-login/FinanceApp.svg),
+      url(../../images/registration-login/EllipsePinkTablet.png);
+    background-position: top 170px left 15px, top 0 right 0;
     background-repeat: no-repeat;
   }
 
@@ -142,23 +158,50 @@
 
 @media screen and (min-width: 1280px) {
   .login__main_container {
-    /* padding: 136px 85px 116px 655px; */
-    /* overflow: hidden; */
-
     padding: 0 85px 0 655px;
+  }
 
-    background-image: url(../../images/registration-login/FrameDesc.png),
-      url(../../images/registration-login/FinanceApp.svg),
-      url(../../images/registration-login/EllipsePurpuleDesc.png),
-      url(../../images/registration-login/ElipsePinkDesc.png);
+  .login__man {
+    position: absolute;
+    width: 435.2px;
+    height: 419.5px;
 
-    background-position: left 76px top 150px, left 200px top 570.5px,
-      left 0 bottom 0, right 0 top 0px;
+    left: 76px;
+    top: 150px;
+
+    background-image: url(../../images/registration-login/FrameDesc.png);
+    background-repeat: no-repeat;
+  }
+  .login__pink {
+    position: absolute;
+    width: 720px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-image: url(../../images/registration-login/ElipsePinkDesc.png);
+    background-size: cover;
+    background-position: top 0 right 0;
+    background-repeat: no-repeat;
+  }
+  .login__purple {
+    position: absolute;
+    width: 520px;
+    height: 347px;
+    background-size: contain;
+    bottom: 0;
+    left: -53.33px;
+
+    background-image: url(../../images/registration-login/FinanceApp.svg),
+      url(../../images/registration-login/EllipsePurpuleDesc.png);
+    background-position: top 215px left 240px, top 0 left 0;
+    background-size: 200px, 520px;
+    background-repeat: no-repeat;
   }
 
   .login__container {
     position: relative;
-    margin: 0;
     top: 50%;
     left: 0;
     transform: translateY(-50%);

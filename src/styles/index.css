@@ -1,5 +1,5 @@
 @import url('./stylesheet/fonts.css');
-@import url("./stylesheet/colors_varibles.module.css");
+@import url('./stylesheet/colors_varibles.module.css');
 @import url('./stylesheet/breakpoint.css');
 
 body {
@@ -9,19 +9,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 60px;
+  /* padding-top: 60px;
 
   @media screen and (min-width: 768px) {
     padding-top: 80px;
      
- }
-
-
+ } */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-

@@ -1,7 +1,7 @@
 import React, {Suspense, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import Login from './Login/Login.js';
-import { Route,  Switch } from 'react-router-dom';
+import {Switch } from 'react-router-dom';
 import RegistrationUser from './Registration/Registration.js';
 import PrivateRoute from './PrivatRoute/PrivatRoute.js';
 import PublicRoute from './PublicRoute/PublicRoute.js';
