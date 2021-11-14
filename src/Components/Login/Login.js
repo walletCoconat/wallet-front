@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './Login.module.css';
 import sprite from '../../images/sprite.svg';
-// import logo from "";
+import { NavLink } from 'react-router-dom';
 
 const LoginUser = () => {
   const [state, setState] = useState({
@@ -23,10 +23,15 @@ const LoginUser = () => {
 
   return (
     <div className={style.login__main_container}>
-
       <div className={style.login__container}>
-        {/* <img src={logo} alt="wallet" className={style.login__logo} /> */}
-        <form className={style.login__form}>
+        <svg
+          className={style.login__logo}
+          width="24px"
+          height="24px"
+        >
+          <use class="mail" xlinkHref={`${sprite}#icon-logo`}></use>
+        </svg>
+        <form className={style.login__form} onSubmit={onSubmit  }>
           <div className={style.login__form_container}>
             <svg className={style.login__icons} width="24px" height="24px">
               <use class="mail" xlinkHref={`${sprite}#icon-email`}></use>
@@ -48,12 +53,13 @@ const LoginUser = () => {
               onChange={onChangeInput}
             />
           </div>
-          <button className={style.login__button_login}>Вход</button>
+          <button type="submit"className={style.login__button_login}>Вход</button>
         </form>
 
         {/* eslint-disable-next-line no-sequences*/}
-
-        <button className={style.login__button}>Регистрация</button>
+        <NavLink to="/registration">
+          <button className={style.login__button}>Регистрация</button>
+        </NavLink>
       </div>
     </div>
   );
