@@ -8,4 +8,5 @@ const PublicRoute = ({ children, urlFToRedirect, ...props }) => {
     return <Route {...props}>{isLoggedIn ?<Redirect to={urlFToRedirect}/>:children}</Route>
 }
 
+
 export default PublicRoute;
