@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import style from './Registration.module.css';
 import sprite from '../../images/sprite.svg';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as authOperation from '../../redux/auth/authOperation'
 
 const RegistrationUser = () => {
   const [state, setState] = useState({
@@ -11,11 +13,14 @@ const RegistrationUser = () => {
     name: '',
   });
 
+  const dispatch = useDispatch();
+
   const onChangeInput = ev => {
     console.log(ev.target.name);
     setState(prevState => ({
       ...prevState,
       [ev.target.name]: ev.target.value,
+    
     }));
   };
 
@@ -23,7 +28,13 @@ const RegistrationUser = () => {
     e.preventDefault();
     if (state.password !== state.repeatPassword) {
       alert('Пароль был введен неправильно! Попытайтесь еще раз');
-    }
+    };
+dispatch(authOperation.register({
+  email: state.email,
+  password: state.password,
+  name: state.name,
+}));
+   
   };
 
   return (

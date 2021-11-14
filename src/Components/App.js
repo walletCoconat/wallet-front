@@ -1,15 +1,46 @@
-import React from 'react';
+import React, {Suspense, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import Login from './Login/Login.js';
-import { Route, Routes } from 'react-router-dom';
+import { Route,  Switch } from 'react-router-dom';
 import RegistrationUser from './Registration/Registration.js';
+import PrivateRoute from './PrivatRoute/PrivatRoute.js';
+import PublicRoute from './PublicRoute/PublicRoute.js';
+import { useDispatch } from 'react-redux';
+import { getToken } from '../redux/auth/authSelector.js';
+import * as authOperation from '../redux/auth/authOperation';
+
 
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+
+  useEffect(() => {
+    if (token === null) {
+      return;
+    }
+    
+    dispatch(authOperation.fetchByToken());
+  }, [dispatch, token]);
+
+
   return (
     <>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<RegistrationUser/>}/>
-      </Routes>
+    <Suspense>
+
+      <Switch>
+   
+      <PrivateRoute exact path="/"><h1>Home</h1></PrivateRoute>
+      <PublicRoute exact
+            path="/login"
+            urlFToRedirect="/"><Login/></PublicRoute>
+      <PublicRoute exact
+            path="/registration"
+            urlFToRedirect="/"><RegistrationUser/></PublicRoute>
+    
+
+      </Switch>
+  
+      </Suspense>
     </>
   );
 }
