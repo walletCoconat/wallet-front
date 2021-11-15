@@ -3,14 +3,12 @@ import style from './Registration.module.css';
 import sprite from '../../images/sprite.svg';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as authOperation from '../../redux/auth/authOperation'
+import { register } from '../../redux/auth/authOperation';
 
 const RegistrationUser = () => {
   const [state, setState] = useState({
     email: '',
     password: '',
-    repeatPassword: '',
-    name: '',
   });
 
   const dispatch = useDispatch();
@@ -20,28 +18,25 @@ const RegistrationUser = () => {
     setState(prevState => ({
       ...prevState,
       [ev.target.name]: ev.target.value,
-    
     }));
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    if (state.password !== state.repeatPassword) {
-      alert('Пароль был введен неправильно! Попытайтесь еще раз');
-    };
-dispatch(authOperation.register({
-  email: state.email,
-  password: state.password,
-  name: state.name,
-}));
-   
+    console.log(state)
+    dispatch(register(state));
+    setState({ name: '', email: '', password: '' });
   };
 
   return (
     <div className={style.registration__main_container}>
+      <div className={style.registration__purple}></div>
+      <div className={style.registration__pink}></div>
+      <div className={style.registration__man}></div>
+
       <div className={style.registration__container}>
         <svg className={style.registration__logo} width="24px" height="24px">
-          <use xlinkHref={`${sprite}#icon-logo`}></use>
+          <use className={style.mail} xlinkHref={`${sprite}#icon-logo`}></use>
         </svg>
         <form className={style.registration__form} onSubmit={onSubmit}>
           <div className={style.registration__form_container}>
@@ -104,14 +99,10 @@ dispatch(authOperation.register({
               onChange={onChangeInput}
             />
           </div>
-          <button
-            type="submit"
-            className={style.registration__button_registration}
-          >
+          <button type="submit" className={style.registration__button}>
             Регистрация
           </button>
         </form>
-
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/login">
           <button className={style.registration__button}>Вход</button>
