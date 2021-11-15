@@ -15,7 +15,8 @@ const tokenState = {
 export const register = createAsyncThunk('auth/register', async dataUser => {
   const { data } = await axios.post('/users/signup', dataUser);
   tokenState.setToken(data.token);
-  console.log(axios.defaults.headers.common.Authorization);
+  console.log(data.status);
+  // console.log(axios.defaults.headers.common.Authorization);
   return data;
 });
 

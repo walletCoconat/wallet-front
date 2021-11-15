@@ -109,7 +109,7 @@
     left: 114px;
     top: 60px;
 
-    background-image: url(../../images/registration-login/FrameTablet.png);
+    background-image: url(../../images/registration-login/FrameTablet.svg);
     background-repeat: no-repeat;
   }
 
@@ -169,7 +169,7 @@
     left: 76px;
     top: 150px;
 
-    background-image: url(../../images/registration-login/FrameDesc.png);
+    background-image: url(../../images/registration-login/FrameDesc.svg);
     background-repeat: no-repeat;
   }
   .login__pink {
