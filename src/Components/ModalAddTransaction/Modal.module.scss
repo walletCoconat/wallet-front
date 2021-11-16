@@ -1,4 +1,5 @@
-.Modal {
+.Modal,
+.ModalActive {
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.25);
@@ -21,7 +22,7 @@
   height: 540px;
 }
 
-.Modal.Active {
+.ModalActive {
   opacity: 1;
   pointer-events: all;
 }
@@ -30,21 +31,27 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 h2 {
   margin-top: 40px;
   margin-bottom: 40px;
   font-family: Poppins;
-  font-weight: normal;
   font-size: 30px;
-  line-height: 45px;
+  line-height: 1.5;
   color: #000000;
   text-align: center;
 }
 
 /* The switch - the box around the slider */
-form {
+.SwitchBox {
+  margin-bottom: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +71,8 @@ form {
 }
 
 /* The slider */
-.Slider {
+.Slider,
+.SliderRound {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -97,7 +105,7 @@ input:checked + .Slider:before {
 }
 
 /* Rounded sliders */
-.Slider.Round:before {
+.SliderRound:before {
   border-radius: 50%;
 }
 
@@ -105,6 +113,38 @@ input:checked + .Slider:before {
   font-family: Circe;
   font-weight: bold;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   color: #e0e0e0;
+}
+
+.Button {
+  margin-top: 20px;
+  width: 280px;
+  height: 50px;
+
+  font-family: Circe;
+  font-size: 18px;
+  line-height: 1.5;
+
+  text-align: center;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  margin-bottom: 20px;
+  border: 1px solid #4a56e2;
+  background-color: #ffffff;
+  color: #4a56e2;
+
+  border-radius: 20px;
+  margin-bottom: 0;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Button:hover,
+.Button:focus {
+  color: #ffffff;
+  background: #24cca7;
+  border-color: transparent;
 }

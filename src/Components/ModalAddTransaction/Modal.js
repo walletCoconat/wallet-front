@@ -1,30 +1,43 @@
 import React from 'react';
 import style from './Modal.module.scss';
+import sprite from '../../images/sprite.svg';
 
 const Modal = ({ active, setActive }) => {
   return (
     <div
-      className={active ? 'style.Modal style.Active' : 'style.Modal'}
+      className={active ? 'style.ModalActive' : 'style.Modal'}
       onClick={() => {
         setActive(false);
       }}
     >
       <div className={style.ModalContent} onClick={e => e.stopPropagation()}>
-        <button className="style.BtnClose">X</button>
+        <button className={style.BtnClose}>
+          <svg>
+            <use xlinkHref={`${sprite}#icon-close`}></use>
+          </svg>
+        </button>
 
         <h2>Add Transaction</h2>
 
         <form>
-          <label for="доход" className="style.Text">
-            Доход
-          </label>
-          <label className="style.Switch">
-            <input type="checkbox" />
-            <span className="style.Slider style.Round"></span>
-          </label>
-          <label for="расход" className="style.Text">
-            Расход
-          </label>
+          <div className={style.SwitchBox}>
+            <label for="income" className={style.Text}>
+              Доход
+            </label>
+            <label className={style.Switch}>
+              <input type="checkbox" />
+              <span className={style.SliderRound}></span>
+            </label>
+            <label for="spend" className={style.Text}>
+              Расход
+            </label>
+          </div>
+          <button type="submit" className={style.Button}>
+            Добавить
+          </button>
+          <button type="submit" className={style.Button}>
+            Отмена
+          </button>
         </form>
       </div>
     </div>

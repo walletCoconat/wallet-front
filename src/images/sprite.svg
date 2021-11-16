@@ -42,5 +42,8 @@
           <symbol id="icon-add" viewBox="0 0 20 20">
             <path d="M10 0v20M0 10h20" stroke="#fff" stroke-width="2"/>
         </symbol>
+         <symbol id="icon-close" viewBox="0 0 18 18">
+            <path d="m1 1 16 16M1 17 17 1" stroke="#000"/>
+        </symbol>
     </defs>
 </svg>
