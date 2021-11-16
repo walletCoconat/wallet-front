@@ -12,6 +12,7 @@ import Header from './Header/Header.js';
 import Container from './Container/Container';
 import ButtonAddTransaction from './ButtonAddTransaction';
 import Modal from './ModalAddTransaction';
+import Dashboard from './Dashboard/index'
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,8 @@ function App() {
 
   return (
     <>
-      <Suspense>
+    <Dashboard/>
+      {/* <Suspense>
         <Switch>
           <PrivateRoute exact path="/">
             <>
@@ -47,7 +49,7 @@ function App() {
             <RegistrationUser />
           </PublicRoute>
         </Switch>
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

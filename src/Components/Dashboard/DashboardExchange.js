@@ -1,5 +1,5 @@
 const ExchangeRates = () => <div>
-    <p className=''>Exchange rates</p>
+    <p className='ExchangeRates'>Exchange rates</p>
 </div>;
 
 export default ExchangeRates;

@@ -1,6 +1,6 @@
 const Home = () => <div>
-    <p className=''>Ваш баланс</p>
-    <p className=''>TAble</p>
+    <p className='Dashboard_balance'>Ваш баланс</p>
+    <p className='Dashboard_table'>TAble</p>
 </div>;
 
 export default Home;
