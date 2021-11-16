@@ -109,7 +109,8 @@
     left: 114px;
     top: 60px;
 
-    background-image: url(../../images/registration-login/FrameTablet.png);
+    background-image: url(../../images/registration-login/FrameTablet.svg);
+
     background-repeat: no-repeat;
   }
 
@@ -141,7 +142,7 @@
 
   .registration__container {
     position: absolute;
-    top: 57%;
+    top: 64%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 540px;
@@ -169,7 +170,7 @@
     left: 76px;
     top: 150px;
 
-    background-image: url(../../images/registration-login/FrameDesc.png);
+    background-image: url(../../images/registration-login/FrameDesc.svg);
     background-repeat: no-repeat;
   }
   .registration__pink {

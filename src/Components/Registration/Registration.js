@@ -26,6 +26,7 @@ const RegistrationUser = () => {
     console.log(state)
     dispatch(register(state));
     setState({ name: '', email: '', password: '' });
+    
   };
 
   return (
