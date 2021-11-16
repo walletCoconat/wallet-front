@@ -10,15 +10,15 @@ import Media from 'react-media';
 const DashboardRoutes = () =>
     <div className='Dashboard_bgc'>
         <div className='Dashboard_container'>
-            {/* <Media queries={{
+            <Media queries={{
                 small: "(max-width: 767px)",
                 medium: "(min-width: 768px) and (max-width: 1279px)",
                 large: "(min-width: 1280px)"
                 }}>
                 {matches => (
-                    <>
-                    {matches.small &&  */}
-                               
+                    <div>
+                    {matches.small && 
+                               <div>
                                 <DashboardNav/>
                                 <Suspense>
                                     <Switch>
@@ -33,8 +33,8 @@ const DashboardRoutes = () =>
                                         </Route>
                                     </Switch>
                                 </Suspense>
-                         
-                    {/* }{matches.medium && 
+                                </div>}
+                    {matches.medium && 
                             <div>    
                                 <DashboardNav/>
                                 <Suspense>
@@ -62,9 +62,9 @@ const DashboardRoutes = () =>
                                     </Switch>
                                 </Suspense>
                             </div>}
-                    </>
+                 </div>
                 )}
-            </Media>  */}
+                </Media> 
             </div>
     </div>
 
