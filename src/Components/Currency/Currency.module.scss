@@ -1,61 +1,50 @@
 @import '../../styles/variables.scss';
 
-.CurrencyContainer {
+.Container {
   font-family: Circe;
-  background: linear-gradient(to bottom, #6e78e8 25%, #4a56e2 25% 100%);
-  color: $second-text-color;
+  padding: 11px 20px 22px 20px;
+  max-width: 240px;
   border-radius: 30px;
-
-  max-width: 280px;
-  padding-top: 11px;
-  padding-left: 17px;
-  padding-right: 17px;
-  padding-bottom: 22px;
+  background: linear-gradient(to bottom, #6e78e8 25%, $third-bg-color 25% 100%);
+  color: $second-text-color;
+  background-image: url('../../images/currency/tablet.png');
+  background-repeat: no-repeat;
 
   @media screen and (min-width: $tablet) {
-    max-width: 334px;
-    padding-top: 11px;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 294px;
   }
 
   @media screen and (min-width: $desktop) {
-    max-width: 348px;
-    padding-top: 17px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 149px;
-    background: linear-gradient(to bottom, #6e78e8 18%, #4a56e2 18% 100%);
+    max-width: 288px;
+    max-height: 313px;
+    padding: 17px 30px 134px;
+    background-image: url('../../images/currency/desktop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 
-table {
-  table-layout: fixed;
-  width: 100%;
+.HorizontalList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.TableHeading {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-}
-
-.TableList {
+.Data {
   margin-top: 22px;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
   @media screen and (min-width: $desktop) {
     margin-top: 36px;
   }
 }
 
-.ListItem {
+.CurrencyItem {
+  font-weight: 400;
   &:not(:last-child) {
-    padding-bottom: 10px;
+    margin-bottom: 10px;
+
     @media screen and (min-width: $desktop) {
-      padding-bottom: 23px;
+      margin-bottom: 23px;
     }
   }
 }
