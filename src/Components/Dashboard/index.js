@@ -17,6 +17,7 @@ const DashboardRoutes = () =>
                 }}>
                 {matches => (
                     <div>
+{/* For mobile screen */}
                     {matches.small && 
                                <div>
                                 <DashboardNav/>
@@ -34,6 +35,7 @@ const DashboardRoutes = () =>
                                     </Switch>
                                 </Suspense>
                                 </div>}
+{/* For mobile tablet */}
                     {matches.medium && 
                             <div>    
                                 <DashboardNav/>
@@ -48,6 +50,7 @@ const DashboardRoutes = () =>
                                     </Switch>
                                 </Suspense>
                             </div>}
+{/* For desktop screen */}
                     {matches.large && <div>    
                                 <DashboardNav/>
                                 <Suspense>

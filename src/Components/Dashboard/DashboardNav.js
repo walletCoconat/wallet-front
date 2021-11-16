@@ -14,6 +14,7 @@ const DashboardNav = () => <>
 
         {matches => 
             (<div>
+{/* For mobile screen */}
                 {matches.small && <div className='Dashboard_icon'>
                     <NavLink
                         exact
@@ -48,7 +49,7 @@ const DashboardNav = () => <>
                         <img className='Dashboard_icon_fill' src={exchangeRatesIcon} alt="" width={38} />
                     </NavLink>
                 </div>}
-       
+{/* For tablet snd desktop screens*/}
                 {matches.medium && <div>    
                     <NavLink
                         exact
@@ -70,13 +71,10 @@ const DashboardNav = () => <>
                         <div>
                         <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={38} />
                         <p className="Dashboard_hidden_label">Статистика</p>
-                        </div>
-                        
+                        </div>  
                     </NavLink>  
-
-    
                 </div>}
-                    
+
             </div>
         )}
     </Media> 
