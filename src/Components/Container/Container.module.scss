@@ -1,19 +1,19 @@
 .Container {
-    // position: relative;
-    
-    width: 320px;
-    padding: 0 20px;
-    margin-left: auto;
-    margin-right: auto;
+  // используется для кнопки ButtonAddTransaction PS Таня Я.
+  position: relative;
 
-    @media screen and (min-width: 768px) {
-       width: 768px;
-       padding: 0 23px 0 40px;
-        
-    }
+  width: 320px;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
 
-    @media screen and (min-width: 1280px) {
-        width: 1280px;
-        padding: 0 85px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 0 23px 0 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding: 0 85px;
+  }
 }
