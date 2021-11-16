@@ -1,48 +1,69 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import style from './Modal.module.scss';
 import sprite from '../../images/sprite.svg';
+import Datetime from 'react-datetime';
+import Switch from '../Switch';
 
-const Modal = ({ active, setActive }) => {
-  return (
-    <div
-      className={active ? 'style.ModalActive' : 'style.Modal'}
-      onClick={() => {
-        setActive(false);
-      }}
-    >
-      <div className={style.ModalContent} onClick={e => e.stopPropagation()}>
-        <button className={style.BtnClose}>
-          <svg>
-            <use xlinkHref={`${sprite}#icon-close`}></use>
-          </svg>
-        </button>
+const Modal = ({ isShowing, hide, toggler }) =>
+  isShowing
+    ? ReactDOM.createPortal(
+        <React.Fragment>
+          <div
+            className={isShowing ? style.ModalActive : style.Modal}
+            onClick={() => {
+              hide(false);
+            }}
+          >
+            <div
+              className={style.ModalContent}
+              onClick={e => e.stopPropagation()}
+            >
+              <button className={style.BtnClose}>
+                <svg width="16" height="16">
+                  <use xlinkHref={`${sprite}#icon-close`}></use>
+                </svg>
+              </button>
 
-        <h2>Add Transaction</h2>
+              <h2>Add Transaction</h2>
 
-        <form>
-          <div className={style.SwitchBox}>
-            <label for="income" className={style.Text}>
-              Доход
-            </label>
-            <label className={style.Switch}>
-              <input type="checkbox" />
-              <span className={style.SliderRound}></span>
-            </label>
-            <label for="spend" className={style.Text}>
-              Расход
-            </label>
+              <form>
+                <Switch onClick={toggler} />
+                {toggler ? (
+                  <span className={style.Text}>Доход</span>
+                ) : (
+                  <span className={style.Text}>Расход</span>
+                )}
+
+                <div>
+                  <label>
+                    <input></input>
+                  </label>
+
+                  <Datetime
+                    dateFormat="DD-MM-YYYY"
+                    timeFormat={false}
+                    className={style.Datetime}
+                  />
+                  <svg>
+                    <use xlinkHref={`${sprite}#icon-newdate`}></use>
+                  </svg>
+                </div>
+                <div className={style.BtnBox}>
+                  <button type="submit" className={style.Button}>
+                    Добавить
+                  </button>
+                  <button type="submit" className={style.Button}>
+                    Отмена
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-          <button type="submit" className={style.Button}>
-            Добавить
-          </button>
-          <button type="submit" className={style.Button}>
-            Отмена
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
+        </React.Fragment>,
+        document.body,
+      )
+    : null;
 
 export default Modal;
 

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Login from './Login/Login.js';
 import { Switch } from 'react-router-dom';
@@ -11,12 +11,13 @@ import * as authOperation from '../redux/auth/authOperation';
 import Header from './Header/Header.js';
 import Container from './Container/Container';
 import ButtonAddTransaction from './ButtonAddTransaction';
+import useModal from './ModalAddTransaction/useModal';
 import Modal from './ModalAddTransaction';
 
 function App() {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
-  const [modalActive, setModalActive] = useState(true);
+  const { isShowing, toggle } = useModal();
 
   useEffect(() => {
     if (token === null) {
@@ -35,8 +36,8 @@ function App() {
               <Header />
               <Container>
                 <h1>Home</h1>
-                <ButtonAddTransaction onClick={() => setModalActive(true)} />
-                <Modal active={modalActive} setActive={setModalActive} />
+                <ButtonAddTransaction onClick={toggle} />
+                <Modal isShowing={isShowing} hide={toggle} />
               </Container>
             </>
           </PrivateRoute>
