@@ -9,6 +9,9 @@ const RegistrationUser = () => {
   const [state, setState] = useState({
     email: '',
     password: '',
+    name: "",
+    repeatPassword: ''
+    
   });
 
   const dispatch = useDispatch();
@@ -24,7 +27,11 @@ const RegistrationUser = () => {
   const onSubmit = e => {
     e.preventDefault();
     console.log(state)
-    dispatch(register(state));
+    dispatch(register({
+      name: state.name,
+      email: state.email,
+      password: state.password
+    }));
     setState({ name: '', email: '', password: '' });
   };
 
@@ -52,6 +59,7 @@ const RegistrationUser = () => {
               name="email"
               className={style.registration__input}
               onChange={onChangeInput}
+              value={state.email}
             />
           </div>
           <div className={style.registration__form_container}>
@@ -67,6 +75,7 @@ const RegistrationUser = () => {
               placeholder="Пароль"
               className={style.registration__input}
               onChange={onChangeInput}
+              value={state.password}
             />
           </div>
           <div className={style.registration__form_container}>
@@ -82,6 +91,7 @@ const RegistrationUser = () => {
               placeholder="Подтвердите пароль"
               className={style.registration__input}
               onChange={onChangeInput}
+              value={state.repeatPassword}
             />
           </div>
           <div className={style.registration__form_container}>
@@ -97,6 +107,7 @@ const RegistrationUser = () => {
               placeholder="Ваше имя"
               className={style.registration__input}
               onChange={onChangeInput}
+              value={state.name}
             />
           </div>
           <button type="submit" className={style.registration__button}>

@@ -1,18 +1,23 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+
 import { useSelector } from "react-redux";
 import sprite from '../../images/sprite.svg';
-import * as authOperation from '../../redux/auth/authOperation';
+
 import * as authSelector from '../../redux/auth/authSelector';
+
+
+
+
 
 import style from './Header.module.scss'
 
-const Header = () => {
+const Header = ({toggleIsVisible}) => {
 const name = useSelector(authSelector.getName);
-const dispatch = useDispatch();
 
-const onClick=() => {
-dispatch(authOperation.logOut())
+
+
+const onClick = () => {
+    toggleIsVisible();
 }
 
     return (
@@ -27,7 +32,7 @@ dispatch(authOperation.logOut())
             <span className={style.Name}>{name}</span>
            
 
-            <button className={style.Button} onClick={onClick} type='button'>
+            <button className={style.Button} onClick={()=>{toggleIsVisible()}} type='button'>
             <svg className={style.Exit}>
             <use  xlinkHref={`${sprite}#icon-exit`}></use>
             </svg> <p className={style.Text}>Выйти</p></button>
