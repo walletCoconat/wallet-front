@@ -6,9 +6,14 @@ import Statistics from "./DashboardStatistics";
 import Home from "./DashboardHome";
 import ExchangeRates from './DashboardExchange';
 import Media from 'react-media';
+import Container from '../Container';
+import PrivateRoute from '../PrivatRoute/PrivatRoute';
+
 
 const DashboardRoutes = () =>
-    <div className='Dashboard_bgc'>
+<div className='Dashboard_bgc'>
+<Container>
+    
         <div className='Dashboard_container'>
             <Media queries={{
                 small: "(max-width: 767px)",
@@ -19,56 +24,59 @@ const DashboardRoutes = () =>
                     <div>
 {/* For mobile screen */}
                     {matches.small && 
-                               <div>
+                               <>
                                 <DashboardNav/>
                                 <Suspense>
                                     <Switch>
-                                        <Route exact path="/">
+                                        <PrivateRoute exact path="/">
                                         <Home/>
-                                        </Route>
-                                        <Route path="/statistics">
+                                        </PrivateRoute>
+                                        <PrivateRoute path="/statistics">
                                             <Statistics/>
-                                        </Route>
-                                        <Route path="/exchange_rates" restricted>
+                                        </PrivateRoute>
+                                        <PrivateRoute path="/exchange_rates">
                                             <ExchangeRates/>
-                                        </Route>
+                                        </PrivateRoute>
                                     </Switch>
                                 </Suspense>
-                                </div>}
+                                </>}
 {/* For mobile tablet */}
                     {matches.medium && 
-                            <div>    
+                            <>    
                                 <DashboardNav/>
                                 <Suspense>
                                     <Switch>
-                                        <Route exact path="/">
+                                        <PrivateRoute exact path="/">
                                         <Home/>
-                                        </Route>
-                                        <Route path="/statistics">
+                                        </PrivateRoute>
+                                        <PrivateRoute path="/statistics">
                                             <Statistics/>
-                                        </Route>
+                                        </PrivateRoute>
                                     </Switch>
                                 </Suspense>
-                            </div>}
+                            </>}
 {/* For desktop screen */}
-                    {matches.large && <div>    
+                    {matches.large && <>    
                                 <DashboardNav/>
                                 <Suspense>
                                     <Switch>
-                                        <Route exact path="/">
+                                    
+                                        <PrivateRoute exact path="/">
                                         <Home/>
-                                        </Route>
-                                        <Route path="/statistics">
+                                        </PrivateRoute>
+
+                                        <PrivateRoute path="/statistics">
                                             <Statistics/>
-                                        </Route>
+                                        </PrivateRoute>
                                         
                                     </Switch>
                                 </Suspense>
-                            </div>}
+                            </>}
                  </div>
                 )}
                 </Media> 
             </div>
-    </div>
-
+   
+</Container>
+ </div>
 export default DashboardRoutes;

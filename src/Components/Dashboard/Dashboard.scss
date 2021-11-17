@@ -17,11 +17,6 @@
         }
       };
 
-      .Dashboard_container{
-        margin-right: auto;
-        margin-left: auto;
-        text-align: center;
-      }
 
       .Dashboard_icon{
         display: flex;
@@ -61,4 +56,10 @@
         .Dashboard_icon_fill{
           
         }
+      }
+
+      .btn_transaction_position{
+        position: absolute;
+        bottom: 30;
+        right: 30;
       }

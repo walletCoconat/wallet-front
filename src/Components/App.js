@@ -29,25 +29,37 @@ function App() {
 
   return (
     <>
-    {/* <Dashboard/> */}
+    <Header/>
+
       <Suspense>
         <Switch>
-          <PrivateRoute exact path="/">
-            <>
-              <Header />
-              <Container>
-                <h1>Home</h1>
-                <ButtonAddTransaction onClick={() => setModalActive(true)} />
-                <Modal active={modalActive} setActive={setModalActive} />
-              </Container>
-            </>
-          </PrivateRoute>
+
           <PublicRoute exact path="/login" urlFToRedirect="/">
-            <Login />
+              <Login />
           </PublicRoute>
+
           <PublicRoute exact path="/registration" urlFToRedirect="/">
-            <RegistrationUser />
+              <RegistrationUser />
           </PublicRoute>
+
+          <PrivateRoute exact path="/">
+              <>
+                <Dashboard/>
+                <ButtonAddTransaction />
+              </>
+          </PrivateRoute>
+
+          <PrivateRoute path="/statistics">
+              <Dashboard/>
+          </PrivateRoute>
+
+          <PrivateRoute path="/exchange_rates">
+              <Dashboard/>
+          </PrivateRoute>
+
+                {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
+                <Modal active={modalActive} setActive={setModalActive} /> */}
+             
         </Switch>
       </Suspense>
     </>
