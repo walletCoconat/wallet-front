@@ -1,4 +1,4 @@
-import DashboardNav from "./DashboardNav";
+import DashboardMobileNav from "./DashboardMobileNav";
 import { Switch, Route } from 'react-router';
 import './Dashboard.scss';
 import { Suspense } from "react";
@@ -25,7 +25,7 @@ const DashboardRoutes = () =>
 {/* For mobile screen */}
                     {matches.small && 
                                <>
-                                <DashboardNav/>
+                                <DashboardMobileNav/>
                                 <Suspense>
                                     <Switch>
                                         <PrivateRoute exact path="/">
@@ -43,7 +43,7 @@ const DashboardRoutes = () =>
 {/* For mobile tablet */}
                     {matches.medium && 
                             <>    
-                                <DashboardNav/>
+                                {/* <DashboardMobileNav/> */}
                                 <Suspense>
                                     <Switch>
                                         <PrivateRoute exact path="/">
@@ -57,10 +57,10 @@ const DashboardRoutes = () =>
                             </>}
 {/* For desktop screen */}
                     {matches.large && <>    
-                                <DashboardNav/>
+                                {/* <DashboardMobileNav/> */}
                                 <Suspense>
                                     <Switch>
-                                    
+
                                         <PrivateRoute exact path="/">
                                         <Home/>
                                         </PrivateRoute>
