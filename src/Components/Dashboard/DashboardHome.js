@@ -1,6 +1,6 @@
 import TotalBalance from '../TotalBalance/index'
 import ExchangeRates from './DashboardExchange';
-import DashboardMobileNav from './DashboardMobileNav';
+import './Dashboard.scss';
 import Media from 'react-media';
 import { NavLink } from 'react-router-dom';
 import homeIcon from '../../images/dashboard_sprite/home_dashboard.svg';
@@ -36,8 +36,8 @@ const Home = () =>
                                         className="Dashboard_ic"
                                         activeClassName="Dashboard_icon_active"
                                     >
-                                        <div>
-                                        <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={38} />
+                                        <div className='Dashboard_tablet_nav'>
+                                        <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={18} />
                                         <p className="Dashboard_label">Главная</p>
                                         </div>
                                     </NavLink>
@@ -48,7 +48,7 @@ const Home = () =>
                                         activeClassName="Dashboard_icon_active"
                                     >
                                         <div className='Dashboard_tablet_nav'>
-                                            <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={38} />
+                                            <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={18} />
                                             <p className="Dashboard_label">Статистика</p>
                                         </div>  
                                     </NavLink>   
@@ -66,16 +66,16 @@ const Home = () =>
                 
                     {/* For desktop screen*/}
                     {matches.large && 
-                        <>
-                            <div className='Dashboard_tablet_container'>
+                        <div class='Dashboard_desktop_main'>
+                            <div className='Dashboard_desktop_container'>
                                 <NavLink
                                     exact
                                     to="/"
                                     className="Dashboard_ic"
                                     activeClassName="Dashboard_icon_active"
                                 >
-                                    <div>
-                                    <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={38} />
+                                    <div className='Dashboard_tablet_nav'>
+                                    <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={18} />
                                     <p className="Dashboard_label">Главная</p>
                                     </div>
                                 </NavLink>
@@ -85,8 +85,8 @@ const Home = () =>
                                     className="Dashboard_ic"
                                     activeClassName="Dashboard_icon_active"
                                 >
-                                    <div>
-                                    <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={38} />
+                                    <div className='Dashboard_tablet_nav'>
+                                    <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={18} />
                                     <p className="Dashboard_label">Статистика</p>
                                     </div>  
                                 </NavLink>   
@@ -94,7 +94,7 @@ const Home = () =>
                                 <ExchangeRates/>
                             </div>
                             <p className='Dashboard_table'>TAble</p>
-                        </>
+                        </div>
                     }
 
                 </div>
