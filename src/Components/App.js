@@ -29,8 +29,8 @@ function App() {
 
   return (
     <>
-    <Dashboard/>
-      {/* <Suspense>
+    {/* <Dashboard/> */}
+      <Suspense>
         <Switch>
           <PrivateRoute exact path="/">
             <>
@@ -49,7 +49,7 @@ function App() {
             <RegistrationUser />
           </PublicRoute>
         </Switch>
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
