@@ -1,3 +1,64 @@
 .Dashboard_bgc {
-    background-image: url('../../images/dashbord_bacground/Rectangle_tablet.jpg');
-}
+             
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: rgba(255, 255, 255, 0.4);
+        
+        @media screen and (min-width: 768px) {
+        background-image: url(../../images/dashboard_background/dashboard_bgc_tablet.jpg);
+        width: 100vw;
+        height: 100vh; 
+        background-size: cover; 
+        background-repeat: no-repeat;
+        }
+
+        @media screen and (min-width: 1280px) {
+          background-image: url(../../images/dashboard_background/dashboard_bgc_desktop.jpg);
+        }
+      };
+
+      .Dashboard_container{
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+      }
+
+      .Dashboard_icon{
+        display: flex;
+        justify-content: space-evenly;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 12px;
+      }
+
+      .ExchangeRates{
+       margin-top: 32px;
+      }
+
+      .Dashboard_hidden_label{
+        display: none;
+      }
+
+      .Dashboard_balance{
+        margin-top: 13px;
+      }
+
+      .Dashboard_table{
+        margin-top: 30px;
+      }
+
+      .Dashboard_stats{
+        margin-top: 42px;
+      }
+
+      .Dashboard_icon_fill{
+       
+      }
+
+      .Dashboard_icon_active{
+       
+        fill: #4A56E2;
+        .Dashboard_icon_fill{
+          
+        }
+      }

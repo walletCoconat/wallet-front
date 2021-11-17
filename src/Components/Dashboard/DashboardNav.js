@@ -1,53 +1,85 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-// import style from './Dashboard.scss';
 import homeIcon from '../../images/dashboard_sprite/home_dashboard.svg';
 import statisticsIcon from '../../images/dashboard_sprite/statistics.svg';
 import exchangeRatesIcon from '../../images/dashboard_sprite/exchange_rates.svg';
-
-// import Media from 'react-media';
-// import tablet from '../../images/dashboard_background/dashboard_bgc_tablet.jpg'
-
-// import { useDispatch } from 'react-redux';
-// import * as authOperation from '../../redux/auth/authOperation'
+import Media from 'react-media';
 
 const DashboardNav = () => <>
-    <div>
-        <NavLink
-            exact
-            to="/"
-            // className={s.navLink}
-            // activeClassName={s.activeLink}
-        >
-            <div>
-              <img className='' src={homeIcon} alt="" width={38} />
-              <p className=''>Главная</p>
+    <div >
+    <Media queries={{
+        small: "(max-width: 767px)",
+        medium: "(min-width: 768px) "
+        }}>
+
+        {matches => 
+            (<div>
+{/* For mobile screen */}
+                {matches.small && <div className='Dashboard_icon'>
+                    <NavLink
+                        exact
+                        to="/"
+                        className="Dashboard_ic"
+                        activeClassName="Dashboard_icon_active"
+                    >
+                        <div>
+                        <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={38} />
+                        <p className="Dashboard_hidden_label">Главная</p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink
+                        to="/statistics"
+                        className="Dashboard_ic"
+                        activeClassName="Dashboard_icon_active"
+                    >
+                        <div>
+                        <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={38} />
+                        <p className="Dashboard_hidden_label">Статистика</p>
+                        </div>
+                        
+                    </NavLink>  
+
+                    <NavLink
+                        exact
+                        to="/exchange_rates"
+                        className="Dashboard_ic"
+                        activeClassName="Dashboard_icon_active"
+                    >
+                        <img className='Dashboard_icon_fill' src={exchangeRatesIcon} alt="" width={38} />
+                    </NavLink>
+                </div>}
+{/* For tablet snd desktop screens*/}
+                {matches.medium && <div>    
+                    <NavLink
+                        exact
+                        to="/"
+                        className="Dashboard_ic"
+                        activeClassName="Dashboard_icon_active"
+                    >
+                        <div>
+                        <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={38} />
+                        <p className="Dashboard_hidden_label">Главная</p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink
+                        to="/statistics"
+                        className="Dashboard_ic"
+                        activeClassName="Dashboard_icon_active"
+                    >
+                        <div>
+                        <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={38} />
+                        <p className="Dashboard_hidden_label">Статистика</p>
+                        </div>  
+                    </NavLink>  
+                </div>}
+
             </div>
-        </NavLink>
+        )}
+    </Media> 
 
-        <NavLink
-            to="/statistics"
-            // className={s.navLink}
-            // activeClassName={s.activeLink}
-        >
-            <div>
-              <img className='' src={statisticsIcon} alt="" width={38} />
-              <p className=''>Статистика</p>
-            </div>
-            
-        </NavLink>  
-
-        <NavLink
-            exact
-            to="/exchange_rates"
-            // className={s.authLink}
-            // activeClassName={s.activeLink}
-        >
-            <img className='' src={exchangeRatesIcon} alt="" width={38} />
-        </NavLink>
-                       
-    </div>
-
-    </>
+</div>
+</>
 
 export default DashboardNav;
