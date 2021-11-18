@@ -17,11 +17,6 @@
         }
       };
 
-      .Dashboard_container{
-        margin-right: auto;
-        margin-left: auto;
-        text-align: center;
-      }
 
       .Dashboard_icon{
         display: flex;
@@ -45,6 +40,14 @@
 
       .Dashboard_table{
         margin-top: 30px;
+
+        @media screen and (min-width: 1280px){
+          margin-top: 40px;
+        }
+
+        @media screen and (min-width: 1280px){
+          margin-top: 46px;
+        }
       }
 
       .Dashboard_stats{
@@ -55,10 +58,70 @@
        
       }
 
+
+      .btn_transaction_position{
+        position: absolute;
+        bottom: 30;
+        right: 30;
+      }
+
+      .Dashboard_tablet_container{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+      }
+
+      .Dashboard_tablet_balance{
+        margin-top: 10px;
+        margin-right: 20px;
+      }
+
+      .Dashboard_desktop_container{
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        padding-top: 40px;
+        padding-right: 30px;
+        // border-left: none;
+        border-right: 1px solid #E7E5F2;
+        box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+      }
+      
+      .Dashboard_desktop_main{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .Dashboard_tablet_nav{
+        display: flex;
+        margin-bottom: 20px;
+
+        @media screen and (min-width: 1280px){
+          margin-bottom: 30px;
+        }
+      }
+
+      .Dashboard_label{
+        display: block;
+        margin-left: 24px;
+        font-family: inherit;
+        font-size: 18px;
+        font-weight: 400;
+        color:  #000;
+        
+      }
+
       .Dashboard_icon_active{
-       
-        fill: #4A56E2;
+        
+        .Dashboard_label{
+          font-weight: 700;
+        }
+
+
         .Dashboard_icon_fill{
           
         }
       }
+
+      
+      
