@@ -33,6 +33,7 @@ const RegistrationUser = () => {
       password: state.password
     }));
     setState({ name: '', email: '', password: '' });
+    
   };
 
   return (

@@ -13,12 +13,9 @@ const tokenState = {
 };
 
 export const register = createAsyncThunk('auth/register', async dataUser => {
-  console.log(1111111, dataUser);
-  const result = await axios.post('/api/user/signup', dataUser);
-  // tokenState.setToken(data.token);
-  console.log(22222222, result);
-  const {data} = result;
-  console.log(333333333, data);
+
+  const {data} = await axios.post('/api/user/signup', dataUser);
+ 
   return data;
 });
 
