@@ -5,10 +5,6 @@ import sprite from '../../images/sprite.svg';
 
 import * as authSelector from '../../redux/auth/authSelector';
 
-
-
-
-
 import style from './Header.module.scss'
 
 const Header = ({toggleIsVisible}) => {

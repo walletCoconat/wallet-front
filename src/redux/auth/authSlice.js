@@ -4,7 +4,7 @@ import { register, login, logOut, fetchByToken, verify } from './authOperation';
 const initialState = {
   user: { name: null, email: null },
   isLoader: false,
-  token: null,
+  loginToken: null,
   error: false,
   isLoggedIn: false,
   isRegister: false
@@ -49,9 +49,11 @@ const authSlice = createSlice({
       state.isLoader = true;
       state.error = false;
       state.isRegister =  false;
+      state.loginToken = null;
     },
     [login.fulfilled]: (state, { payload }) => {
       state.user = payload.response;
+      state.loginToken = payload.loginToken;
       state.isLoader = false;
       state.token = payload.token;
       state.isLoggedIn = true;
@@ -61,11 +63,13 @@ const authSlice = createSlice({
     },
     [logOut.pending]: state => {
       state.error = false;
+      
     },
     [logOut.fulfilled]: state => {
       state.isLoader = false;
       state.token = null;
       state.isLoggedIn = false;
+      state.loginToken = null;
       state.user = { name: null, email: null };
     },
     [logOut.rejected]: state => {

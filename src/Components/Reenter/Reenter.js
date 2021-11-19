@@ -1,6 +1,6 @@
 import React from "react";
 import style from './Reenter.module.css';
-
+import { useHistory, Switch } from 'react-router-dom';
 import * as authOperation from '../../redux/auth/authOperation';
 
 import { useDispatch } from "react-redux";
@@ -9,7 +9,9 @@ import {getEmail} from '../../redux/auth/authSelector';
 import {verify} from '../../redux/auth/authOperation';
 import Button from "../Button/Button";
 
+
 const Reenter = ({toggleIsVisible}) => {
+    const history = useHistory();
 const email = useSelector(getEmail);
 
     const dispatch = useDispatch();
@@ -20,13 +22,15 @@ const email = useSelector(getEmail);
 
 
     return <div className={style.Modale}>
-    <div  onClick={()=>{toggleIsVisible()}}>X</div>
+<div className={style.Content}>   
 
 <p> Почти там…</p>
 
 <p> Проверьте свою электронную почту (`${email}`) для подтверждения учетной записи. </p>
 
-<p>Если `${email}`не является адресом электронной почты, вернитесь назад и введите нужный адрес.</p>
+<p>Если `${email}`не является адресом электронной почты, вернитесь </p>
+ <Button onClick={()=>{history.push('/registration')}}> Назад</Button> 
+ <p> и введите нужный адрес.</p>
 
    <p>Если вы не получили наше электронное письмо в течение 15 минут, проверьте папку со спамом
 
@@ -39,7 +43,7 @@ const email = useSelector(getEmail);
 
 
 
-{/*  */}
+{/*  */}</div>
 
     </div>
 
