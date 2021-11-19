@@ -17,6 +17,7 @@ import Modal from './ModalAddTransaction';
 function App() {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+
   const { isShowing, toggle } = useModal();
 
   useEffect(() => {

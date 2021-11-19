@@ -1,4 +1,5 @@
-.Modal,
+@import '../../styles/variables.scss';
+
 .ModalActive {
   height: 100vh;
   width: 100vw;
@@ -16,11 +17,16 @@
 
 .ModalContent {
   position: relative;
-  padding: 20px;
+  padding: 20px 65px;
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: $second-text-color;
   width: 540px;
-  height: 540px;
+  height: 617px;
+
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    width: 320px;
+    height: 830px;
+  }
 }
 
 .ModalActive {
@@ -42,19 +48,19 @@
 h2 {
   margin-top: 40px;
   margin-bottom: 40px;
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   font-size: 30px;
   line-height: 1.5;
-  color: #000000;
+  color: $main-text-color;
   text-align: center;
 }
 
 .BtnBox {
+  margin-top: 50px;
   text-align: center;
 }
 
 .Button {
-  margin-top: 20px;
   width: 280px;
   height: 50px;
   font-family: 'Circe', sans-serif;
@@ -65,12 +71,13 @@ h2 {
   text-transform: uppercase;
   margin-bottom: 20px;
   border: 1px solid #4a56e2;
-  background-color: #ffffff;
-  color: #4a56e2;
+  background-color: $main-bg-color;
+  color: $fifth-text-color;
   border-radius: 20px;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .Button:hover,
@@ -80,9 +87,78 @@ h2 {
   border-color: transparent;
 }
 
-.Datetime {
+.SwitchBox {
   font-family: 'Circe', sans-serif;
-  font-size: 18px;
+  font-weight: bold;
+  font-size: 16px;
   line-height: 1.5;
-  color: #000000;
+  color: #e0e0e0;
+  margin-bottom: 38px;
+  text-align: center;
+  align-items: center;
+}
+
+.SwitchSliderBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.TextActive {
+  color: #ff6596;
+}
+
+.TextNotActive {
+  color: #e0e0e0;
+}
+
+.Switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin: 0 20px;
+}
+
+// /* Hide default HTML checkbox */
+.Switch input {
+  display: none;
+}
+
+// /* The slider */
+.Slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  transition: 0.4s;
+}
+
+.Slider:before {
+  position: absolute;
+  left: -4px;
+  bottom: 2px;
+  top: -2px;
+  content: '';
+  height: 44px;
+  width: 44px;
+  background-color: #24cca7;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  transition: 0.4s;
+}
+
+input:checked + .Slider:before {
+  background-color: #ff6596;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+  transform: translateX(44px);
+}
+
+// /* Rounded sliders */
+.Slider:before {
+  border-radius: 50%;
 }
