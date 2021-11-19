@@ -1,4 +1,5 @@
 import TotalBalance from '../TotalBalance/index'
+import HomeTab from '../HomeTab/index'
 import ExchangeRates from './DashboardExchange';
 import './Dashboard.scss';
 import Media from 'react-media';
@@ -93,7 +94,7 @@ const Home = () =>
                                 <div className='Dashboard_balance'><TotalBalance/></div>
                                 <ExchangeRates/>
                             </div>
-                            <p className='Dashboard_table'>TAble</p>
+                            <p className='Dashboard_table'><HomeTab/></p>
                         </div>
                     }
 
