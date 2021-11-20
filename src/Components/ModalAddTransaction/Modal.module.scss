@@ -1,4 +1,5 @@
-.Modal,
+@import '../../styles/variables.scss';
+
 .ModalActive {
   height: 100vh;
   width: 100vw;
@@ -15,11 +16,17 @@
 }
 
 .ModalContent {
-  padding: 20px;
+  position: relative;
+  padding: 20px 65px;
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: $second-text-color;
   width: 540px;
-  height: 540px;
+  height: 617px;
+
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    width: 320px;
+    height: 830px;
+  }
 }
 
 .ModalActive {
@@ -33,7 +40,6 @@
   right: 20px;
   padding: 0;
   border: none;
-  font: inherit;
   color: inherit;
   background-color: transparent;
   cursor: pointer;
@@ -42,37 +48,72 @@
 h2 {
   margin-top: 40px;
   margin-bottom: 40px;
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   font-size: 30px;
   line-height: 1.5;
-  color: #000000;
+  color: $main-text-color;
   text-align: center;
 }
 
-/* The switch - the box around the slider */
-.SwitchBox {
+.BtnBox {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.Button {
+  width: 280px;
+  height: 50px;
+  font-family: 'Circe', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border: 1px solid #4a56e2;
+  background-color: $main-bg-color;
+  color: $fifth-text-color;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.Button:hover,
+.Button:focus {
+  color: #ffffff;
+  background: #24cca7;
+  border-color: transparent;
+}
+
+.FormBox {
+  font-family: 'Circe', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #e0e0e0;
   margin-bottom: 38px;
+  text-align: center;
+  align-items: center;
+}
+
+.ToggleswitchBox {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.Switch {
-  position: relative;
-  display: inline-block;
-  width: 80px;
-  height: 40px;
-  margin: 0 20px;
+.TextActive {
+  color: #ff6596;
 }
 
-/* Hide default HTML checkbox */
-.Switch input {
-  display: none;
+.TextNotActive {
+  color: #e0e0e0;
 }
 
-/* The slider */
-.Slider,
-.SliderRound {
+// /* The slider */
+.Slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -104,47 +145,7 @@ input:checked + .Slider:before {
   transform: translateX(44px);
 }
 
-/* Rounded sliders */
-.SliderRound:before {
+// /* Rounded sliders */
+.Slider:before {
   border-radius: 50%;
-}
-
-.Text {
-  font-family: Circe;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #e0e0e0;
-}
-
-.Button {
-  margin-top: 20px;
-  width: 280px;
-  height: 50px;
-
-  font-family: Circe;
-  font-size: 18px;
-  line-height: 1.5;
-
-  text-align: center;
-
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-
-  margin-bottom: 20px;
-  border: 1px solid #4a56e2;
-  background-color: #ffffff;
-  color: #4a56e2;
-
-  border-radius: 20px;
-  margin-bottom: 0;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.Button:hover,
-.Button:focus {
-  color: #ffffff;
-  background: #24cca7;
-  border-color: transparent;
 }

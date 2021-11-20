@@ -4,7 +4,7 @@ import sprite from '../../images/sprite.svg';
 
 const ButtonAddTransaction = ({ onClick }) => (
   <button className={style.Button} onClick={onClick}>
-    <svg>
+    <svg width="20" height="20">
       <use xlinkHref={`${sprite}#icon-add`}></use>
     </svg>
   </button>

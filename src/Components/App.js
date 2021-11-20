@@ -1,4 +1,5 @@
 import React, { Suspense, useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import { useHistory, Switch } from 'react-router-dom';
 
@@ -10,15 +11,17 @@ import { getRegister } from '../redux/auth/authSelector';
 import Header from './Header/Header.js';
 import Container from './Container/Container';
 import ButtonAddTransaction from './ButtonAddTransaction';
+import useModal from './ModalAddTransaction/useModal';
 import Modal from './ModalAddTransaction';
 
 import Reexit from './Reexit/Reexit.js';
 import Reenter from './Reenter/Reenter.js';
 
-import Dashboard from './Dashboard/index'
-
+import Dashboard from './Dashboard/index';
 
 function App() {
+  const { isShowing, toggle } = useModal();
+
   const history = useHistory();
   const register = useSelector(getRegister);
   const [modalActive, setModalActive] = useState(true);
@@ -32,56 +35,50 @@ function App() {
 
   return (
     <>
-    <Header/>
+      <Header />
 
       <Suspense>
         <Switch>
-
           <PrivateRoute exact path="/">
             <>
               <Header toggleIsVisible={toggleIsVisible} />
               <Container>
                 <h1>Home</h1>
-                <ButtonAddTransaction onClick={() => setModalActive(true)} />
-                <Modal active={modalActive} setActive={setModalActive} />
+                <ButtonAddTransaction onClick={toggle} />
+                <Modal isShowing={isShowing} hide={toggle} />
               </Container>
             </>
           </PrivateRoute>
 
-
-
           <PublicRoute exact path="/login" urlFToRedirect="/">
-              <Login />
+            <Login />
           </PublicRoute>
 
           <PublicRoute path="/verify">
             <Reenter />
           </PublicRoute>
 
-
-
           <PublicRoute exact path="/registration" urlFToRedirect="/">
-              <RegistrationUser />
+            <RegistrationUser />
           </PublicRoute>
 
           <PrivateRoute exact path="/">
-              <>
-                <Dashboard/>
-                <ButtonAddTransaction />
-              </>
+            <>
+              <Dashboard />
+              <ButtonAddTransaction />
+            </>
           </PrivateRoute>
 
           <PrivateRoute path="/statistics">
-              <Dashboard/>
+            <Dashboard />
           </PrivateRoute>
 
           <PrivateRoute path="/exchange_rates">
-              <Dashboard/>
+            <Dashboard />
           </PrivateRoute>
 
-                {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
+          {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
                 <Modal active={modalActive} setActive={setModalActive} /> */}
-             
         </Switch>
       </Suspense>
 
