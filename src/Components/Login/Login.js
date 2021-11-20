@@ -46,6 +46,7 @@ const LoginUser = () => {
               ></use>
             </svg>
             <input
+            name="email"
               placeholder="E-mail"
               className={style.login__input}
               onChange={onChangeInput}
@@ -60,6 +61,7 @@ const LoginUser = () => {
               ></use>
             </svg>
             <input
+            name="password"
               placeholder="Пароль"
               className={style.login__input}
               onChange={onChangeInput}

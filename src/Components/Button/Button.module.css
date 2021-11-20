@@ -1,0 +1,31 @@
+@import url(../../styles/stylesheet/colors_varibles.module.css);
+
+
+.Button {
+    width: 280px;
+    max-width: 100%;
+    height: 50px;
+        font-family: Circe;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        text-align: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        border: 1px  solid var(--fifth-text-color);
+        background-color: var(--second-text-color);
+        border-radius: 20px;
+        margin-bottom: 0;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Button:hover,
+.Button:focus {
+  color: var(--second-text-color);
+  background: var(--third-text-color);
+  border-color: transparent;
+}
+

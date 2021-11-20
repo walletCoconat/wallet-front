@@ -1,40 +1,47 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useState } from 'react';
+
 import { useSelector } from 'react-redux';
+import { useHistory, Switch } from 'react-router-dom';
+
 import Login from './Login/Login.js';
-import { Switch } from 'react-router-dom';
 import RegistrationUser from './Registration/Registration.js';
 import PrivateRoute from './PrivatRoute/PrivatRoute.js';
 import PublicRoute from './PublicRoute/PublicRoute.js';
-import { useDispatch } from 'react-redux';
-import { getToken } from '../redux/auth/authSelector.js';
-import * as authOperation from '../redux/auth/authOperation';
+import { getRegister } from '../redux/auth/authSelector';
 import Header from './Header/Header.js';
 import Container from './Container/Container';
 import ButtonAddTransaction from './ButtonAddTransaction';
 import useModal from './ModalAddTransaction/useModal';
 import Modal from './ModalAddTransaction';
 
-function App() {
-  const dispatch = useDispatch();
-  const token = useSelector(getToken);
+import Reexit from './Reexit/Reexit.js';
+import Reenter from './Reenter/Reenter.js';
 
+import Dashboard from './Dashboard/index';
+
+function App() {
   const { isShowing, toggle } = useModal();
 
-  useEffect(() => {
-    if (token === null) {
-      return;
-    }
+  const history = useHistory();
+  const register = useSelector(getRegister);
+  const [modalActive, setModalActive] = useState(true);
+  const [visible, setVisible] = useState(false);
 
-    dispatch(authOperation.fetchByToken());
-  }, [dispatch, token]);
+  const toggleIsVisible = () => {
+    setVisible(!visible);
+  };
+
+  history.push(register ? '/verify' : '/login');
 
   return (
     <>
+      <Header />
+
       <Suspense>
         <Switch>
           <PrivateRoute exact path="/">
             <>
-              <Header />
+              <Header toggleIsVisible={toggleIsVisible} />
               <Container>
                 <h1>Home</h1>
                 <ButtonAddTransaction onClick={toggle} />
@@ -42,14 +49,40 @@ function App() {
               </Container>
             </>
           </PrivateRoute>
+
           <PublicRoute exact path="/login" urlFToRedirect="/">
             <Login />
           </PublicRoute>
+
+          <PublicRoute path="/verify">
+            <Reenter />
+          </PublicRoute>
+
           <PublicRoute exact path="/registration" urlFToRedirect="/">
             <RegistrationUser />
           </PublicRoute>
+
+          <PrivateRoute exact path="/">
+            <>
+              <Dashboard />
+              <ButtonAddTransaction />
+            </>
+          </PrivateRoute>
+
+          <PrivateRoute path="/statistics">
+            <Dashboard />
+          </PrivateRoute>
+
+          <PrivateRoute path="/exchange_rates">
+            <Dashboard />
+          </PrivateRoute>
+
+          {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
+                <Modal active={modalActive} setActive={setModalActive} /> */}
         </Switch>
       </Suspense>
+
+      {visible && <Reexit toggleIsVisible={toggleIsVisible} />}
     </>
   );
 }

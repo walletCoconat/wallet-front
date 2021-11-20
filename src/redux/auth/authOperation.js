@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://wallet-coconat.herokuapp.com';
 
 const tokenState = {
   setToken(token) {
@@ -13,21 +13,26 @@ const tokenState = {
 };
 
 export const register = createAsyncThunk('auth/register', async dataUser => {
-  const { data } = await axios.post('/users/signup', dataUser);
-  tokenState.setToken(data.token);
-  console.log(data.status);
-  // console.log(axios.defaults.headers.common.Authorization);
+
+  const {data} = await axios.post('/api/user/signup', dataUser);
+ 
   return data;
 });
 
 export const login = createAsyncThunk('auth/login', async dataUser => {
-  const { data } = await axios.post('/users/login', dataUser);
+  const { data } = await axios.post('api/user/login', dataUser);
   tokenState.setToken(data.token);
   return data;
 });
 
+export const verify = createAsyncThunk('auth/verify', async emailAddress => {
+  const { data } = await axios.post('api/user/verify', emailAddress);
+  console.log(data);
+  return data;
+});
+
 export const logOut = createAsyncThunk('auth/logOut', async () => {
-  await axios.post('/users/logout');
+  await axios.post('api/user/logout');
   tokenState.cleanToken();
 });
 
@@ -36,7 +41,7 @@ export const fetchByToken = createAsyncThunk(
   async (_, thunkApi) => {
     const token = thunkApi.getState().auth.token;
     tokenState.setToken(token);
-    const { data } = await axios('/users/current');
+    const { data } = await axios('api/users/current');
     return data;
   },
 );
