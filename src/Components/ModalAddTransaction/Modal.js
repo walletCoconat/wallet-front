@@ -22,7 +22,7 @@ const optionOfIncome = [
   { value: 'Регулируемый доход', label: 'Регулируемый доход' },
 ];
 
-const Modal = ({ isShowing, hide }) => {
+const Modal = ({ isShowing, hide, onSubmit }) => {
   // Switch Slider
   const [checked, setChecked] = useState(false);
 
@@ -69,9 +69,15 @@ const Modal = ({ isShowing, hide }) => {
                 />
 
                 {checked ? (
-                  <TransactionForm options={optionsOfSpend} />
+                  <TransactionForm
+                    onSubmit={onSubmit}
+                    options={optionsOfSpend}
+                  />
                 ) : (
-                  <TransactionForm options={optionOfIncome} />
+                  <TransactionForm
+                    onSubmit={onSubmit}
+                    options={optionOfIncome}
+                  />
                 )}
               </div>
 

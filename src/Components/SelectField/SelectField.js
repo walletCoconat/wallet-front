@@ -8,14 +8,10 @@ const customStyles = {
   option: (provided, state) => ({
     ...provided,
     color: state.isSelected ? '#FF6596' : '#000000',
-    // backgroundColor: state.isSelected ? '#FF6596' : '#000000',
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-    // backdropFilter: 'blur(50px)',
-    /* Note: backdrop-filter has minimal browser support */
-    // borderRadius: 20,
     textAlign: 'left',
-    padding: '0px',
+    paddingLeft: '20px',
     minHeight: 44,
   }),
   control: () => ({
@@ -31,8 +27,9 @@ const customStyles = {
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
     const transition = 'opacity 300ms';
+    const color = '#000000';
 
-    return { ...provided, opacity, transition };
+    return { ...provided, opacity, transition, color };
   },
 };
 
@@ -44,9 +41,12 @@ const SelectField = ({ options }) => {
       <Select
         // value={value}
         // onChange={e => setValue(e.target.value)}
-        placeholder="Выберите категорию"
+        placeholder={'Выберите категорию'}
         styles={customStyles}
         options={options}
+        clearable={false}
+        avtoFocus
+        isSearchable
       >
         {/* <svg>
           <use xlinkHref={`${sprite}#icon-select`}></use>

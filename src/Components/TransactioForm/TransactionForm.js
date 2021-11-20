@@ -1,77 +1,88 @@
 import React, { useState } from 'react';
-// import ReactDOM from 'react-dom';
-import Axios from 'axios';
 import style from './TransactionForm.module.scss';
 import sprite from '../../images/sprite.svg';
 import 'react-datetime/css/react-datetime.css';
 import SelectField from '../SelectField';
 import Datetime from 'react-datetime';
+import { toast } from 'react-toastify';
 import 'react-datetime/css/react-datetime.css';
+// import {
+//   transactionSelectors,
+//   transactionOperations,
+// } from '../../redux/transaction';
+import 'react-toastify/dist/ReactToastify.css';
+// import { connect } from 'react-redux';
 
-export default function TransactionForm({ options }) {
-  const url = '';
-  // const baseUrl = 'http://localhost:3001/api/notes';
-  const [data, setData] = useState({
-    nameOfCategory: '',
-    quantity: '',
-    date: '',
-    comments: '',
-  });
+const initialState = {
+  quantity: '',
+  date: '',
+  selectedFile: '',
+  comments: '',
+};
 
-  const submit = e => {
+function TransactionForm({ options, onSubmit }) {
+  const [state, setState] = useState(initialState);
+  const { quantity, date, selectedFile, comments } = state;
+
+  const handleInputOnChange = event => {
+    const { name, value } = event.currentTarget;
+
+    setState(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const chekedIsEmptyField = (quantity, date, selectedFile) => {
+    return (
+      quantity.trim() === '' || date.trim() === '' || selectedFile.trim() === ''
+    );
+  };
+
+  const onSubmitHandler = e => {
     e.preventDefault();
 
-    Axios.post(url, {
-      nameOfCategory: data.nameOfCategory,
-      quantity: data.quantity,
-      date: data.date,
-      comments: data.comments,
-    }).then(res => {
-      console.log(res.data);
-    });
+    if (chekedIsEmptyField(quantity, date, selectedFile)) {
+      toast.info('Fill in the input fields name and number!');
+    }
+    onSubmit(quantity, date, selectedFile, comments);
+    reset();
+    return;
   };
 
-  const handle = e => {
-    const newData = { ...data };
-
-    newData[e.target.name] = e.target.value;
-
-    setData(newData);
-
-    console.log(newData);
+  const reset = () => {
+    setState(initialState);
   };
-
-  // const reset = () => {
-  //     setData(initialState);
-  //   };
 
   return (
-    <form onSubmit={e => submit(e)}>
+    <form id="form" onSubmit={onSubmitHandler}>
       <SelectField
-        onChange={e => handle(e)}
+        id="selectedFile"
         name="nameOfCategory"
-        value={data.nameOfCategory}
         options={options}
+        value={state}
+        onChange={handleInputOnChange}
       />
 
       <div className={style.TransactionBox}>
         <label className={style.Transaction}>
           <input
+            id="quantity"
             name="quantity"
             type="text"
             className={style.InputTransaction}
-            value={data.quantity}
-            onChange={e => handle(e)}
             placeholder="0.00"
+            value={quantity}
+            onChange={handleInputOnChange}
           ></input>
 
           <Datetime
             className={style.Datetime}
             dateFormat="DD-MM-YYYY"
             timeFormat={false}
-            onChange={e => handle(e)}
-            value={data.date}
-            name="date"
+            initialValue={new Date()}
+
+            // onChange={handleInputOnChange}
           />
           <button className={style.BtnCalendar}>
             <svg width="18" height="20">
@@ -82,14 +93,35 @@ export default function TransactionForm({ options }) {
 
         <label className={style.CommentsBox}>
           <textarea
-            placeholder="Комментарий"
-            className={style.Comments}
-            onChange={e => handle(e)}
-            value={data.comments}
+            id="comments"
             name="comments"
+            className={style.Comments}
+            placeholder="Комментарий"
+            onChange={handleInputOnChange}
+            value={comments}
           ></textarea>
         </label>
       </div>
     </form>
   );
 }
+
+export default TransactionForm;
+
+// const mapStateToProps = state => ({
+//   contacts: transactionSelectors.getTransaction(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   onSubmit: (quantity, date, selectedFile, comments) =>
+//     dispatch(
+//       transactionOperations.addTransaction(
+//         quantity,
+//         date,
+//         selectedFile,
+//         comments,
+//       ),
+//     ),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

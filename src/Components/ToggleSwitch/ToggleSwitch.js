@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './ToggleSwitch.module.scss';
+import PropTypes from 'prop-types';
 
 const ToggleSwitch = ({ checked, onChange }) => {
   return (
@@ -18,6 +19,16 @@ const ToggleSwitch = ({ checked, onChange }) => {
       <span style={{ color: checked && '#ff6596' }}> Расход </span>
     </div>
   );
+};
+
+ToggleSwitch.propTypes = {
+  id: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  optionLabels: PropTypes.array,
+  small: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default ToggleSwitch;
