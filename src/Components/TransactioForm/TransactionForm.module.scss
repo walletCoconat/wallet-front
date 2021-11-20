@@ -21,12 +21,16 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 1.5;
-
   color: #bdbdbd;
 }
 
 .InputTransaction::placeholder {
   text-align: center;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
 }
 
 .BtnCalendar {
@@ -54,6 +58,10 @@
   padding: 10px;
 }
 
+.Comments:focus {
+  outline: none;
+}
+
 .CommentsBox {
   display: flex;
   align-items: center;
@@ -65,4 +73,7 @@
   font-size: 18px;
   line-height: 1.5;
   color: #000000;
+  border: none;
+  border-bottom: 2px solid #bdbdbd;
+  width: 190px;
 }
