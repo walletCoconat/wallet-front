@@ -4,6 +4,7 @@ import style from './Modal.module.scss';
 import sprite from '../../images/sprite.svg';
 import 'react-datetime/css/react-datetime.css';
 import TransactionForm from '../TransactioForm';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
 const optionsOfSpend = [
   { value: 'Основной', label: 'Основной' },
@@ -23,11 +24,7 @@ const optionOfIncome = [
 
 const Modal = ({ isShowing, hide }) => {
   // Switch Slider
-  const [isToggled, setIsToggled] = useState(false);
-
-  const toggler = () => {
-    isToggled ? setIsToggled(false) : setIsToggled(true);
-  };
+  const [checked, setChecked] = useState(false);
 
   // Close-Open Modal
   useEffect(() => {
@@ -65,35 +62,16 @@ const Modal = ({ isShowing, hide }) => {
 
               <h2>Add Transaction</h2>
 
-              <div className={style.SwitchBox}>
-                <div className={style.SwitchSliderBox}>
-                  <span
-                    className={toggler ? style.TextActive : style.TextNotActive}
-                  >
-                    Доход
-                  </span>
+              <div className={style.FormBox}>
+                <ToggleSwitch
+                  checked={checked}
+                  onChange={() => setChecked(!checked)}
+                />
 
-                  <label
-                    checked={isToggled}
-                    onChange={toggler}
-                    name="switch"
-                    className={style.Switch}
-                  >
-                    <input type="checkbox" />
-                    <span className={style.Slider}></span>
-                  </label>
-
-                  <span
-                    className={toggler ? style.TextActive : style.TextNotActive}
-                  >
-                    Расход
-                  </span>
-                </div>
-
-                {toggler ? (
-                  <TransactionForm options={optionOfIncome} />
-                ) : (
+                {checked ? (
                   <TransactionForm options={optionsOfSpend} />
+                ) : (
+                  <TransactionForm options={optionOfIncome} />
                 )}
               </div>
 
@@ -101,7 +79,7 @@ const Modal = ({ isShowing, hide }) => {
                 <button type="submit" className={style.Button}>
                   Добавить
                 </button>
-                <button type="submit" className={style.Button}>
+                <button type="submit" className={style.Button} onClick={hide}>
                   Отмена
                 </button>
               </div>
