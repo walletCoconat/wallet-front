@@ -104,41 +104,6 @@ const LoginUser = () => {
             </form>
           )}
         </Formik>
-        {/* <form className={style.login__form} onSubmit={onSubmit}>
-          <div className={style.login__form_container}>
-            <svg className={style.login__icons} width="24px" height="24px">
-              <use
-                className={style.mail}
-                xlinkHref={`${sprite}#icon-email`}
-              ></use>
-            </svg>
-            <input
-            name="email"
-              placeholder="E-mail"
-              className={style.login__input}
-              onChange={onChangeInput}
-            />
-          </div>
-
-          <div className={style.login__form_container}>
-            <svg className={style.login__icons} width="24px" height="24px">
-              <use
-                className={style.mail}
-                xlinkHref={`${sprite}#icon-lock`}
-              ></use>
-            </svg>
-            <input
-            name="password"
-              placeholder="Пароль"
-              className={style.login__input}
-              onChange={onChangeInput}
-            />
-          </div>
-          <button type="submit" className={style.login__button}>
-            Вход
-          </button>
-        </form> */}
-
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/registration">
           <button className={style.login__button}>Регистрация</button>
