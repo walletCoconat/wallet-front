@@ -37,6 +37,12 @@
   top: 5px;
 }
 
+.error {
+  color: red;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .login__input {
   width: 280px;
   height: 34px;
