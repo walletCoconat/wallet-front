@@ -32,6 +32,12 @@
   margin-bottom: 40px;
 }
 
+.error {
+  color: red;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .registration__icons {
   position: absolute;
   top: 5px;
