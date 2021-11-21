@@ -39,17 +39,7 @@ function App() {
 
       <Suspense>
         <Switch>
-          <PrivateRoute exact path="/">
-            <>
-              <Header toggleIsVisible={toggleIsVisible} />
-              <Container>
-                <h1>Home</h1>
-                <ButtonAddTransaction onClick={toggle} />
-                <Modal isShowing={isShowing} hide={toggle} />
-              </Container>
-            </>
-          </PrivateRoute>
-
+  
           <PublicRoute exact path="/login" urlFToRedirect="/">
             <Login />
           </PublicRoute>
@@ -65,7 +55,7 @@ function App() {
           <PrivateRoute exact path="/">
             <>
               <Dashboard />
-              <ButtonAddTransaction />
+              {/* <ButtonAddTransaction /> */}
             </>
           </PrivateRoute>
 
@@ -88,3 +78,13 @@ function App() {
 }
 
 export default App;
+
+
+{/* <>
+<Header toggleIsVisible={toggleIsVisible} />
+<Container>
+  <h1>Home</h1>
+  <ButtonAddTransaction onClick={toggle} />
+  <Modal isShowing={isShowing} hide={toggle} />
+</Container>
+</> */}

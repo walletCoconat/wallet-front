@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import sprite from '../../images/sprite.svg';
 
 import * as authSelector from '../../redux/auth/authSelector';
+import Container from "../Container";
 
 import style from './Header.module.scss'
 
@@ -18,6 +19,7 @@ const onClick = () => {
 
     return (
         <header className={style.Header}>
+        <Container>
         <div className={style.Content}>
         <a className={style.Link}>
         <svg className={style.Logo}>
@@ -34,6 +36,7 @@ const onClick = () => {
             </svg> <p className={style.Text}>Выйти</p></button>
         </div>
         </div>
+        </Container>
         
     </header>
       );

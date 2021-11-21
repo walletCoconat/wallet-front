@@ -43,7 +43,6 @@ const DashboardRoutes = () =>
 {/* For mobile tablet */}
                     {matches.medium && 
                             <>    
-                                {/* <DashboardMobileNav/> */}
                                 <Suspense>
                                     <Switch>
                                         <PrivateRoute exact path="/">
@@ -56,8 +55,7 @@ const DashboardRoutes = () =>
                                 </Suspense>
                             </>}
 {/* For desktop screen */}
-                    {matches.large && <>    
-                                {/* <DashboardMobileNav/> */}
+                    {matches.large && <>     
                                 <Suspense>
                                     <Switch>
 
