@@ -14,9 +14,9 @@ const Statistics = () =>
             (<div>
             {/* For mobile screen */}
             {matches.small && 
-                <div className='Dashboard_stats'>
+                <div className='Dashboard_stats_container'>
     
-                    <h1 className='Dashboard_stats'>Статистика</h1>
+                    <h1 className='Dashboard_stats_title'>Статистика</h1>
                     <div className='Dashboard_stats'>
                         <div className='Dashboard_stats_diagram'> STATISTICS DIAGRAM </div>
                         <div className='Dashboard_stats_table'> STATISTICS TABLE </div>
