@@ -34,7 +34,10 @@
     display: none;
   }
   .Dashboard_icon_fill_active{
+    box-shadow: 0px 6px 15px rgba(65, 121, 210, 0.568);
+    border: none;
     display: block;
+    height: 100%;
   }
 
   .Dashboard_label{
@@ -52,6 +55,7 @@
 
 .Dashboard_tablet_nav{
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
 
   @media screen and (min-width: 1280px){
@@ -73,13 +77,27 @@
 
 // Курс валют
 .ExchangeRates{
-  display: flex;
-  margin-top: 32px;
+  margin-right: auto;
+  margin-left: auto;
+  
+ 
+  @media screen and  (max-width: 767px) {
+     margin-top: 32px;
+  }
+  
+ 
+  @media screen and  (min-width: 1280px) {
+    margin-top: 30px;
+  }
 }
 
 // Баланс
 .Dashboard_balance{
   margin-top: 13px;
+  @media screen and (min-width: 768px){
+    // min-width: 50%;
+  }
+
 }
 
 // Таблица 
@@ -100,20 +118,41 @@
 
 // Статистика
   .Dashboard_stats_container{
-    margin-top: 40px;
+    margin-top: 43px;
 
+@media screen  and  (min-width: 768px) {
+      margin-top: 40px;
+    }
     @media screen  and  (min-width: 1280px) {
+      margin-top: 30px;
       margin-left: 30px;
     }
   }
 
-  .Dashboard_stats{
-    margin-top: 20px;
+  .Dashboard_stats_title{
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    color: #000000;
+    @media screen  and  (min-width: 768px) {
+      margin-bottom: 20px;
+
+        
+      }
+  }
+
+  .Dashboard_stats{  
     
 
     @media screen  and  (min-width: 768px) {
+    
     display: flex;
     justify-content: space-between;
+    }
+
+    @media screen  and  (min-width: 1280px) {
       
     }
   }
@@ -132,11 +171,12 @@
   .Dashboard_main_container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 20px;
 
     @media screen and  (min-width: 1280px) {
-      flex-direction: column;
-      justify-content: start;
+      display: block;
+      min-width: 380px;
       height: calc(100vh - 40px);
       padding-top: 40px;
       padding-right: 30px;

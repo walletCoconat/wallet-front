@@ -40,7 +40,7 @@ const MainInfo = () =>
                 
                 <div className='Dashboard_balance'> <TotalBalance/> </div>
             </div>      
-             <div className='ExchangeRates'><ExchangeRates/> </div>
+            <ExchangeRates/>
         </div>
  
                  
