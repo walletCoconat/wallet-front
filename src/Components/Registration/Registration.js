@@ -10,6 +10,7 @@ import * as yup from 'yup';
 const RegistrationUser = () => {
   const dispatch = useDispatch();
 
+  
   const validationSchema = yup.object().shape({
     name: yup.string().typeError('Должно быть строкой').required('Обязательно'),
     email: yup
