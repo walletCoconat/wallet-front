@@ -1,49 +1,59 @@
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchAllStatistic } from '../../redux/finance/financeOperations'
 import Media from 'react-media';
 import MainInfo from './Dashboard_main_info';
 
 
-const Statistics = () => 
-<>
-    <div >
-    <Media queries={{
-        small: "(max-width: 767px)",
-        medium: "(min-width: 768px)",
-        }}>
+const Statistics = () => {
+    const dispatch = useDispatch()
 
-        {matches => 
-            (<div>
-            {/* For mobile screen */}
-            {matches.small && 
-                <div className='Dashboard_stats_container'>
+    useEffect(() => dispatch(fetchAllStatistic()), []);
+
+    return (
+    <>
+        <div >
+            <Media queries={{
+                small: "(max-width: 767px)",
+                medium: "(min-width: 768px)",
+            }}>
+
+                {matches =>
+                (<div>
+                    {/* For mobile screen */}
+                    {matches.small &&
+                        <div className='Dashboard_stats_container'>
     
-                    <h1 className='Dashboard_stats_title'>Статистика</h1>
-                    <div className='Dashboard_stats'>
-                        <div className='Dashboard_stats_diagram'> STATISTICS DIAGRAM </div>
-                        <div className='Dashboard_stats_table'> STATISTICS TABLE </div>
-                    </div>
-                </div>
-            }
-
-            {/* For tablet screen*/}
-            {matches.medium &&         
-                <div className='home_container'>
-                    <MainInfo/> 
-                    <div  className='Dashboard_stats_container'>
-                        <h1 className='Dashboard_stats_title'>Статистика</h1>
-                        <div className='Dashboard_stats'>
-                            <div className='Dashboard_stats_diagram'> STATISTICS DIAGRAM </div>
-                            <div className='Dashboard_stats_table'> STATISTICS TABLE </div>
+                            <h1 className='Dashboard_stats_title'>Статистика</h1>
+                            <div className='Dashboard_stats'>
+                                <div className='Dashboard_stats_diagram'> STATISTICS DIAGRAM </div>
+                                <div className='Dashboard_stats_table'> STATISTICS TABLE </div>
+                            </div>
                         </div>
-                    </div>
+                    }
+
+                    {/* For tablet screen*/}
+                    {matches.medium &&
+                        <div className='home_container'>
+                            <MainInfo />
+                            <div className='Dashboard_stats_container'>
+                                <h1 className='Dashboard_stats_title'>Статистика</h1>
+                                <div className='Dashboard_stats'>
+                                    <div className='Dashboard_stats_diagram'> STATISTICS DIAGRAM </div>
+                                    <div className='Dashboard_stats_table'> STATISTICS TABLE </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
                 </div>
-            }
+                )}
+            </Media>
 
-            </div>
-        )}
-    </Media> 
-
-</div>
-</>
+        </div>
+        </>
+    )
+}
 
 
 export default Statistics;

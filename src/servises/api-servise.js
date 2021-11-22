@@ -7,8 +7,13 @@ export class TransactionApi {
   constructor() {
     this.page = 1;
     this.perPage = 10;
-    // this.year =
-    // this.month = 
+    this.year = 2021;
+    this.month = 11;
+  }
+
+  async getAllTransactions() {
+   const { data } = await axios.get(`/api/transaction/`)
+   return data;
   }
 
   async getTransactions() {
@@ -21,9 +26,19 @@ export class TransactionApi {
     return data;
   }
 
-  async getStatistic() {
-    const { data } = await axios.get("/api/transaction/statistic")
+  async getAllStatistic() {
+    const { data } = await axios.get("/api/transaction/statistic/")
     return data;
+  }
+
+  async getStatistic() {
+    const { data } = await axios.get(`/api/transaction/statistic/?year=${this.year}&month=${this.month}`)
+    return data;
+  }
+
+  async getUserCarrent() {
+   const { data } = await axios.get("/api/user/current")
+   return data;
   }
   
  incrementPage() {
