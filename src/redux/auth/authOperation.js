@@ -21,7 +21,6 @@ export const register = createAsyncThunk('auth/register', async dataUser => {
 
 export const login = createAsyncThunk('auth/login', async dataUser => {
   const { data } = await axios.post('/api/user/login', dataUser);
-  // console.log('data', data);
   tokenState.setToken(data.loginToken);
   return data;
 });
@@ -33,7 +32,8 @@ export const verify = createAsyncThunk('auth/verify', async emailAddress => {
 });
 
 export const logOut = createAsyncThunk('auth/logOut', async () => {
-  await axios.post('api/user/logout');
+  console.log(axios.common)
+  await axios.get('/api/user/logout');
   tokenState.cleanToken();
 });
 
