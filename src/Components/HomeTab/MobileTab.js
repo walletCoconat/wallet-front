@@ -7,6 +7,7 @@ import style from './HomeTab.scss';
 const MobileTab = () => {
   const transactions = useSelector(getFilterDataTransaction);
 
+
     return (
         <>
             { transactions ?
@@ -14,6 +15,7 @@ const MobileTab = () => {
       <li className="itemTransaction">
         {transactions.map(transaction => (
         <>
+
         <div
           className="line"
           // style={{ backgroundColor: transaction.type == '+' ? 'green' : 'red' }}
@@ -21,8 +23,10 @@ const MobileTab = () => {
         <ul className="verticalList">
           <li className="listItem">
             <span className="category">Дата</span>
+
             <span>{transactions.date}</span>
             {/* <span className="data">04.11.19</span> */}
+
           </li>
           <li className="listItem">
             <span className="category">Тип</span>
@@ -31,6 +35,7 @@ const MobileTab = () => {
           </li>
           <li className="listItem">
             <span className="category">Категория</span>
+
             <span>{transaction.type}</span>
             {/* <span>Разное</span> */}
           </li>
@@ -62,3 +67,4 @@ const MobileTab = () => {
 };
 
 export default MobileTab;
+

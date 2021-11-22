@@ -55,7 +55,8 @@ function App() {
           <PrivateRoute exact path="/">
             <>
               <Dashboard />
-              {/* <ButtonAddTransaction /> */}
+              <ButtonAddTransaction onClick={toggle} />
+              <Modal isShowing={isShowing} hide={toggle} />
             </>
           </PrivateRoute>
 
@@ -67,8 +68,6 @@ function App() {
             <Dashboard />
           </PrivateRoute>
 
-          {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
-                <Modal active={modalActive} setActive={setModalActive} /> */}
         </Switch>
       </Suspense>
 
@@ -78,13 +77,3 @@ function App() {
 }
 
 export default App;
-
-
-{/* <>
-<Header toggleIsVisible={toggleIsVisible} />
-<Container>
-  <h1>Home</h1>
-  <ButtonAddTransaction onClick={toggle} />
-  <Modal isShowing={isShowing} hide={toggle} />
-</Container>
-</> */}

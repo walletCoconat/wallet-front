@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
+
 import { getFilterDataTransaction } from '../../redux/finance/financeSelector'
 import style from './HomeTab.scss'
 
+
 const HomeTab = () => {
-  const transactions = useSelector(getFilterDataTransaction)
+  const transactions = useSelector(getFilterDataTransaction);
 
   return (
   <>
@@ -96,3 +98,4 @@ export default HomeTab;
 // };
 
 // export default HomeTab;
+
