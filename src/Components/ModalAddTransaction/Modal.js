@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import style from './Modal.module.scss';
 import sprite from '../../images/sprite.svg';
 import 'react-datetime/css/react-datetime.css';
-import TransactionForm from '../TransactioForm';
+import TransactionForm from '../TransactionForm';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
 const optionsOfSpend = [
@@ -22,7 +22,7 @@ const optionOfIncome = [
   { value: 'Регулируемый доход', label: 'Регулируемый доход' },
 ];
 
-const Modal = ({ isShowing, hide, onSubmit }) => {
+const Modal = ({ isShowing, hide }) => {
   // Switch Slider
   const [checked, setChecked] = useState(false);
 
@@ -69,22 +69,13 @@ const Modal = ({ isShowing, hide, onSubmit }) => {
                 />
 
                 {checked ? (
-                  <TransactionForm
-                    onSubmit={onSubmit}
-                    options={optionsOfSpend}
-                  />
+                  <TransactionForm options={optionsOfSpend} />
                 ) : (
-                  <TransactionForm
-                    onSubmit={onSubmit}
-                    options={optionOfIncome}
-                  />
+                  <TransactionForm options={optionOfIncome} />
                 )}
               </div>
 
               <div className={style.BtnBox}>
-                <button type="submit" className={style.Button}>
-                  Добавить
-                </button>
                 <button type="submit" className={style.Button} onClick={hide}>
                   Отмена
                 </button>

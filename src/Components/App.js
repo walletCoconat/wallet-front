@@ -1,15 +1,13 @@
 import React, { Suspense, useState } from 'react';
-
 import { useSelector } from 'react-redux';
 import { useHistory, Switch } from 'react-router-dom';
-
 import Login from './Login/Login.js';
 import RegistrationUser from './Registration/Registration.js';
 import PrivateRoute from './PrivatRoute/PrivatRoute.js';
 import PublicRoute from './PublicRoute/PublicRoute.js';
 import { getRegister } from '../redux/auth/authSelector';
 import Header from './Header/Header.js';
-import Container from './Container/Container';
+// import Container from './Container/Container';
 import ButtonAddTransaction from './ButtonAddTransaction';
 import useModal from './ModalAddTransaction/useModal';
 import Modal from './ModalAddTransaction';
@@ -24,7 +22,7 @@ function App() {
 
   const history = useHistory();
   const register = useSelector(getRegister);
-  const [modalActive, setModalActive] = useState(true);
+  // const [modalActive, setModalActive] = useState(true);
   const [visible, setVisible] = useState(false);
 
   const toggleIsVisible = () => {
@@ -39,7 +37,6 @@ function App() {
 
       <Suspense>
         <Switch>
-  
           <PublicRoute exact path="/login" urlFToRedirect="/">
             <Login />
           </PublicRoute>
@@ -67,7 +64,6 @@ function App() {
           <PrivateRoute path="/exchange_rates">
             <Dashboard />
           </PrivateRoute>
-
         </Switch>
       </Suspense>
 
