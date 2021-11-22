@@ -9,7 +9,7 @@ import Container from "../Container";
 import style from './Header.module.scss'
 
 const Header = ({toggleIsVisible}) => {
-const name = useSelector(authSelector.getName);
+// const name = useSelector(authSelector.getName);
 
 
 
@@ -27,7 +27,7 @@ const onClick = () => {
         </svg>
         </a>
         <div className={style.User}>
-            <span className={style.Name}>{name}</span>
+            {/* <span className={style.Name}>{name}</span> */}
            
 
             <button className={style.Button} onClick={()=>{toggleIsVisible()}} type='button'>
