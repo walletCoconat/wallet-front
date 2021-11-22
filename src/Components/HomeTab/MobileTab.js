@@ -7,10 +7,15 @@ import style from './HomeTab.scss';
 const MobileTab = () => {
   const transactions = useSelector(getFilterDataTransaction);
 
-  return (
+
+    return (
+        <>
+            { transactions ?
     <ul className="verticalList">
       <li className="itemTransaction">
-        {/* {transactions.map(transaction => ( */}
+        {transactions.map(transaction => (
+        <>
+
         <div
           className="line"
           // style={{ backgroundColor: transaction.type == '+' ? 'green' : 'red' }}
@@ -18,8 +23,10 @@ const MobileTab = () => {
         <ul className="verticalList">
           <li className="listItem">
             <span className="category">Дата</span>
-            {/* <span>{transactions.data}</span> */}
-            <span className="data">04.11.19</span>
+
+            <span>{transactions.date}</span>
+            {/* <span className="data">04.11.19</span> */}
+
           </li>
           <li className="listItem">
             <span className="category">Тип</span>
@@ -28,29 +35,36 @@ const MobileTab = () => {
           </li>
           <li className="listItem">
             <span className="category">Категория</span>
-            {/* <span>{transaction.type}</span> */}
-            <span>Разное</span>
+
+            <span>{transaction.type}</span>
+            {/* <span>Разное</span> */}
           </li>
           <li className="listItem">
             <span className="category">Комментарий:</span>
-            {/* <span>{transaction.comment}</span> */}
-            <span>Подарок жене</span>
+            <span>{transaction.category}</span>
+            {/* <span>Подарок жене</span> */}
           </li>
           <li className="listItem">
             <span className="category">Сумма</span>
-            {/* <span>{transaction.sum}</span> */}
-            <span>300</span>
+            <span>{transaction.sum}</span>
+            {/* <span>300</span> */}
           </li>
           <li className="listItem">
             <span className="category">Баланс</span>
-            {/* <span>{transaction.balance}</span> */}
-            <span>6900</span>
+            <span>{transaction.balance}</span>
+            {/* <span>6900</span> */}
           </li>
         </ul>
-        {/* ))} */}
+        </>
+        ))}
       </li>
     </ul>
+    :
+    null
+  }
+    </>
   );
 };
 
 export default MobileTab;
+

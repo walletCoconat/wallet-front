@@ -1,9 +1,12 @@
+
 import TotalBalance from '../TotalBalance/index';
 import HomeTab from '../HomeTab/index';
+
 import './Dashboard.scss';
 import Media from 'react-media';
 import MainInfo from './Dashboard_main_info';
 import MobileTab from '../HomeTab/MobileTab';
+
 
 const Home = () => (
   <div>
@@ -44,5 +47,6 @@ const Home = () => (
     </Media>
   </div>
 );
+
 
 export default Home;
