@@ -1,4 +1,6 @@
-
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchTransactions, fetchStatistic, addTransaction } from '../../redux/finance/financeOperations'
 import TotalBalance from '../TotalBalance/index';
 import HomeTab from '../HomeTab/index';
 
@@ -7,8 +9,24 @@ import Media from 'react-media';
 import MainInfo from './Dashboard_main_info';
 import MobileTab from '../HomeTab/MobileTab';
 
+// const uixdata = new Date("2021.11.10").getTime();
 
-const Home = () => (
+// const newTransaction = {
+//     type: false,
+//     category: 'education',
+//     sum: 500,
+//     date: uixdata,
+// }
+
+const Home = () => {
+  const dispatch = useDispatch()
+
+    useEffect(() => dispatch(fetchTransactions()), []);
+    // useEffect(() => dispatch(addTransaction(newTransaction)), []);
+    useEffect(() => dispatch(fetchStatistic()), []);
+    // console.log('data-UNIX', newTransaction.date)
+    // console.log('data-UNIX', uixdata)
+  return (
   <div>
     <Media
       queries={{
@@ -45,8 +63,9 @@ const Home = () => (
         </div>
       )}
     </Media>
-  </div>
-);
+    </div>
+  )
+};
 
 
 export default Home;
