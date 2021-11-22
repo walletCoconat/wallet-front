@@ -1,51 +1,49 @@
 // dashboard background
-.Dashboard_bgc {    
+.Dashboard_bgc {
   // padding-left: 20px;
   // padding-right: 20px;
   background-color: rgba(255, 255, 255, 0.4);
-  
+
   @media screen and (min-width: 768px) {
-  background-image: url(../../images/dashboard_background/dashboard_bgc_tablet.jpg);
-  height: 100vh;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-
+    background-image: url(../../images/dashboard_background/dashboard_bgc_tablet.jpg);
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @media screen and (min-width: 1280px) {
     background-image: url(../../images/dashboard_background/dashboard_bgc_desktop.jpg);
   }
-};
+}
 
 // navigation icon
-.Dashboard_ic{
-  .Dashboard_icon_fill{
+.Dashboard_ic {
+  .Dashboard_icon_fill {
     display: block;
   }
-  .Dashboard_icon_fill_active{
+  .Dashboard_icon_fill_active {
     display: none;
   }
 }
 
-.Dashboard_icon_active{
-  .Dashboard_icon_fill{
+.Dashboard_icon_active {
+  .Dashboard_icon_fill {
     display: none;
   }
-  .Dashboard_icon_fill_active{
+  .Dashboard_icon_fill_active {
     box-shadow: 0px 6px 15px rgba(65, 121, 210, 0.568);
     border: none;
     display: block;
     height: 100%;
   }
 
-  .Dashboard_label{
+  .Dashboard_label {
     font-weight: 700;
   }
 }
 
-.Dashboard_icon{
+.Dashboard_icon {
   display: flex;
   justify-content: space-evenly;
   margin-left: auto;
@@ -53,62 +51,60 @@
   padding-top: 12px;
 }
 
-.Dashboard_tablet_nav{
+.Dashboard_tablet_nav {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 1280px){
+  @media screen and (min-width: 1280px) {
     margin-bottom: 30px;
   }
 }
 
-.Dashboard_label{
+.Dashboard_label {
   display: block;
   margin-left: 24px;
   font-family: inherit;
   font-size: 18px;
   font-weight: 400;
-  color:  #000;
-  
+  color: #000;
 }
 
 // Components
 
 // Курс валют
-.ExchangeRates{
+.ExchangeRates {
   margin-right: auto;
   margin-left: auto;
-  
- 
-  @media screen and  (max-width: 767px) {
-     margin-top: 32px;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 32px;
   }
-  
- 
-  @media screen and  (min-width: 1280px) {
+
+  @media screen and (min-width: 1280px) {
     margin-top: 30px;
   }
 }
 
 // Баланс
-.Dashboard_balance{
+.Dashboard_balance {
   margin-top: 13px;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     // min-width: 50%;
   }
-
 }
 
-// Таблица 
-.Dashboard_table{
+// Таблица
+.Dashboard_table {
   margin-top: 30px;
 
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     margin-top: 40px;
+    height: 60vh;
+    overflow-y: auto;
   }
 
-  @media screen and (min-width: 1280px){
+  @media screen and (min-width: 1280px) {
     margin-top: 46px;
     margin-left: 50px;
     display: block;
@@ -117,83 +113,75 @@
 }
 
 // Статистика
-  .Dashboard_stats_container{
-    margin-top: 43px;
+.Dashboard_stats_container {
+  margin-top: 43px;
 
-@media screen  and  (min-width: 768px) {
-      margin-top: 40px;
-    }
-    @media screen  and  (min-width: 1280px) {
-      margin-top: 30px;
-      margin-left: 30px;
-    }
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
   }
-
-  .Dashboard_stats_title{
-    margin-bottom: 10px;
-    font-family: inherit;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 45px;
-    color: #000000;
-    @media screen  and  (min-width: 768px) {
-      margin-bottom: 20px;
-
-        
-      }
+  @media screen and (min-width: 1280px) {
+    margin-top: 30px;
+    margin-left: 30px;
   }
+}
 
-  .Dashboard_stats{  
-    
+.Dashboard_stats_title {
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
 
-    @media screen  and  (min-width: 768px) {
-    
+.Dashboard_stats {
+  @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
-    }
-
-    @media screen  and  (min-width: 1280px) {
-      
-    }
   }
 
-  .Dashboard_stats_diagram{
-    @media screen  and  (min-width: 768px) {
-      margin-right: 35px;
-    }
-    @media screen  and  (min-width: 1280px) {
-      margin-right: 30px;
-    }
-
-
+  @media screen and (min-width: 1280px) {
   }
+}
 
-  .Dashboard_main_container{
+.Dashboard_stats_diagram {
+  @media screen and (min-width: 768px) {
+    margin-right: 35px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 30px;
+  }
+}
+
+.Dashboard_main_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+    min-width: 380px;
+    height: calc(100vh - 40px);
+    padding-top: 40px;
+    padding-right: 30px;
+    // border-left: none;
+    border-right: 1px solid #e7e5f2;
+    box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
+}
+
+.Dashboard_tablet_balance {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.home_container {
+  @media screen and (min-width: 1280px) {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-
-    @media screen and  (min-width: 1280px) {
-      display: block;
-      min-width: 380px;
-      height: calc(100vh - 40px);
-      padding-top: 40px;
-      padding-right: 30px;
-      // border-left: none;
-      border-right: 1px solid #E7E5F2;
-      box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
-    }
   }
-
-  .Dashboard_tablet_balance{
-    margin-top: 10px;
-    margin-right: 20px;
-  }
-
-  .home_container{
-    @media screen and  (min-width: 1280px) {
-      display: flex;
-    }
-  }
-  
+}

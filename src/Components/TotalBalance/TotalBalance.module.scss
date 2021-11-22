@@ -5,13 +5,13 @@
   border-radius: 30px;
 
   background-color: $second-text-color;
-  background-color: rgb(243, 200, 200);
+  background-color: $second-text-color;
 
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: $tablet) {
-    max-width: 334px;
+    width: 100vh;
   }
 
   @media screen and (min-width: $desktop) {
