@@ -37,15 +37,6 @@ function App() {
 
       <Suspense>
         <Switch>
-          <PrivateRoute exact path="/">
-            <>
-              <Header toggleIsVisible={toggleIsVisible} />
-
-              <ButtonAddTransaction onClick={toggle} />
-              <Modal isShowing={isShowing} hide={toggle} />
-            </>
-          </PrivateRoute>
-
           <PublicRoute exact path="/login" urlFToRedirect="/">
             <Login />
           </PublicRoute>
@@ -61,7 +52,8 @@ function App() {
           <PrivateRoute exact path="/">
             <>
               <Dashboard />
-              <ButtonAddTransaction />
+              <ButtonAddTransaction onClick={toggle} />
+              <Modal isShowing={isShowing} hide={toggle} />
             </>
           </PrivateRoute>
 
@@ -72,9 +64,6 @@ function App() {
           <PrivateRoute path="/exchange_rates">
             <Dashboard />
           </PrivateRoute>
-
-          {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
-                <Modal active={modalActive} setActive={setModalActive} /> */}
         </Switch>
       </Suspense>
 
