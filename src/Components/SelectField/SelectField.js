@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './SelectField.module.scss';
 import Select from 'react-select';
 
@@ -14,39 +14,50 @@ const customStyles = {
     paddingLeft: '20px',
     minHeight: 44,
   }),
-  control: () => ({
-    width: ' 100%',
-    minHeight: 35,
-    border: 'none',
-    borderBottom: '1px solid #e0e0e0',
-    fontSize: 18,
-    lineHeight: 1.5,
-    color: ' #bdbdbd',
-    cursor: 'pointer',
-  }),
-  singleValue: (provided, state) => {
-    const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
-    const color = '#000000';
+  // control: () => ({
+  //   // width: ' 100%',
+  //   // minHeight: 15,
+  //   // border: 'none',
+  //   // borderBottom: '1px solid #e0e0e0',
+  //   // fontSize: 18,
+  //   // lineHeight: 1.5,
+  //   // color: ' #bdbdbd',
+  //   // cursor: 'pointer',
+  // }),
+  // singleValue: (provided, state) => {
+  //   const opacity = state.isDisabled ? 0.5 : 1;
+  //   const transition = 'opacity 300ms';
+  //   const color = '#000000';
 
-    return { ...provided, opacity, transition, color };
-  },
+  //   return { ...provided, opacity, transition, color };
+  // },
 };
 
-const SelectField = ({ options }) => {
-  // const [value, setValue] = useState('');
+const SelectField = ({ options, value }) => {
+  const [state, setState] = useState();
+
+  const onChange = e => {
+    setState({
+      ...state,
+
+      [e.name]: e.value,
+    });
+
+    console.log(e.name);
+  };
 
   return (
     <div className={style.SpendBox}>
       <Select
-        // value={value}
-        // onChange={e => setValue(e.target.value)}
+        inputValue={value}
+        onChange={onChange}
         placeholder={'Выберите категорию'}
         styles={customStyles}
         options={options}
-        clearable={false}
+        isClearable
         avtoFocus
         isSearchable
+        required={true}
       >
         {/* <svg>
           <use xlinkHref={`${sprite}#icon-select`}></use>

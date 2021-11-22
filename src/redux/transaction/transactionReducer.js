@@ -11,8 +11,7 @@ import {
 } from './transactionAction';
 
 const items = createReducer([], {
-  [fetchTransactionRequest]: (_, { payload }) =>
-    payload.sort((a, b) => a.name.localeCompare(b.name)),
+  [fetchTransactionRequest]: (_, { payload }) => payload,
   [addTransactionRequest]: (state, { payload }) => [payload, ...state],
 });
 

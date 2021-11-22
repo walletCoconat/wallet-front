@@ -1,14 +1,10 @@
 .SpendBox {
   position: relative;
-  font-family: Arial;
   margin-top: 40px;
   font-family: 'Circe', sans-serif;
-  font-weight: normal;
 }
 
 select {
-  // display: none;
-
   width: 100%;
   min-height: 35px;
   border: none;
@@ -18,18 +14,3 @@ select {
   line-height: 1.5;
   color: #bdbdbd;
 }
-
-.select::after {
-  content: '/258C';
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0;
-  background-image: url('#icon-select');
-  background-color: transparent;
-  height: 100%;
-  cursor: pointer;
-  pointer-events: none;
-}
-
-
