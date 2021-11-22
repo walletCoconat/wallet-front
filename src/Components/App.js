@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header toggleIsVisible={toggleIsVisible}/>
 
       <Suspense>
         <Switch>

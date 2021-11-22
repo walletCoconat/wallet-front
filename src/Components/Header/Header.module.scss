@@ -2,7 +2,7 @@
 .Header {
  
 background-color: #fff;
-    // width: 100%;
+    width: 100%;
     
 }
 
@@ -15,15 +15,7 @@ background-color: #fff;
     font-size: 18px;
     font-weight: 400;
     color:  #BDBDBD; 
-    
-        @media screen and (min-width: 768px) {
-           padding: 0 23px 0 40px;
-            
-        }
-    
-        @media screen and (min-width: 1280px) {
-            padding: 0 85px;
-        }
+
 
 }
 

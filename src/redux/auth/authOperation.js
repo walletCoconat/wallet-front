@@ -19,21 +19,21 @@ export const register = createAsyncThunk('auth/register', async dataUser => {
   return data;
 });
 
-export const login = createAsyncThunk('auth/login', async dataUser => {
-  const { data } = await axios.post('api/user/login', dataUser);
+export const login = createAsyncThunk('/auth/login', async dataUser => {
+  const { data } = await axios.post('/api/user/login', dataUser);
   // console.log('data', data);
   tokenState.setToken(data.loginToken);
   return data;
 });
 
-export const verify = createAsyncThunk('auth/verify', async emailAddress => {
-  const { data } = await axios.post('api/user/verify', emailAddress);
+export const verify = createAsyncThunk('/auth/verify', async emailAddress => {
+  const { data } = await axios.post('/api/user/verify', emailAddress);
   console.log(data);
   return data;
 });
 
-export const logOut = createAsyncThunk('auth/logOut', async () => {
-  await axios.post('api/user/logout');
+export const logOut = createAsyncThunk('/auth/logOut', async () => {
+  await axios.post('/api/user/logout');
   tokenState.cleanToken();
 });
 
