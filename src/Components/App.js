@@ -31,10 +31,8 @@ function App() {
 
   history.push(register ? '/verify' : '/login');
 
-  return (
-    <>
-      <Header toggleIsVisible={toggleIsVisible}/>
-
+  return (    
+  <> 
       <Suspense>
         <Switch>
           <PublicRoute exact path="/login" urlFToRedirect="/">
@@ -51,6 +49,7 @@ function App() {
 
           <PrivateRoute exact path="/">
             <>
+            <Header toggleIsVisible={toggleIsVisible}/>
               <Dashboard />
               <ButtonAddTransaction onClick={toggle} />
               <Modal isShowing={isShowing} hide={toggle} />
@@ -58,10 +57,12 @@ function App() {
           </PrivateRoute>
 
           <PrivateRoute path="/statistics">
+          <Header toggleIsVisible={toggleIsVisible}/>
             <Dashboard />
           </PrivateRoute>
 
           <PrivateRoute path="/exchange_rates">
+          <Header toggleIsVisible={toggleIsVisible}/>
             <Dashboard />
           </PrivateRoute>
         </Switch>
