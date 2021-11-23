@@ -4,3 +4,4 @@ export const getIsLoggedIn = state => state.auth.isLoggedIn;
 export const getIsLoader = state => state.auth.isLoader;
 export const getToken = state => state.auth.token;
 export const getRegister = state => state.auth.isRegister;
+export const getError = state => state.auth.error;

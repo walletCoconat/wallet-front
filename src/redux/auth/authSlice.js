@@ -7,8 +7,10 @@ const initialState = {
   loginToken: null,
   error: false,
   isLoggedIn: false,
-  isRegister: false
+  isRegister: false,
 };
+
+
 
 const authSlice = createSlice({
   name: 'auth',
@@ -48,7 +50,7 @@ const authSlice = createSlice({
     [login.pending]: state => {
       state.isLoader = true;
       state.error = false;
-      state.isRegister =  false;
+      state.isRegister = false;
       state.loginToken = null;
     },
     [login.fulfilled]: (state, { payload }) => {
@@ -59,11 +61,11 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [login.rejected]: state => {
-      state = { ...initialState, error: true };
+      console.log('aaaaaaa',state);
+      state.error = true;
     },
     [logOut.pending]: state => {
       state.error = false;
-      
     },
     [logOut.fulfilled]: state => {
       state.isLoader = false;

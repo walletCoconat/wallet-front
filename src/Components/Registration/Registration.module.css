@@ -71,6 +71,7 @@
 .registration__button {
   width: 280px;
   height: 50px;
+  cursor: pointer;
 
   font-family: Circe;
   font-style: normal;
