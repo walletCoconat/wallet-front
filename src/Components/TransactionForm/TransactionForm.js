@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './TransactionForm.module.scss';
 import sprite from '../../images/sprite.svg';
 import 'react-datetime/css/react-datetime.css';
-import SelectField from '../SelectField';
+// import SelectField from '../SelectField';
 import Datetime from 'react-datetime';
 import { toast } from 'react-toastify';
 import 'react-datetime/css/react-datetime.css';
-// import {
-//   transactionSelectors,
-//   transactionOperations,
-// } from '../../redux/transaction';
 import 'react-toastify/dist/ReactToastify.css';
-// import { connect } from 'react-redux';
 import Button from '../../Components/Button';
 
 const initialState = {
   quantity: '',
-  date: '',
   option: '',
   comments: '',
 };
@@ -26,7 +19,7 @@ const initialState = {
 function TransactionForm({ onSubmit, options }) {
   // State
   const [state, setState] = useState(initialState);
-  const { quantity, date, option, comments } = state;
+  const { quantity, option, comments } = state;
 
   // Handler
   const handleInputOnChange = e => {
@@ -114,18 +107,20 @@ function TransactionForm({ onSubmit, options }) {
         <div className={style.BtnCalendar}>
           <Datetime
             // id="date"
-            name="date"
-            // value={date}
-            onChange={handleInputOnChange}
+            // name="date"
+            // updateOnView="time"
+            // value={time}
+            // onChange={handleInputOnChange}
+            closeOnSelect={true}
             className={style.Datetime}
             dateFormat="DD-MM-YYYY"
             timeFormat={false}
             initialValue={new Date()}
           />
 
-          {/* <svg width="18" height="20" className={style.svgCalendar}>
+          <svg width="18" height="20" className={style.svgCalendar}>
             <use xlinkHref={`${sprite}#icon-newdate`}></use>
-          </svg> */}
+          </svg>
         </div>
       </div>
 
