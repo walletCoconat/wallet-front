@@ -1,4 +1,3 @@
-import { current } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import { CookiesProvider } from 'react-cookie';
 // var jwt = require('jsonwebtoken');
@@ -13,11 +12,16 @@ class WalletApi {
   DISPATCH;
   ADD_TOKEN;
   LOGIN = false;
+  page = 1;
+  perPage = 10;
+  year = 2021;
+  month = 11;
 
   setToken(token) {
     this.API.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.TOKEN = token;
     if (!this.LOGIN) {
+      console.log(1111111111);
       this.DISPATCH(this.ADD_TOKEN({ loginToken: token }));
     }
 
@@ -64,9 +68,9 @@ class WalletApi {
   getCurrentUser = () => this.API.get('/api/user/current', this.withoutCookie);
 
   initApi(token, dispatch, currentUser, updateToken) {
+    if (this.COUNT_TOKEN_UPDATE) return;
     this.DISPATCH = dispatch;
     this.ADD_TOKEN = updateToken;
-    if (this.COUNT_TOKEN_UPDATE) return;
 
     this.API = axios.create({
       withCredentials: true,
@@ -80,8 +84,8 @@ class WalletApi {
     if (token) {
       this.setToken(token);
       dispatch(currentUser());
-      this.COUNT_TOKEN_UPDATE = true;
     }
+    this.COUNT_TOKEN_UPDATE = true;
   }
 
   async login(dataUser) {
@@ -94,6 +98,44 @@ class WalletApi {
   }
 
   getAllTransactions = () => this.API.get('/api/user/test', this.withoutCookie);
+
+  async getAllTransactions() {
+    const { data } = await axios.get(`/api/transaction/`);
+    return data;
+  }
+
+  async getTransactions() {
+    const { data } = await axios.get(
+      `/api/transaction/?offset=${this.page}&limit=${this.perPage}`,
+    );
+    return data;
+  }
+
+  async postTransaction(newTransaction) {
+    const { data } = await this.API.post('/api/transaction/', newTransaction);
+    return data;
+  }
+
+  async getAllStatistic() {
+    const { data } = await this.API.get('/api/transaction/statistic/');
+    return data;
+  }
+
+  async getStatistic() {
+    const { data } = await this.API.get(
+      `/api/transaction/statistic/?year=${this.year}&month=${this.month}`,
+    );
+    return data;
+  }
+
+  async getUserCarrent() {
+    const { data } = await this.API.get('/api/user/current');
+    return data;
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
 }
 
 export default WalletApi;

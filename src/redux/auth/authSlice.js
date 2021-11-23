@@ -16,8 +16,6 @@ const initialState = {
   isRegister: false,
 };
 
-
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -65,14 +63,22 @@ const authSlice = createSlice({
       state.loginToken = null;
     },
     [login.fulfilled]: (state, { payload }) => {
-      state.user = payload.response;
+      state.user = {
+        name: payload.response.name,
+        email: payload.response.email,
+        balance: payload.response.balance,
+      };
       state.loginToken = payload.loginToken;
       state.isLoader = false;
-      state.token = payload.token;
+
       state.isLoggedIn = true;
     },
     [login.rejected]: state => {
-      console.log('aaaaaaa',state);
+      state.user = { name: null, email: null, balance: null };
+      state.loginToken = null;
+      state.isLoader = false;
+
+      state.isLoggedIn = false;
       state.error = true;
     },
     [logOut.pending]: state => {
@@ -115,7 +121,5 @@ const authSlice = createSlice({
 });
 
 export const { addToken } = authSlice.actions;
-
-
 
 export default authSlice.reducer;
