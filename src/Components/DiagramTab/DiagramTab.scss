@@ -1,0 +1,135 @@
+@import '../../styles/variables.scss';
+
+.diagramTab__container {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+
+  @media screen and(min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.diagramTab__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: left;
+
+  padding: 12px 21px;
+
+  cursor: pointer;
+
+  width: 280px;
+  max-width: 100%;
+  height: 50px;
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: $main-text-color;
+  border: 1px solid $main-text-color;
+  background-color: $main-bg-color;
+
+  border-radius: 30px;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: $second-text-color;
+    background-color: $third-text-color;
+    border-color: transparent;
+  }
+
+  @media screen and(min-width: 768px) {
+    width: 166px;
+  }
+}
+
+.diagramTab__icons {
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: auto;
+}
+
+.diagramTab__button:hover .diagramTab__icons,
+.diagramTab__button:focus .diagramTab__icons {
+  color: $second-text-color;
+  fill: $second-text-color;
+}
+
+.diagramTab__selectContainer {
+  display: inline-flex;
+  position: absolute;
+  top: 55px;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:nth-child(2) {
+    top: 125px;
+  }
+
+  @media screen and(min-width: 768px) {
+    top: 55px;
+
+    &:nth-child(2) {
+      top: 55px;
+    }
+  }
+}
+
+.diagramTab__dropdown {
+  display: inline-flex;
+  margin-bottom: 20px;
+
+  @media screen and(min-width: 768px) {
+    margin-bottom: 0;
+    left: 34.5px;
+    margin-right: 19px;
+    &:nth-child(2) {
+      margin-right: 0;
+    }
+  }
+}
+
+.diagramTab__ul {
+  display: inline-flex;
+  flex-direction: column;
+  color: $main-text-color;
+  border: none;
+  outline: none;
+  width: 280px;
+
+  @media screen and(min-width:768px) {
+    width: 166px;
+  }
+}
+
+.diagramTab__li {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: $main-text-color;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  background-color: $secondary-bg-color;
+  text-align: center;
+  padding: 5px 10px;
+  margin-bottom: 7px;
+
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: $second-text-color;
+  }
+}

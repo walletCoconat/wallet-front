@@ -114,9 +114,9 @@
     width: 260.26px;
     height: 250px;
     left: 114px;
-    top: 60px;
+    top: 40px;
 
-    background-image: url(../../images/registration-login/FrameTablet.svg);
+    background-image: url(../../images/registration-login/FrameRegTab.svg);
 
     background-repeat: no-repeat;
   }
@@ -175,9 +175,9 @@
     height: 419.5px;
 
     left: 76px;
-    top: 150px;
+    top: 160px;
 
-    background-image: url(../../images/registration-login/FrameDesc.svg);
+    background-image: url(../../images/registration-login/FrameRegDesc.svg);
     background-repeat: no-repeat;
   }
   .registration__pink {
