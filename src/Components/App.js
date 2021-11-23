@@ -70,11 +70,13 @@ function App() {
           <PrivateRoute path="/statistics">
             <Header toggleIsVisible={toggleIsVisible} />
             <Dashboard />
+            <DiagramTab />
           </PrivateRoute>
 
           <PrivateRoute path="/exchange_rates">
             <Header toggleIsVisible={toggleIsVisible} />
             <Dashboard />
+
           </PrivateRoute>
         </Switch>
       </Suspense>
