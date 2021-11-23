@@ -1,48 +1,49 @@
-import React from "react";
+import React from 'react';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 
 import * as authSelector from '../../redux/auth/authSelector';
-import Container from "../Container";
+import Container from '../Container';
 
-import style from './Header.module.scss'
+import style from './Header.module.scss';
 
-const Header = ({toggleIsVisible}) => {
-// const name = useSelector(authSelector.getName);
+const Header = ({ toggleIsVisible }) => {
+  const name = useSelector(authSelector.getName);
 
+  //   const onClick = () => {
+  //     toggleIsVisible();
+  //   };
 
-
-const onClick = () => {
-    toggleIsVisible();
-}
-
-    return (
-        <header className={style.Header}>
-        <Container>
+  return (
+    <header className={style.Header}>
+      <Container>
         <div className={style.Content}>
-        <a className={style.Link}>
-        <svg className={style.Logo}>
-        <use  xlinkHref={`${sprite}#icon-logo`}></use>
-        </svg>
-        </a>
-        <div className={style.User}>
-            {/* <span className={style.Name}>{name}</span> */}
-           
+          <a className={style.Link}>
+            <svg className={style.Logo}>
+              <use xlinkHref={`${sprite}#icon-logo`}></use>
+            </svg>
+          </a>
+          <div className={style.User}>
+            <span className={style.Name}>{name}</span>
 
-            <button className={style.Button} onClick={()=>{toggleIsVisible()}} type='button'>
-            <svg className={style.Exit}>
-            <use  xlinkHref={`${sprite}#icon-exit`}></use>
-            </svg> <p className={style.Text}>Выйти</p></button>
+            <button
+              className={style.Button}
+              onClick={() => {
+                toggleIsVisible();
+              }}
+              type="button"
+            >
+              <svg className={style.Exit}>
+                <use xlinkHref={`${sprite}#icon-exit`}></use>
+              </svg>{' '}
+              <p className={style.Text}>Выйти</p>
+            </button>
+          </div>
         </div>
-        </div>
-        </Container>
-        
+      </Container>
     </header>
-      );
-}
-
-
-
+  );
+};
 
 export default Header;
