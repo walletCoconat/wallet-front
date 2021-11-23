@@ -27,8 +27,8 @@ const HomeTab = () => {
               <th key="tbalance" className="TableTh">Баланс</th>
           </tr>
         </thead>
-
-        <tbody>
+       
+        <tbody className='tbodyScroll' >
           {transactions.map(transaction => (
               <tr key={transaction.id} className="TableRow">
                   <td className="TableTd">{transaction.date}</td>
@@ -38,8 +38,10 @@ const HomeTab = () => {
                   <td className="TableTd">{transaction.sum}</td>
                   <td className="TableTd">{transaction.balance}</td>
               </tr>
+              
           ))}
         </tbody>
+  
         </table>
         :
         null

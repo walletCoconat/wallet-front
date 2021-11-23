@@ -34,12 +34,14 @@ const Reexit = ({ toggleIsVisible }) => {
 
         <ul>
           <li className={style.Item}>
-            <Button onClick={onClick}>Да</Button>
+            <Button onClick={()=>{onClick()}}>Да</Button>
           </li>
           <li>
             <Button
               onClick={() => {
                 toggleIsVisible();
+             
+                
               }}
             >
               Нет

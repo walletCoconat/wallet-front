@@ -1,16 +1,35 @@
 import React from 'react';
 import style from './Registration.module.css';
 import sprite from '../../images/sprite.svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/authOperation';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { getError } from '../../redux/auth/authSelector';
+
 
 const RegistrationUser = () => {
   const dispatch = useDispatch();
+  const getErr = useSelector(getError)
+   const notify = () =>
+    toast.error('Упсс, что-то пошло не так', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
-  console.log('hello');
+    if (getErr) {
+    console.log(getErr);
+    notify();
+  }
+
   const validationSchema = yup.object().shape({
     name: yup.string().typeError('Должно быть строкой').required('Обязательно'),
     email: yup
@@ -159,17 +178,30 @@ const RegistrationUser = () => {
                 type="submit"
                 disabled={!isValid && !dirty}
                 className={style.registration__button}
+                onClick={notify}
               >
                 Регистрация
               </button>
             </form>
           )}
         </Formik>
+
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/login">
           <button className={style.registration__button}>Вход</button>
         </NavLink>
-      </div>
+      </div>    
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     </div>
   );
 };

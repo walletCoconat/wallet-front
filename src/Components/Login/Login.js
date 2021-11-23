@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Login.module.css';
 import sprite from '../../images/sprite.svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/authOperation';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { getError } from '../../redux/auth/authSelector';
+
+// setCookie('refreshToken', 'hello', { path: '/' });
+
+// import
 
 const LoginUser = () => {
+  const getErr = useSelector(getError);
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
+
+  const dispatch = useDispatch();
+  const notify = () =>
+    toast.error('Упсс, что-то пошло не так', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  if (getErr) {
+    console.log(getErr);
+    notify();
+  }
+
   const validationSchema = yup.object().shape({
     email: yup
       .string()
@@ -21,8 +51,6 @@ const LoginUser = () => {
       .max(12),
   });
 
-  const dispatch = useDispatch();
-
   return (
     <div className={style.login__main_container}>
       <div className={style.login__purple}></div>
@@ -34,10 +62,7 @@ const LoginUser = () => {
           <use className={style.mail} xlinkHref={`${sprite}#icon-logo`}></use>
         </svg>
         <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
+          initialValues={state}
           onSubmit={values => {
             dispatch(
               login({
@@ -104,11 +129,24 @@ const LoginUser = () => {
             </form>
           )}
         </Formik>
+
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/registration">
           <button className={style.login__button}>Регистрация</button>
         </NavLink>
       </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

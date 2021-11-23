@@ -1,18 +1,20 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TransactionApi} from '../../servises/api-servise'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { walletApi } from '../../services';
 
-const Transaction = new TransactionApi()
+// const Transaction = new walletApi()
 
 export const fetchAllTransactions = createAsyncThunk(
-  "allTransactions/",
+  'allTransactions/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getAllTransactions();
-      if (response.hasNextPage) {
-          Transaction.incrementPage()
+      console.log('pending');
+      const { data } = await walletApi.getAllTransactions();
+      console.log('response', data);
+      if (data.response.hasNextPage) {
+        walletApi.incrementPage();
       }
       // console.log('res-transactions', response)
-      return response.docs;
+      return data.response.docs;
     } catch (error) {
       // console.log('error', error);
       return rejectWithValue(error.message);
@@ -21,12 +23,12 @@ export const fetchAllTransactions = createAsyncThunk(
 );
 
 export const fetchTransactions = createAsyncThunk(
-  "transactions/",
+  'transactions/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getTransactions();
+      const { response } = await walletApi.getTransactions();
       if (response.hasNextPage) {
-          Transaction.incrementPage()
+        walletApi.incrementPage();
       }
       // console.log('res-transactions', response)
       return response.docs;
@@ -38,10 +40,10 @@ export const fetchTransactions = createAsyncThunk(
 );
 
 export const fetchAllStatistic = createAsyncThunk(
-  "allStatistic/",
+  'allStatistic/',
   async (_, { rejectWithValue }) => {
     try {
-      const {response} = await Transaction.getAllStatistic();
+      const { response } = await walletApi.getAllStatistic();
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -50,10 +52,10 @@ export const fetchAllStatistic = createAsyncThunk(
 );
 
 export const fetchStatistic = createAsyncThunk(
-  "statistic/",
+  'statistic/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getStatistic();
+      const { response } = await walletApi.getStatistic();
       // const statistic = await Transaction.getStatistic();
       // console.log('res-statistic', statistic)
       return response;
@@ -64,10 +66,10 @@ export const fetchStatistic = createAsyncThunk(
 );
 
 export const addTransaction = createAsyncThunk(
-  "addTransaction/post",
+  'addTransaction/post',
   async (objdata, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.postTransaction(objdata);
+      const { response } = await walletApi.postTransaction(objdata);
       // console.log('res-newTransaction', response)
       return response;
     } catch (error) {
@@ -76,16 +78,16 @@ export const addTransaction = createAsyncThunk(
   },
 );
 
-export const fetchUserCurrent = createAsyncThunk(
-  "userCurrent/",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { response } = await Transaction.getUserCarrent();
-      // console.log('res-USER-USER', response)
-      return response.balance;
-    } catch (error) {
-      // console.log('error', error);
-      return rejectWithValue(error.message);
-    }
-  },
-);
+// export const fetchUserCurrent = createAsyncThunk(
+//   'userCurrent/',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const { response } = await walletApi.getUserCarrent();
+//       // console.log('res-USER-USER', response)
+//       return response.balance;
+//     } catch (error) {
+//       // console.log('error', error);
+//       return rejectWithValue(error.message);
+//     }
+//   },
+// );
