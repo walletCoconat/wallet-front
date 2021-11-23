@@ -1,18 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { transactionApi } from '../../servises/api-servise';
+import { walletApi } from '../../services';
 
-// const Transaction = new transactionApi()
+// const Transaction = new walletApi()
 
 export const fetchAllTransactions = createAsyncThunk(
   'allTransactions/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await transactionApi.getAllTransactions();
-      if (response.hasNextPage) {
-        transactionApi.incrementPage();
+      console.log('pending');
+      const { data } = await walletApi.getAllTransactions();
+      console.log('response', data);
+      if (data.response.hasNextPage) {
+        walletApi.incrementPage();
       }
       // console.log('res-transactions', response)
-      return response.docs;
+      return data.response.docs;
     } catch (error) {
       // console.log('error', error);
       return rejectWithValue(error.message);
@@ -24,9 +26,9 @@ export const fetchTransactions = createAsyncThunk(
   'transactions/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await transactionApi.getTransactions();
+      const { response } = await walletApi.getTransactions();
       if (response.hasNextPage) {
-        transactionApi.incrementPage();
+        walletApi.incrementPage();
       }
       // console.log('res-transactions', response)
       return response.docs;
@@ -41,7 +43,7 @@ export const fetchAllStatistic = createAsyncThunk(
   'allStatistic/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await transactionApi.getAllStatistic();
+      const { response } = await walletApi.getAllStatistic();
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -53,7 +55,7 @@ export const fetchStatistic = createAsyncThunk(
   'statistic/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await transactionApi.getStatistic();
+      const { response } = await walletApi.getStatistic();
       // const statistic = await Transaction.getStatistic();
       // console.log('res-statistic', statistic)
       return response;
@@ -67,7 +69,7 @@ export const addTransaction = createAsyncThunk(
   'addTransaction/post',
   async (objdata, { rejectWithValue }) => {
     try {
-      const { response } = await transactionApi.postTransaction(objdata);
+      const { response } = await walletApi.postTransaction(objdata);
       // console.log('res-newTransaction', response)
       return response;
     } catch (error) {
@@ -76,16 +78,16 @@ export const addTransaction = createAsyncThunk(
   },
 );
 
-export const fetchUserCurrent = createAsyncThunk(
-  'userCurrent/',
-  async (_, { rejectWithValue }) => {
-    try {
-      const { response } = await transactionApi.getUserCarrent();
-      // console.log('res-USER-USER', response)
-      return response.balance;
-    } catch (error) {
-      // console.log('error', error);
-      return rejectWithValue(error.message);
-    }
-  },
-);
+// export const fetchUserCurrent = createAsyncThunk(
+//   'userCurrent/',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const { response } = await walletApi.getUserCarrent();
+//       // console.log('res-USER-USER', response)
+//       return response.balance;
+//     } catch (error) {
+//       // console.log('error', error);
+//       return rejectWithValue(error.message);
+//     }
+//   },
+// );

@@ -3,8 +3,10 @@ import axios from 'axios';
 // var jwt = require('jsonwebtoken');
 
 class WalletApi {
-  BASE_URL = 'http://localhost:4040';
+  // BASE_URL = 'http://localhost:4040';
+  BASE_URL = 'https://wallet-coconat.herokuapp.com';
   API;
+  OLD_TOKEN = null;
   TOKEN = null;
   withCookie = { withCredentials: true };
   withoutCookie = { withCredentials: false };
@@ -12,6 +14,7 @@ class WalletApi {
   DISPATCH;
   ADD_TOKEN;
   LOGIN = false;
+  IS_RE_LOGIN = false;
   page = 1;
   perPage = 10;
   year = 2021;
@@ -19,12 +22,14 @@ class WalletApi {
 
   setToken(token) {
     this.API.defaults.headers.common.Authorization = `Bearer ${token}`;
-    this.TOKEN = token;
-    if (!this.LOGIN) {
+    // this.TOKEN = token;
+    if (this.OLD_TOKEN !== this.TOKEN) {
       console.log(1111111111);
       this.DISPATCH(this.ADD_TOKEN({ loginToken: token }));
+      this.TOKEN = token;
+      this.IS_RE_LOGIN = false;
     }
-
+    this.OLD_TOKEN = token;
     this.LOGIN = false;
   }
   cleanToken() {
@@ -32,6 +37,12 @@ class WalletApi {
   }
 
   isValidToken() {
+    this.API.interceptors.request.use(options => {
+      console.log('this.TOKEN', this.TOKEN);
+      this.setToken(this.TOKEN);
+      console.log('options', options);
+      return options;
+    });
     this.API.interceptors.response.use(
       config => {
         return config;
@@ -51,8 +62,13 @@ class WalletApi {
               `${this.BASE_URL}/api/user/refresh`,
               this.withCookie,
             );
-
+            // this.IS_RE_LOGIN = true;
+            console.log(9999999999999);
+            console.log(response.data.loginToken);
+            console.log(9999999999999);
+            this.TOKEN = response.data.loginToken;
             this.setToken(response.data.loginToken);
+
             return this.API.request(originalRequest);
           } catch (e) {
             console.log('НЕ АВТОРИЗОВАН');
@@ -83,6 +99,7 @@ class WalletApi {
     this.isValidToken();
     if (token) {
       this.setToken(token);
+      this.TOKEN = token;
       dispatch(currentUser());
     }
     this.COUNT_TOKEN_UPDATE = true;
@@ -93,16 +110,14 @@ class WalletApi {
 
     this.LOGIN = true;
     this.setToken(res.data.loginToken);
+    this.TOKEN = res.data.loginToken;
 
     return res;
   }
 
-  getAllTransactions = () => this.API.get('/api/user/test', this.withoutCookie);
+  // getAllTransactions = () => this.API.get('/api/user/test', this.withoutCookie);
 
-  async getAllTransactions() {
-    const { data } = await axios.get(`/api/transaction/`);
-    return data;
-  }
+  getAllTransactions = () => this.API.get(`/api/transaction/`);
 
   async getTransactions() {
     const { data } = await axios.get(
