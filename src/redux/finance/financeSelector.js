@@ -1,25 +1,41 @@
 export const getTotalBalance = state => state.finance.totalBalance
-export const getFinanceData = state => state.finance.data
+export const getFinanceData = state => state.finance.financeData
+export const getStatistic = state => state.finance.statistic
 
 
-const formatData = str => {
-    return str.slice(0, 2) + '.' + str.slice(2, 4) + '.' + str.slice(6);
+const formatDate = str => str.split('-').reverse().join('.')
+
+const formatType = type => {
+    if (type) {
+        return '+'
+    }
+    return '-'
+}
+
+const formatSum = sum => {
+    if (!String(sum).includes('.')) {
+        return sum.toFixed(2)
+    }
 }
 
 export const getFilterDataTransaction = state => {
     const allTransactions = getFinanceData(state)
+    if (allTransactions.length === 0) {
+        return null
+    }
+
     const newArr = [...allTransactions]
 
     newArr.sort((a, b) => {
-        // data: "31072021"
-        const aa = a.data.slice(0, 2) + '.' + a.data.slice(2, 4) + '.' + a.data.slice(4)
-        const bb = b.data.slice(0,2) + '.' + b.data.slice(2,4) + '.' + b.data.slice(4)
-        return Number(bb.split('.').reverse().join('')) - Number(aa.split('.').reverse().join(''))
+        // data: "2021-11-09"
+        const aa = a.date.split('-').join('.')
+        const bb = b.date.split('-').join('.')
+        return new Date(bb).getTime() - new Date(aa).getTime()
     })
 
     return newArr.map(item => {
-        item = { ...item, data: formatData(item.data)}
-        console.log('item -data', item.data)
+        item = { ...item, date: formatDate(item.date), type: formatType(item.type), sum: formatSum(item.sum), balance: formatSum(item.balance)}
+        console.log('ITEM', item)
         return item
     })
 };

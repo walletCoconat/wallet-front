@@ -1,15 +1,16 @@
+
 import React, { Suspense, useRef, useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Switch } from 'react-router-dom';
 
+import { useHistory, Switch } from 'react-router-dom';
 import Login from './Login/Login.js';
 import RegistrationUser from './Registration/Registration.js';
 import PrivateRoute from './PrivatRoute/PrivatRoute.js';
 import PublicRoute from './PublicRoute/PublicRoute.js';
 import { getRegister, getToken } from '../redux/auth/authSelector';
 import Header from './Header/Header.js';
-import Container from './Container/Container';
+
 import ButtonAddTransaction from './ButtonAddTransaction';
 import useModal from './ModalAddTransaction/useModal';
 import Modal from './ModalAddTransaction';
@@ -29,9 +30,9 @@ function App() {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
   const register = useSelector(getRegister);
-  const [modalActive, setModalActive] = useState(true);
+
   const [visible, setVisible] = useState(false);
-  console.log(22222222222, token);
+
 
   const toggleIsVisible = () => {
     setVisible(!visible);
@@ -42,23 +43,10 @@ function App() {
 
   history.push(register ? '/verify' : '/login');
 
-  return (
-    <>
-      <Header />
-
+  return (    
+  <> 
       <Suspense>
         <Switch>
-          <PrivateRoute exact path="/">
-            <>
-              <Header toggleIsVisible={toggleIsVisible} />
-              <Container>
-                <h1>Home</h1>
-                <ButtonAddTransaction onClick={toggle} />
-                <Modal isShowing={isShowing} hide={toggle} />
-              </Container>
-            </>
-          </PrivateRoute>
-
           <PublicRoute exact path="/login" urlFToRedirect="/">
             <Login />
           </PublicRoute>
@@ -73,21 +61,22 @@ function App() {
 
           <PrivateRoute exact path="/">
             <>
+            <Header toggleIsVisible={toggleIsVisible}/>
               <Dashboard />
-              <ButtonAddTransaction />
+              <ButtonAddTransaction onClick={toggle} />
+              <Modal isShowing={isShowing} hide={toggle} />
             </>
           </PrivateRoute>
 
           <PrivateRoute path="/statistics">
+          <Header toggleIsVisible={toggleIsVisible}/>
             <Dashboard />
           </PrivateRoute>
 
           <PrivateRoute path="/exchange_rates">
+          <Header toggleIsVisible={toggleIsVisible}/>
             <Dashboard />
           </PrivateRoute>
-
-          {/* <ButtonAddTransaction onClick={() => setModalActive(true)} />
-                <Modal active={modalActive} setActive={setModalActive} /> */}
         </Switch>
       </Suspense>
 

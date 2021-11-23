@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
 
   @media screen and (min-width: $tablet) {
-    max-width: 294px;
+    min-width: 294px;
   }
 
   @media screen and (min-width: $desktop) {

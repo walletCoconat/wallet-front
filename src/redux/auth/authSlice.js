@@ -16,6 +16,8 @@ const initialState = {
   isRegister: false,
 };
 
+
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -70,7 +72,8 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [login.rejected]: state => {
-      state = { ...initialState, error: true };
+      console.log('aaaaaaa',state);
+      state.error = true;
     },
     [logOut.pending]: state => {
       state.error = false;
@@ -110,5 +113,9 @@ const authSlice = createSlice({
     },
   },
 });
+
 export const { addToken } = authSlice.actions;
+
+
+
 export default authSlice.reducer;

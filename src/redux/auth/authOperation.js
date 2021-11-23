@@ -22,23 +22,20 @@ export const register = createAsyncThunk('auth/register', async dataUser => {
 });
 
 export const login = createAsyncThunk('auth/login', async dataUser => {
-  console.log(document.cookie);
-  // const res = await axios.post('/api/user/login', dataUser);
-  console.log(111111111110000000000);
   const { data } = await walletApi.login(dataUser);
-  console.log(data);
 
   return data;
 });
 
 export const verify = createAsyncThunk('auth/verify', async emailAddress => {
-  const { data } = await axios.post('api/user/verify', emailAddress);
+  const { data } = await axios.post('/api/user/verify', emailAddress);
   console.log(data);
   return data;
 });
 
 export const logOut = createAsyncThunk('auth/logOut', async () => {
-  await axios.post('api/user/logout');
+  console.log(axios.common);
+  await axios.get('/api/user/logout');
   tokenState.cleanToken();
 });
 
@@ -55,13 +52,9 @@ export const logOut = createAsyncThunk('auth/logOut', async () => {
 export const getCurrentUSer = createAsyncThunk(
   'auth/fetchByToken',
   async (_, { rejectWithValue }) => {
-    // try {
     const res = await walletApi.getCurrentUser();
 
     return res.data;
-    // } catch (e) {
-    //   return rejectWithValue(e.response.data);
-    // }
   },
 );
 

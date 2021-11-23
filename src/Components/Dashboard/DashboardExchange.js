@@ -1,7 +1,7 @@
 import Currency from "../Currency/Currency";
 
 const ExchangeRates = () => 
-    <div className='ExchangeRates container'>
+    <div className='ExchangeRates'>
         <Currency/>  
     </div>;
 

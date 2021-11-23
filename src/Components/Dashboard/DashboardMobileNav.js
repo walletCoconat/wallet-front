@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import homeIcon from '../../images/dashboard_sprite/home_dashboard.svg';
+import homeIcon from '../../images/dashboard_sprite/main.svg';
 import statisticsIcon from '../../images/dashboard_sprite/statistics.svg';
 import exchangeRatesIcon from '../../images/dashboard_sprite/exchange_rates.svg';
 import Media from 'react-media';
+import active_home from '../../images/dashboard_sprite/main_active.svg';
+import active_statisticsIcon from '../../images/dashboard_sprite/statistics_active.svg';
+import active_exchangeRatesIcon from '../../images/dashboard_sprite/exchange_rates_active.svg';
+
 
 const DashboardMobileNav = () => <>
     <div >
@@ -21,7 +25,8 @@ const DashboardMobileNav = () => <>
                         className="Dashboard_ic"
                         activeClassName="Dashboard_icon_active"
                     >
-                            <img className='Dashboard_icon_fill' src={homeIcon} alt="" width={38} />
+                        <img className='Dashboard_icon_fill' src={homeIcon} alt="Home page icon" width={38} />
+                        <img className='Dashboard_icon_fill_active' src={active_home} alt="Home page icon" width={38} />
                     </NavLink>
 
                     <NavLink
@@ -29,7 +34,9 @@ const DashboardMobileNav = () => <>
                         className="Dashboard_ic"
                         activeClassName="Dashboard_icon_active"
                     >
-                        <img className='Dashboard_icon_fill' src={statisticsIcon} alt="" width={38} />
+                        <img className='Dashboard_icon_fill' src={statisticsIcon} alt="Statistics page icon" width={38} />
+                        <img className='Dashboard_icon_fill_active' src={active_statisticsIcon} alt="Statistics page icon" width={38} />
+
                     </NavLink>  
 
                     <NavLink
@@ -38,7 +45,9 @@ const DashboardMobileNav = () => <>
                         className="Dashboard_ic"
                         activeClassName="Dashboard_icon_active"
                     >
-                        <img className='Dashboard_icon_fill' src={exchangeRatesIcon} alt="" width={38} />
+                        <img className='Dashboard_icon_fill' src={exchangeRatesIcon} alt="Exchange rates page icon" width={38} />
+                        <img className='Dashboard_icon_fill_active' src={active_exchangeRatesIcon} alt="Exchange rates page icon" width={38} />
+
                     </NavLink>
                 </div>}
 

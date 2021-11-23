@@ -20,12 +20,13 @@
   padding: 20px 65px;
   border-radius: 20px;
   background-color: $second-text-color;
-  width: 540px;
-  height: 617px;
+  max-width: 410px;
+  max-height: 577px;
 
-  @media screen and (min-width: 320px) and (max-width: 768px) {
-    width: 320px;
-    height: 830px;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
   }
 }
 
@@ -56,7 +57,7 @@ h2 {
 }
 
 .BtnBox {
-  margin-top: 50px;
+  // margin-top: 50px;
   text-align: center;
 }
 
@@ -93,7 +94,7 @@ h2 {
   font-size: 16px;
   line-height: 1.5;
   color: #e0e0e0;
-  margin-bottom: 38px;
+  // margin-bottom: 38px;
   text-align: center;
   align-items: center;
 }

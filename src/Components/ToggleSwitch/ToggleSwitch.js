@@ -1,19 +1,28 @@
 import React from 'react';
 import style from './ToggleSwitch.module.scss';
 import PropTypes from 'prop-types';
+import sprite from '../../images/sprite.svg';
 
 const ToggleSwitch = ({ checked, onChange }) => {
   return (
     <div className={style.ToggleswitchBox}>
-      <span style={{ color: checked && '#ff6596' }}>Доход</span>
+      <span style={{ color: !checked && '#24CCA7' }}>Доход</span>
       <input
         type="checkbox"
         checked={checked}
         onChange={e => onChange(e.target.checked)}
         className={style.SwitchCheckbox}
         id={`switch`}
-      />
+      ></input>
       <label className={style.SwitchLabel} htmlFor={`switch`}>
+        <svg width="20" height="20" className={style.BtnSvg}>
+          <use xlinkHref={`${sprite}#icon-add`}></use>
+        </svg>
+
+        <svg width="20" height="20" className={style.BtnSvg}>
+          <use xlinkHref={`${sprite}#icon-minus`}></use>
+        </svg>
+
         <span className={style.SwitchButton} />
       </label>
       <span style={{ color: checked && '#ff6596' }}> Расход </span>
@@ -22,7 +31,7 @@ const ToggleSwitch = ({ checked, onChange }) => {
 };
 
 ToggleSwitch.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string,

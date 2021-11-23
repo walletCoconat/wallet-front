@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import sprite from '../../images/sprite.svg';
 
 import * as authSelector from '../../redux/auth/authSelector';
+import Container from "../Container";
 
 import style from './Header.module.scss'
 
 const Header = ({toggleIsVisible}) => {
-const name = useSelector(authSelector.getName);
+// const name = useSelector(authSelector.getName);
 
 
 
@@ -18,6 +19,7 @@ const onClick = () => {
 
     return (
         <header className={style.Header}>
+        <Container>
         <div className={style.Content}>
         <a className={style.Link}>
         <svg className={style.Logo}>
@@ -25,7 +27,7 @@ const onClick = () => {
         </svg>
         </a>
         <div className={style.User}>
-            <span className={style.Name}>{name}</span>
+            {/* <span className={style.Name}>{name}</span> */}
            
 
             <button className={style.Button} onClick={()=>{toggleIsVisible()}} type='button'>
@@ -34,6 +36,7 @@ const onClick = () => {
             </svg> <p className={style.Text}>Выйти</p></button>
         </div>
         </div>
+        </Container>
         
     </header>
       );
