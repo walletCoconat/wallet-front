@@ -17,16 +17,16 @@
 
 .ModalContent {
   position: relative;
-  padding: 20px 65px;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 320px;
   border-radius: 20px;
   background-color: $second-text-color;
-  max-width: 410px;
-  max-height: 577px;
 
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    width: 100vw;
-    height: 100vh;
-    padding: 20px;
+  @media screen and (min-width: 767px) {
+    max-width: 410px;
+    min-height: 597px;
+    padding: 20px 65px;
   }
 }
 
@@ -57,35 +57,8 @@ h2 {
 }
 
 .BtnBox {
-  // margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
-}
-
-.Button {
-  width: 280px;
-  height: 50px;
-  font-family: 'Circe', sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-  text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border: 1px solid #4a56e2;
-  background-color: $main-bg-color;
-  color: $fifth-text-color;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-
-.Button:hover,
-.Button:focus {
-  color: #ffffff;
-  background: #24cca7;
-  border-color: transparent;
 }
 
 .FormBox {
@@ -94,7 +67,6 @@ h2 {
   font-size: 16px;
   line-height: 1.5;
   color: #e0e0e0;
-  // margin-bottom: 38px;
   text-align: center;
   align-items: center;
 }
