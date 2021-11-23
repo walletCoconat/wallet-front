@@ -3,8 +3,8 @@ import axios from 'axios';
 // var jwt = require('jsonwebtoken');
 
 class WalletApi {
-  BASE_URL = 'http://localhost:4040';
-  // BASE_URL = 'https://wallet-coconat.herokuapp.com';
+  // BASE_URL = 'http://localhost:4040';
+  BASE_URL = 'https://wallet-coconat.herokuapp.com';
   API;
   OLD_TOKEN = null;
   TOKEN = null;
