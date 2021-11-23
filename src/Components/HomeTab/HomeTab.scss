@@ -7,9 +7,13 @@
   border-radius: 30px;
   background: transparent;
   padding: 0;
-
   font-family: Circe;
   line-height: 1.5;
+}
+
+.tbodyScroll{
+  overflow-x: auto;
+  
 }
 
 // .col {
@@ -27,6 +31,7 @@
   text-align: left;
   background: $second-text-color;
   border-radius: 30px;
+  
 
   // &:first-child {
   //   width: 10%;
