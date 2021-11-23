@@ -3,8 +3,8 @@ import axios from 'axios';
 // var jwt = require('jsonwebtoken');
 
 class WalletApi {
-  // BASE_URL = 'http://localhost:4040';
-  BASE_URL = 'https://wallet-coconat.herokuapp.com';
+  BASE_URL = 'http://localhost:4040';
+  // BASE_URL = 'https://wallet-coconat.herokuapp.com';
   API;
   OLD_TOKEN = null;
   TOKEN = null;
@@ -20,18 +20,6 @@ class WalletApi {
   year = 2021;
   month = 11;
 
-  setToken(token) {
-    this.API.defaults.headers.common.Authorization = `Bearer ${token}`;
-    // this.TOKEN = token;
-    if (this.OLD_TOKEN !== this.TOKEN) {
-      console.log(1111111111);
-      this.DISPATCH(this.ADD_TOKEN({ loginToken: token }));
-      this.TOKEN = token;
-      this.IS_RE_LOGIN = false;
-    }
-    this.OLD_TOKEN = token;
-    this.LOGIN = false;
-  }
   cleanToken() {
     this.API.defaults.headers.common.Authorization = '';
   }
@@ -39,8 +27,9 @@ class WalletApi {
   isValidToken() {
     this.API.interceptors.request.use(options => {
       console.log('this.TOKEN', this.TOKEN);
-      this.setToken(this.TOKEN);
+
       console.log('options', options);
+      options.headers['Authorization'] = `Bearer ${this.TOKEN}`;
       return options;
     });
     this.API.interceptors.response.use(
@@ -67,7 +56,6 @@ class WalletApi {
             console.log(response.data.loginToken);
             console.log(9999999999999);
             this.TOKEN = response.data.loginToken;
-            this.setToken(response.data.loginToken);
 
             return this.API.request(originalRequest);
           } catch (e) {
@@ -98,7 +86,6 @@ class WalletApi {
     });
     this.isValidToken();
     if (token) {
-      this.setToken(token);
       this.TOKEN = token;
       dispatch(currentUser());
     }
@@ -109,15 +96,21 @@ class WalletApi {
     const res = await this.API.post('/api/user/login', dataUser);
 
     this.LOGIN = true;
-    this.setToken(res.data.loginToken);
     this.TOKEN = res.data.loginToken;
 
     return res;
   }
 
+  logout = async () => {
+    const res = await this.API.get('/api/user/logout');
+    this.cleanToken();
+    return res;
+  };
+
   // getAllTransactions = () => this.API.get('/api/user/test', this.withoutCookie);
 
-  getAllTransactions = () => this.API.get(`/api/transaction/`);
+  getAllTransactions = () =>
+    this.API.get(`/api/transaction/`, this.withoutCookie);
 
   async getTransactions() {
     const { data } = await axios.get(

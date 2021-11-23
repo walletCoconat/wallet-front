@@ -4,15 +4,6 @@ import { walletApi } from '../../services';
 
 // axios.defaults.baseURL = 'https://wallet-coconat.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:4040';
-const tokenState = {
-  setToken(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    console.log('token', token);
-  },
-  cleanToken() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
 
 export const register = createAsyncThunk('auth/register', async dataUser => {
   const { data } = await axios.post('/api/user/signup', dataUser);
@@ -34,20 +25,8 @@ export const verify = createAsyncThunk('auth/verify', async emailAddress => {
 });
 
 export const logOut = createAsyncThunk('auth/logOut', async () => {
-  console.log(axios.common);
-  await axios.get('/api/user/logout');
-  tokenState.cleanToken();
+  await walletApi.logout();
 });
-
-// export const fetchByToken = createAsyncThunk(
-//   'auth/fetchByToken',
-//   async (_, thunkApi) => {
-//     const token = thunkApi.getState().auth.token;
-//     tokenState.setToken(token);
-//     const { data } = await axios('api/users/current');
-//     return data;
-//   },
-// );
 
 export const getCurrentUSer = createAsyncThunk(
   'auth/fetchByToken',
@@ -57,7 +36,3 @@ export const getCurrentUSer = createAsyncThunk(
     return res.data;
   },
 );
-
-// export function addTokenReducer(token) {
-//   'auth / fetchByToken';
-// }
