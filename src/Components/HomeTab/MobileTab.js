@@ -10,52 +10,48 @@ const MobileTab = () => {
   return (
     <>
       {transactions ? (
-        <ul className="verticalList">
-          <li className="itemTransaction">
+        <>
+          <div className="verticalList">
             {transactions.map(transaction => (
               <>
                 <div
                   className="line"
-                  // style={{ backgroundColor: transaction.type == '+' ? 'green' : 'red' }}
+                  style={{
+                    backgroundColor: transaction.type === '+' ? 'green' : 'red',
+                  }}
                 ></div>
                 <ul className="verticalList">
                   <li className="listItem">
                     <span className="category">Дата</span>
 
-                    <span>{transactions.date}</span>
-                    {/* <span className="data">04.11.19</span> */}
+                    <span className="data">{transactions.date}</span>
                   </li>
                   <li className="listItem">
                     <span className="category">Тип</span>
-                    {/* <span style={{ color: transaction.type == '+' ? 'green' : 'red' }}>{transaction.type}</span> */}
-                    <span>-</span>
+                    <span className="data">{transaction.type}</span>
                   </li>
                   <li className="listItem">
                     <span className="category">Категория</span>
 
-                    <span>{transaction.type}</span>
-                    {/* <span>Разное</span> */}
+                    <span className="data">{transaction.category}</span>
                   </li>
                   <li className="listItem">
                     <span className="category">Комментарий:</span>
-                    <span>{transaction.category}</span>
-                    {/* <span>Подарок жене</span> */}
+                    <span className="data">{transaction.comments}</span>
                   </li>
                   <li className="listItem">
                     <span className="category">Сумма</span>
-                    <span>{transaction.sum}</span>
-                    {/* <span>300</span> */}
+                    <span className="data">{transaction.sum}</span>
                   </li>
                   <li className="listItem">
                     <span className="category">Баланс</span>
-                    <span>{transaction.balance}</span>
-                    {/* <span>6900</span> */}
+                    <span className="data">{transaction.balance}</span>
                   </li>
                 </ul>
               </>
             ))}
-          </li>
-        </ul>
+          </div>
+        </>
       ) : null}
     </>
   );
