@@ -10,6 +10,7 @@ import PublicRoute from './PublicRoute/PublicRoute.js';
 import { getRegister, getToken } from '../redux/auth/authSelector';
 import Header from './Header/Header.js';
 
+import DiagramTab from '../Components/DiagramTab/DiagramTab';
 import ButtonAddTransaction from './ButtonAddTransaction';
 import useModal from './ModalAddTransaction/useModal';
 import Modal from './ModalAddTransaction';
@@ -74,6 +75,7 @@ function App() {
           <PrivateRoute path="/exchange_rates">
             <Header toggleIsVisible={toggleIsVisible} />
             <Dashboard />
+            <DiagramTab />
           </PrivateRoute>
         </Switch>
       </Suspense>
