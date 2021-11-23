@@ -5,6 +5,7 @@ import sprite from '../../images/sprite.svg';
 import 'react-datetime/css/react-datetime.css';
 import TransactionForm from '../TransactionForm';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
+import Button from '../../Components/Button';
 
 const optionsOfSpend = [
   { value: 'Основной', label: 'Основной' },
@@ -74,11 +75,10 @@ const Modal = ({ isShowing, hide }) => {
                   <TransactionForm options={optionOfIncome} />
                 )}
               </div>
-
               <div className={style.BtnBox}>
-                <button type="submit" className={style.Button} onClick={hide}>
+                <Button type="submit" onClick={hide}>
                   Отмена
-                </button>
+                </Button>
               </div>
             </div>
           </div>

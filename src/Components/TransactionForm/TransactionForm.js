@@ -14,6 +14,7 @@ import 'react-datetime/css/react-datetime.css';
 // } from '../../redux/transaction';
 import 'react-toastify/dist/ReactToastify.css';
 // import { connect } from 'react-redux';
+import Button from '../../Components/Button';
 
 const initialState = {
   quantity: '',
@@ -79,13 +80,15 @@ function TransactionForm({ onSubmit, options }) {
       /> */}
       <div className={style.SelectForm}>
         <select
-          placeholder="Выберите категорию"
           name="option"
           value={option}
           onChange={handleInputOnChange}
           options={options}
-          className={style.Select}
+          required
         >
+          <option value="" disabled selected>
+            Выберите категорию
+          </option>
           {options.map((option, id) => (
             <option key={id} value={option.value}>
               {option.label}
@@ -93,73 +96,58 @@ function TransactionForm({ onSubmit, options }) {
           ))}
         </select>
       </div>
-      <div>
-        <label className={style.TransactionBox}>
+      <div className={style.TransactionBox}>
+        <label className={style.TransactionLabel} htmlFor="quantity">
           <input
-            // id="quantity"
+            id="quantity"
             name="quantity"
-            type="number"
+            type="text"
             className={style.InputTransaction}
             placeholder="0.00"
             value={quantity}
             onChange={handleInputOnChange}
             required
             pattern="^((\d+)|(\d{1,3})(\,\d{3}|)*)(\.\d{2}|)"
-          ></input>
-
-          <button className={style.BtnCalendar}>
-            {/* <Datetime
-              // id="date"
-              name="date"
-              // value={date}
-
-              onChange={handleInputOnChange}
-              className={style.Datetime}
-              dateFormat="DD-MM-YYYY"
-              timeFormat={false}
-              initialValue={new Date()}
-            /> */}
-            <svg width="18" height="20">
-              <use xlinkHref={`${sprite}#icon-newdate`}></use>
-            </svg>
-          </button>
+          />
         </label>
 
-        <label className={style.CommentsBox}>
+        <div className={style.BtnCalendar}>
+          <Datetime
+            // id="date"
+            name="date"
+            // value={date}
+            onChange={handleInputOnChange}
+            className={style.Datetime}
+            dateFormat="DD-MM-YYYY"
+            timeFormat={false}
+            initialValue={new Date()}
+          />
+
+          {/* <svg width="18" height="20" className={style.svgCalendar}>
+            <use xlinkHref={`${sprite}#icon-newdate`}></use>
+          </svg> */}
+        </div>
+      </div>
+
+      <div className={style.CommentsBox}>
+        <label htmlFor="comments">
           <textarea
+            id="comments"
             name="comments"
             className={style.Comments}
             placeholder="Комментарий"
             onChange={handleInputOnChange}
             value={comments}
-            required
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           ></textarea>
         </label>
       </div>
-      <button type="submit" className={style.Button}>
-        Добавить
-      </button>
+
+      <div className={style.BtnBox}>
+        <Button type="submit"> Добавить</Button>
+      </div>
     </form>
   );
 }
 
 export default TransactionForm;
-
-// const mapStateToProps = state => ({
-//   contacts: transactionSelectors.getTransaction(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: (quantity, date, selectedFile, comments) =>
-//     dispatch(
-//       transactionOperations.addTransaction(
-//         quantity,
-//         date,
-//         selectedFile,
-//         comments,
-//       ),
-//     ),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
