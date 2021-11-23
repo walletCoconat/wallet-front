@@ -1,7 +1,15 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import { fetchAllTransactions, fetchTransactions, addTransaction, fetchAllStatistic, fetchStatistic, fetchUserCurrent } from './financeOperations'
+import { login } from '../auth/authOperation'
 
+const categoryDecrement = createReducer([], {
+  [login.fulfilled]: (state, { payload }) => payload.response.categoryDecrement,
+})
+
+const categoryIncrement = createReducer([], {
+  [login.fulfilled]: (state, { payload }) => payload.response.categoryIncrement,
+})
 
 const balanceReducer = createReducer(0, {
   [fetchUserCurrent.fulfilled]: (state, { payload }) => payload,
@@ -13,7 +21,8 @@ const financeDataReducer = createReducer([], {
   [fetchTransactions.fulfilled]: (state, { payload }) => [...state, ...payload],
   // добавть проверку на пустой массив при запросе првой страницы
   // не забудь про пагинацию
-  [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
+  // [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
+  [addTransaction.fulfilled]: (state, { payload }) => state,
 })
 
 const StatisticReducer = createReducer(null, {
@@ -68,4 +77,6 @@ export default combineReducers({
   statistic: StatisticReducer,
   error,
   loading,
+  categoryDecrement,
+  categoryIncrement,
 });

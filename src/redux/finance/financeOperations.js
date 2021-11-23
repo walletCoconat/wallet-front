@@ -11,7 +11,7 @@ export const fetchAllTransactions = createAsyncThunk(
       if (response.hasNextPage) {
           Transaction.incrementPage()
       }
-      // console.log('res-transactions', response)
+      console.log('res--ALL-transactions', response)
       return response.docs;
     } catch (error) {
       // console.log('error', error);
@@ -81,7 +81,7 @@ export const fetchUserCurrent = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { response } = await Transaction.getUserCarrent();
-      // console.log('res-USER-USER', response)
+      console.log('res-USER-USER', response)
       return response.balance;
     } catch (error) {
       // console.log('error', error);

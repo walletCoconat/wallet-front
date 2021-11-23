@@ -1,6 +1,8 @@
 export const getTotalBalance = state => state.finance.totalBalance
 export const getFinanceData = state => state.finance.financeData
 export const getStatistic = state => state.finance.statistic
+export const getCategoryDecrement = state => state.finance.categoryDecrement
+export const getCategoryIncrement = state => state.finance.categoryIncrement
 
 
 const formatDate = str => str.split('-').reverse().join('.')
@@ -35,7 +37,7 @@ export const getFilterDataTransaction = state => {
 
     return newArr.map(item => {
         item = { ...item, date: formatDate(item.date), type: formatType(item.type), sum: formatSum(item.sum), balance: formatSum(item.balance)}
-        console.log('ITEM', item)
+        // console.log('ITEM', item)
         return item
     })
 };
