@@ -64,9 +64,9 @@ const authSlice = createSlice({
     },
     [login.fulfilled]: (state, { payload }) => {
       state.user = {
-        name: payload.response.name,
-        email: payload.response.email,
-        balance: payload.response.balance,
+        name: payload.response.user.name,
+        email: payload.response.user.email,
+        balance: payload.response.user.balance,
       };
       state.loginToken = payload.loginToken;
       state.isLoader = false;
