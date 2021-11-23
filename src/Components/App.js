@@ -1,4 +1,3 @@
-
 import React, { Suspense, useRef, useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +32,6 @@ function App() {
 
   const [visible, setVisible] = useState(false);
 
-
   const toggleIsVisible = () => {
     setVisible(!visible);
   };
@@ -43,8 +41,8 @@ function App() {
 
   history.push(register ? '/verify' : '/login');
 
-  return (    
-  <> 
+  return (
+    <>
       <Suspense>
         <Switch>
           <PublicRoute exact path="/login" urlFToRedirect="/">
@@ -61,7 +59,7 @@ function App() {
 
           <PrivateRoute exact path="/">
             <>
-            <Header toggleIsVisible={toggleIsVisible}/>
+              <Header toggleIsVisible={toggleIsVisible} />
               <Dashboard />
               <ButtonAddTransaction onClick={toggle} />
               <Modal isShowing={isShowing} hide={toggle} />
@@ -69,12 +67,12 @@ function App() {
           </PrivateRoute>
 
           <PrivateRoute path="/statistics">
-          <Header toggleIsVisible={toggleIsVisible}/>
+            <Header toggleIsVisible={toggleIsVisible} />
             <Dashboard />
           </PrivateRoute>
 
           <PrivateRoute path="/exchange_rates">
-          <Header toggleIsVisible={toggleIsVisible}/>
+            <Header toggleIsVisible={toggleIsVisible} />
             <Dashboard />
           </PrivateRoute>
         </Switch>

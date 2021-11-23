@@ -1,15 +1,15 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TransactionApi} from '../../servises/api-servise'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { transactionApi } from '../../servises/api-servise';
 
-const Transaction = new TransactionApi()
+// const Transaction = new transactionApi()
 
 export const fetchAllTransactions = createAsyncThunk(
-  "allTransactions/",
+  'allTransactions/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getAllTransactions();
+      const { response } = await transactionApi.getAllTransactions();
       if (response.hasNextPage) {
-          Transaction.incrementPage()
+        transactionApi.incrementPage();
       }
       // console.log('res-transactions', response)
       return response.docs;
@@ -21,12 +21,12 @@ export const fetchAllTransactions = createAsyncThunk(
 );
 
 export const fetchTransactions = createAsyncThunk(
-  "transactions/",
+  'transactions/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getTransactions();
+      const { response } = await transactionApi.getTransactions();
       if (response.hasNextPage) {
-          Transaction.incrementPage()
+        transactionApi.incrementPage();
       }
       // console.log('res-transactions', response)
       return response.docs;
@@ -38,10 +38,10 @@ export const fetchTransactions = createAsyncThunk(
 );
 
 export const fetchAllStatistic = createAsyncThunk(
-  "allStatistic/",
+  'allStatistic/',
   async (_, { rejectWithValue }) => {
     try {
-      const {response} = await Transaction.getAllStatistic();
+      const { response } = await transactionApi.getAllStatistic();
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -50,10 +50,10 @@ export const fetchAllStatistic = createAsyncThunk(
 );
 
 export const fetchStatistic = createAsyncThunk(
-  "statistic/",
+  'statistic/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getStatistic();
+      const { response } = await transactionApi.getStatistic();
       // const statistic = await Transaction.getStatistic();
       // console.log('res-statistic', statistic)
       return response;
@@ -64,10 +64,10 @@ export const fetchStatistic = createAsyncThunk(
 );
 
 export const addTransaction = createAsyncThunk(
-  "addTransaction/post",
+  'addTransaction/post',
   async (objdata, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.postTransaction(objdata);
+      const { response } = await transactionApi.postTransaction(objdata);
       // console.log('res-newTransaction', response)
       return response;
     } catch (error) {
@@ -77,10 +77,10 @@ export const addTransaction = createAsyncThunk(
 );
 
 export const fetchUserCurrent = createAsyncThunk(
-  "userCurrent/",
+  'userCurrent/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await Transaction.getUserCarrent();
+      const { response } = await transactionApi.getUserCarrent();
       // console.log('res-USER-USER', response)
       return response.balance;
     } catch (error) {
