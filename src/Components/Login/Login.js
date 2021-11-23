@@ -4,13 +4,16 @@ import sprite from '../../images/sprite.svg';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/authOperation';
+import { useCookies } from 'react-cookie';
 
 const LoginUser = () => {
+  const [cookies, setCookie] = useCookies(['refreshToken']);
+  // setCookie('refreshToken', 'hello', { path: '/' });
   const [state, setState] = useState({
     email: '',
     password: '',
   });
-
+  console.log('cookies', cookies);
   const dispatch = useDispatch();
 
   const onChangeInput = ev => {
@@ -46,7 +49,7 @@ const LoginUser = () => {
               ></use>
             </svg>
             <input
-            name="email"
+              name="email"
               placeholder="E-mail"
               className={style.login__input}
               onChange={onChangeInput}
@@ -61,7 +64,7 @@ const LoginUser = () => {
               ></use>
             </svg>
             <input
-            name="password"
+              name="password"
               placeholder="Пароль"
               className={style.login__input}
               onChange={onChangeInput}

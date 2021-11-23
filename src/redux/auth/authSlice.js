@@ -1,18 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logOut, fetchByToken, verify } from './authOperation';
+import {
+  register,
+  login,
+  logOut,
+  getCurrentUSer,
+  verify,
+} from './authOperation';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, balance: null },
   isLoader: false,
   loginToken: null,
   error: false,
   isLoggedIn: false,
-  isRegister: false
+  isRegister: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    addToken(state, action) {
+      state.loginToken = action.loginToken;
+    },
+  },
   extraReducers: {
     [register.pending]: state => {
       state.isLoader = true;
@@ -48,7 +59,7 @@ const authSlice = createSlice({
     [login.pending]: state => {
       state.isLoader = true;
       state.error = false;
-      state.isRegister =  false;
+      state.isRegister = false;
       state.loginToken = null;
     },
     [login.fulfilled]: (state, { payload }) => {
@@ -63,7 +74,6 @@ const authSlice = createSlice({
     },
     [logOut.pending]: state => {
       state.error = false;
-      
     },
     [logOut.fulfilled]: state => {
       state.isLoader = false;
@@ -76,20 +86,29 @@ const authSlice = createSlice({
       state.error = true;
       state.isLoader = false;
     },
-    [fetchByToken.pending]: state => {
+    [getCurrentUSer.pending]: state => {
       state.error = false;
       state.isLoader = true;
     },
-    [fetchByToken.fulfilled]: (state, { payload }) => {
+    [getCurrentUSer.fulfilled]: (state, { payload }) => {
       state.user = payload;
       state.isLoader = false;
       state.isLoggedIn = true;
+      state.loginToken = payload.loginToken;
+      state.user = {
+        name: payload.response.name,
+        email: payload.response.email,
+        balance: payload.response.balance,
+      };
     },
-    [fetchByToken.rejected]: state => {
+    [getCurrentUSer.rejected]: state => {
       state.error = true;
       state.isLoader = false;
+      state.loginToken = null;
+      state.isLoggedIn = false;
+      state.user = { name: null, email: null, balance: null };
     },
   },
 });
-
+export const { addToken } = authSlice.actions;
 export default authSlice.reducer;

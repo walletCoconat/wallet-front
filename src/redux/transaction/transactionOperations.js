@@ -9,26 +9,30 @@ import {
   addTransactionRequest,
   addTransactionSuccess,
   addTransactionError,
-} from './transactionAction';
+} from './transactionAction.js';
+import { walletApi } from '../../services';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'http://localhost:4040';
 
 const fetchTransaction = () => async dispatch => {
   dispatch(fetchTransactionRequest());
 
   try {
-    const { data } = await axios.get('/transaction');
-
-    dispatch(fetchTransactionSuccess(data));
+    console.log(2222);
+    const res = await walletApi.getAllTransactions();
+    console.log(res);
+    dispatch(fetchTransactionSuccess(res.data));
   } catch (error) {
     dispatch(fetchTransactionError());
-    if (error.response.status === 404) {
-      toast.info('There is no any transaction!');
-    } else if (error.response.status === 500) {
-      toast.error('Oops! Server error! Please try later!');
-    } else {
-      toast.error('Something went wrong! Please reload the page!');
-    }
+    console.log(error);
+    // if (error.response.status === 404) {
+    //   toast.info('There is no any transaction!');
+    // } else if (error.response.status === 500) {
+    //   toast.error('Oops! Server error! Please try later!');
+    // } else {
+    //   toast.error('Something went wrong! Please reload the page!');
+    // }
   }
 };
 
