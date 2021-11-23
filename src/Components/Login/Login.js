@@ -6,6 +6,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/authOperation';
+<<<<<<< HEAD
+import { useCookies } from 'react-cookie';
+
+const LoginUser = () => {
+  const [cookies, setCookie] = useCookies(['refreshToken']);
+  // setCookie('refreshToken', 'hello', { path: '/' });
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
+  console.log('cookies', cookies);
+  const dispatch = useDispatch();
+=======
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { getError } from '../../redux/auth/authSelector';
@@ -29,6 +42,7 @@ const LoginUser = () => {
     console.log(getErr);
     notify();
   }
+>>>>>>> main
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -55,6 +69,43 @@ const LoginUser = () => {
         <svg className={style.login__logo} width="24px" height="24px">
           <use className={style.mail} xlinkHref={`${sprite}#icon-logo`}></use>
         </svg>
+<<<<<<< HEAD
+        <form className={style.login__form} onSubmit={onSubmit}>
+          <div className={style.login__form_container}>
+            <svg className={style.login__icons} width="24px" height="24px">
+              <use
+                className={style.mail}
+                xlinkHref={`${sprite}#icon-email`}
+              ></use>
+            </svg>
+            <input
+              name="email"
+              placeholder="E-mail"
+              className={style.login__input}
+              onChange={onChangeInput}
+            />
+          </div>
+
+          <div className={style.login__form_container}>
+            <svg className={style.login__icons} width="24px" height="24px">
+              <use
+                className={style.mail}
+                xlinkHref={`${sprite}#icon-lock`}
+              ></use>
+            </svg>
+            <input
+              name="password"
+              placeholder="Пароль"
+              className={style.login__input}
+              onChange={onChangeInput}
+            />
+          </div>
+          <button type="submit" className={style.login__button}>
+            Вход
+          </button>
+        </form>
+
+=======
         <Formik
           initialValues={{
             email: '',
@@ -126,6 +177,7 @@ const LoginUser = () => {
             </form>
           )}
         </Formik>
+>>>>>>> main
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/registration">
           <button className={style.login__button}>Регистрация</button>

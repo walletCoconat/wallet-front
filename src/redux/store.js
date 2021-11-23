@@ -13,7 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import authSlice from './auth/authSlice';
-import financeReducer from './finance/financeReducer'
+import financeReducer from './finance/financeReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -27,7 +27,7 @@ const middleware = [
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['loginToken'],
 };
 
 const store = configureStore({

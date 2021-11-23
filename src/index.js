@@ -8,9 +8,11 @@ import SpinnerLoader from './Components/SpinnerLoader/SpinnerLoader';
 import './styles/index.scss';
 import App from './Components/App';
 import * as store from './redux/store';
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <CookiesProvider>
+    {/* <React.StrictMode> */}
     <Provider store={store.store}>
       <PersistGate loading={<SpinnerLoader />} persistor={store.persist}>
         <BrowserRouter>
@@ -18,6 +20,7 @@ ReactDOM.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
+    {/* </React.StrictMode> */}
+  </CookiesProvider>,
   document.getElementById('root'),
 );
