@@ -10,7 +10,7 @@ import s from './Chart.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Chart = () => {
+const MobileChart = () => {
   const statistics = useSelector(getStatistic);
   const balance = useSelector(getTotalBalance);
 
@@ -30,8 +30,8 @@ const Chart = () => {
       {statistics && (
         <div className="Container">
           <Doughnut
-            height={320}
-            width={320}
+            height={280}
+            width={280}
             data={{
               datasets: [
                 {
@@ -69,4 +69,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default MobileChart;

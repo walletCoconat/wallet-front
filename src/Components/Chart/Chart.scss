@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.Container {
+  display: flex;
+  justify-content: center;
+  max-width: 320px;
+  position: relative;
+}
+
+.Balance {
+  font-family: Circe;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

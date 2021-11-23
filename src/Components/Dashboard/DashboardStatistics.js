@@ -4,6 +4,7 @@ import { fetchAllStatistic } from '../../redux/finance/financeOperations';
 import Media from 'react-media';
 import MainInfo from './Dashboard_main_info';
 import Chart from '../Chart/Chart';
+import MobileChart from '../Chart/MobileChart';
 
 const Statistics = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,7 @@ const Statistics = () => {
                   <h1 className="Dashboard_stats_title">Статистика</h1>
                   <div className="Dashboard_stats">
                     <div className="Dashboard_stats_diagram">
-                      {' '}
-                      STATISTICS DIAGRAM{' '}
+                      <MobileChart />
                     </div>
                     <div className="Dashboard_stats_table">
                       {' '}
