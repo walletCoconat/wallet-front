@@ -33,7 +33,7 @@ const MobileTab = () => {
                         }}
                       ></div>{' '}
                       <span className="category">Дата</span>
-                      <span className="data">{transactions.date}</span>
+                      <span className="data">{transaction.date}</span>
                     </li>
                     <li className="listItem">
                       <span className="category">Тип</span>
