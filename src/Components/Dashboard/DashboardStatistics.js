@@ -69,7 +69,7 @@ const Statistics = () => {
                     <h1 className="Dashboard_stats_title">Статистика</h1>
                     <div className="Dashboard_stats">
                       <div className="Dashboard_stats_diagram">
-                        <Chart />
+                        <Chart allStat={allStat} />
                       </div>
                       <div className="Dashboard_stats_table">
                         <DiagramTab />

@@ -10,11 +10,12 @@ import s from './Chart.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Chart = () => {
-  const statistics = useSelector(getStatistic);
-  console.log('DDDDDDDDDDDDDDDDDDDDDD', statistics)
+const Chart = ({ allStat }) => {
+  // const statistics = useSelector(getStatistic);
+  // console.log('DDDDDDDDDDDDDDDDDDDDDD', statistics)
   const balance = useSelector(getTotalBalance);
-  console.log('BALANCE-DDDDDDDDDDDDDDDDDDD', balance)
+  // console.log('BALANCE-DDDDDDDDDDDDDDDDDDD', balance)
+  const statistics = allStat.list;
 
   //* Colors
   const OtherExpColor = '#00AD84';
@@ -37,20 +38,9 @@ const Chart = () => {
             data={{
               datasets: [
                 {
-
                   data: statistics.map(item => item.summary),
 
-                  backgroundColor: [
-                    '#00AD84',
-                    '#FD9498',
-                    '#FFD8D0',
-                    '#FED057',
-                    '#C5BAFF',
-                    '#4A56E2',
-                    '#6E78E8',
-                    '#81E1FF',
-                    '#24CCA7',
-                  ],
+                  backgroundColor: statistics.map(item => item.color),
                   borderWidth: 0,
                 },
               ],
