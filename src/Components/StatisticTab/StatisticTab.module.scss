@@ -1,4 +1,102 @@
+@import '../../styles/variables.scss';
+
 .StatisticTabContainer {
+  font-family: Circe;
+  margin-top: 20px;
+  width: 280px;
+
+  @media screen and(min-width: 768px) {
+    width: 350px;
+  }
+}
+
+.StatisticTabHead {
   display: flex;
   justify-content: space-between;
+
+  background-color: $main-bg-color;
+  border-radius: 30px;
+
+  @media screen and(min-width: 768px) {
+    padding: 15px 30px;
+  }
+}
+
+.StatisticTabHeadItem {
+  color: $main-text-color;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.StatisticTabList {
+}
+
+.StatisticTabListItem {
+  display: flex;
+  align-items: center;
+
+  padding: 15px 20px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: $main-text-color;
+
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+
+  @media screen and(min-width: 768px) {
+    padding: 15px 30px 15px 20px;
+  }
+}
+
+.ItemContainer {
+}
+
+.ItemMarker {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  border-radius: 2px;
+
+  background-color: yellowgreen;
+}
+
+.CategoryName {
+}
+.CategorySum {
+  margin-left: auto;
+}
+
+.StatisticTabTotal {
+  margin-top: 15px;
+}
+
+.StatisticTabTotalItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0px 20px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:last-child {
+    margin-top: 12px;
+  }
+
+  @media screen and(min-width: 768px) {
+    padding: 0px 30px 0px 20px;
+  }
+}
+
+.Income {
+  color: #24cca7;
+}
+.Expenses {
+  color: #ff6596;
 }
