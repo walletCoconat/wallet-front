@@ -35,8 +35,8 @@ const financeDataReducer = createReducer([], {
 });
 
 const StatisticReducer = createReducer(null, {
-  [fetchAllStatistic.fulfilled]: (_, { payload }) => payload,
-  [fetchStatistic.fulfilled]: (_, { payload }) => payload,
+  [fetchAllStatistic.fulfilled]: (_, { payload }) => payload.list,
+  [fetchStatistic.fulfilled]: (_, { payload }) => payload.list,
 });
 
 const error = createReducer(null, {

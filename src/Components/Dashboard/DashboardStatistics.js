@@ -5,7 +5,8 @@ import Media from 'react-media';
 import MainInfo from './Dashboard_main_info';
 import Chart from '../Chart/Chart';
 import MobileChart from '../Chart/MobileChart';
-import DiagramTab from '../DiagramTab/DiagramTab'
+import DiagramTab from '../DiagramTab/DiagramTab';
+import StatisticTab from '../StatisticTab/';
 
 const Statistics = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ const Statistics = () => {
                       <MobileChart />
                     </div>
                     <div className="Dashboard_stats_table">
-                      <DiagramTab/>
+                      <DiagramTab />
+                      <StatisticTab />
                     </div>
                   </div>
                 </div>
@@ -49,7 +51,8 @@ const Statistics = () => {
                         <Chart />
                       </div>
                       <div className="Dashboard_stats_table">
-                        <DiagramTab/>
+                        <DiagramTab />
+                        <StatisticTab />
                       </div>
                     </div>
                   </div>
