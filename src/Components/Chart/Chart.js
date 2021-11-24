@@ -12,7 +12,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Chart = () => {
   const statistics = useSelector(getStatistic);
+  console.log('DDDDDDDDDDDDDDDDDDDDDD', statistics)
   const balance = useSelector(getTotalBalance);
+  console.log('BALANCE-DDDDDDDDDDDDDDDDDDD', balance)
 
   //* Colors
   const OtherExpColor = '#00AD84';
@@ -36,15 +38,15 @@ const Chart = () => {
               datasets: [
                 {
                   data: [
-                    statistics[0].summary,
-                    statistics[1].summary,
-                    statistics[2].summary,
-                    statistics[3].summary,
-                    statistics[4].summary,
-                    statistics[5].summary,
-                    statistics[6].summary,
-                    statistics[7].summary,
-                    statistics[8].summary,
+                    statistics.list[0].summary,
+                    statistics.list[1].summary,
+                    statistics.list[2].summary,
+                    statistics.list[3].summary,
+                    statistics.list[4].summary,
+                    statistics.list[5].summary,
+                    statistics.list[6].summary,
+                    statistics.list[7].summary,
+                    statistics.list[8].summary,
                   ],
                   backgroundColor: [
                     '#00AD84',
