@@ -37,17 +37,9 @@ const Chart = () => {
             data={{
               datasets: [
                 {
-                  data: [
-                    statistics.list[0].summary,
-                    statistics.list[1].summary,
-                    statistics.list[2].summary,
-                    statistics.list[3].summary,
-                    statistics.list[4].summary,
-                    statistics.list[5].summary,
-                    statistics.list[6].summary,
-                    statistics.list[7].summary,
-                    statistics.list[8].summary,
-                  ],
+
+                  data: statistics.map(item => item.summary),
+
                   backgroundColor: [
                     '#00AD84',
                     '#FD9498',
