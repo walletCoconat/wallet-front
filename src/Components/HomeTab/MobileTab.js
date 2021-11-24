@@ -13,16 +13,8 @@ const MobileTab = () => {
         <>
           <ul className="verticalList">
             {transactions.map(transaction => (
-              <li className="margin">
-                {/* <div
-                  className="line"
-                  style={{
-                    backgroundColor: transaction.type === '+' ? 'green' : 'red',
-                  }}
-                ></div> */}
-
-
-                <div className="">
+              <li className="transactionItem" id={transaction.id}>
+                <div className="border">
                   <ul className="verticalList">
                     <li className="listItem">
                       <div
@@ -59,7 +51,6 @@ const MobileTab = () => {
                   </ul>
                 </div>
               </li>
-
             ))}
           </ul>
         </>
