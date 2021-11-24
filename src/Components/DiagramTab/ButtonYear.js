@@ -4,8 +4,8 @@ import sprite from '../../images/sprite.svg';
 
 const DiagramTab = () => {
   const [years, setYears] = useState(['2021']);
-  const [currentMonth, setCurrentMonth] = useState({
-    currentMonth: '',
+  const [currentYear, setCurrenYear] = useState({
+    currentYear: '',
   });
   const [isModal, setIsModal] = useState(false);
   const handleClickYear = () => {
@@ -13,8 +13,9 @@ const DiagramTab = () => {
   };
 
   const handleChangeYear = e => {
-    setCurrentMonth({
-      currentMonth: e.target.textContent,
+    console.log(e.target.textContent)
+    setCurrenYear({
+      currentYear: e.target.textContent,
     });
   };
 
