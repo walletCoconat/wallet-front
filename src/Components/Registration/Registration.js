@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Registration.module.css';
+import './Registration.scss';
 import sprite from '../../images/sprite.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -49,14 +49,14 @@ const RegistrationUser = () => {
   });
 
   return (
-    <div className={style.registration__main_container}>
-      <div className={style.registration__purple}></div>
-      <div className={style.registration__pink}></div>
-      <div className={style.registration__man}></div>
+    <div className='registration__main_container'>
+      <div className='registration__purple'></div>
+      <div className='registration__pink'></div>
+      <div className='registration__man'></div>
 
-      <div className={style.registration__container}>
-        <svg className={style.registration__logo} width="24px" height="24px">
-          <use className={style.mail} xlinkHref={`${sprite}#icon-logo`}></use>
+      <div className='registration__container'>
+        <svg className='registration__logo' width="24px" height="24px">
+          <use className='mail' xlinkHref={`${sprite}#icon-logo`}></use>
         </svg>
 
         <Formik
@@ -88,10 +88,10 @@ const RegistrationUser = () => {
             dirty,
             /* and other goodies */
           }) => (
-            <form onSubmit={handleSubmit} className={style.registration__form}>
-              <div className={style.registration__form_container}>
+            <form onSubmit={handleSubmit} className='registration__form'>
+              <div className='registration__form_container'>
                 <svg
-                  className={style.registration__icons}
+                  className='registration__icons'
                   width="24px"
                   height="24px"
                 >
@@ -104,15 +104,15 @@ const RegistrationUser = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  className={style.registration__input}
+                  className='registration__input'
                 />
                 {touched.email && errors.email && (
-                  <p className={style.error}>{errors.email}</p>
+                  <p className='error'>{errors.email}</p>
                 )}
               </div>
-              <div className={style.registration__form_container}>
+              <div className='registration__form_container'>
                 <svg
-                  className={style.registration__icons}
+                  className='registration__icons'
                   width="24px"
                   height="24px"
                 >
@@ -125,15 +125,15 @@ const RegistrationUser = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className={style.registration__input}
+                  className='registration__input'
                 />
                 {errors.password && touched.password && (
-                  <p className={style.error}>{errors.password}</p>
+                  <p className='error'>{errors.password}</p>
                 )}
               </div>
-              <div className={style.registration__form_container}>
+              <div className='registration__form_container'>
                 <svg
-                  className={style.registration__icons}
+                  className='registration__icons'
                   width="24px"
                   height="24px"
                 >
@@ -146,15 +146,15 @@ const RegistrationUser = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.repeatPassword}
-                  className={style.registration__input}
+                  className='registration__input'
                 />
                 {touched.repeatPassword && errors.repeatPassword && (
-                  <p className={style.error}>{errors.repeatPassword}</p>
+                  <p className='error'>{errors.repeatPassword}</p>
                 )}
               </div>
-              <div className={style.registration__form_container}>
+              <div className='registration__form_container'>
                 <svg
-                  className={style.registration__icons}
+                  className='registration__icons'
                   width="24px"
                   height="24px"
                 >
@@ -167,17 +167,17 @@ const RegistrationUser = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}
-                  className={style.registration__input}
+                  className='registration__input'
                 />
                 {touched.name && errors.name && (
-                  <p className={style.error}>{errors.name}</p>
+                  <p className='error'>{errors.name}</p>
                 )}
               </div>
 
               <button
                 type="submit"
                 disabled={!isValid && !dirty}
-                className={style.registration__button}
+                className='registration__button'
                 onClick={notify}
               >
                 Регистрация
@@ -188,7 +188,7 @@ const RegistrationUser = () => {
 
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/login">
-          <button className={style.registration__button}>Вход</button>
+          <button className='registration__button'>Вход</button>
         </NavLink>
       </div>    
         <ToastContainer

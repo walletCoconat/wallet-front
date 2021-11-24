@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './Login.module.css';
+import style from './Login.scss';
 import sprite from '../../images/sprite.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ import { login } from '../../redux/auth/authOperation';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { getError } from '../../redux/auth/authSelector';
+
 
 // setCookie('refreshToken', 'hello', { path: '/' });
 
@@ -52,14 +53,14 @@ const LoginUser = () => {
   });
 
   return (
-    <div className={style.login__main_container}>
-      <div className={style.login__purple}></div>
-      <div className={style.login__pink}></div>
-      <div className={style.login__man}></div>
+    <div className='login__main_container'>
+      <div className='login__purple'></div>
+      <div className='login__pink'></div>
+      <div className='login__man'></div>
 
-      <div className={style.login__container}>
-        <svg className={style.login__logo} width="24px" height="24px">
-          <use className={style.mail} xlinkHref={`${sprite}#icon-logo`}></use>
+      <div className='login__container'>
+        <svg className='login__logo' width="24px" height="24px">
+          <use className='mail' xlinkHref={`${sprite}#icon-logo`}></use>
         </svg>
         <Formik
           initialValues={state}
@@ -84,9 +85,9 @@ const LoginUser = () => {
             dirty,
             /* and other goodies */
           }) => (
-            <form onSubmit={handleSubmit} className={style.login__form}>
-              <div className={style.login__form_container}>
-                <svg className={style.login__icons} width="24px" height="24px">
+            <form onSubmit={handleSubmit} className='login__form'>
+              <div className='login__form_container'>
+                <svg className='login__icons' width="24px" height="24px">
                   <use xlinkHref={`${sprite}#icon-email`}></use>
                 </svg>
                 <input
@@ -96,14 +97,14 @@ const LoginUser = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  className={style.login__input}
+                  className='login__input'
                 />
                 {touched.email && errors.email && (
-                  <p className={style.error}>{errors.email}</p>
+                  <p className='error'>{errors.email}</p>
                 )}
               </div>
-              <div className={style.login__form_container}>
-                <svg className={style.login__icons} width="24px" height="24px">
+              <div className='login__form_container'>
+                <svg className='login__icons' width="24px" height="24px">
                   <use xlinkHref={`${sprite}#icon-lock`}></use>
                 </svg>
                 <input
@@ -113,16 +114,16 @@ const LoginUser = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
-                  className={style.login__input}
+                  className='login__input'
                 />
                 {errors.password && touched.password && (
-                  <p className={style.error}>{errors.password}</p>
+                  <p className='error'>{errors.password}</p>
                 )}
               </div>
               <button
                 type="submit"
                 disabled={!isValid && !dirty}
-                className={style.login__button}
+                className='login__button'
               >
                 Войти
               </button>
@@ -132,7 +133,7 @@ const LoginUser = () => {
 
         {/* eslint-disable-next-line no-sequences*/}
         <NavLink to="/registration">
-          <button className={style.login__button}>Регистрация</button>
+          <button className='login__button'>Регистрация</button>
         </NavLink>
       </div>
 
