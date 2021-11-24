@@ -75,7 +75,6 @@ function App() {
           <PrivateRoute path="/exchange_rates">
             <Header toggleIsVisible={toggleIsVisible} />
             <Dashboard />
-            <DiagramTab />
           </PrivateRoute>
         </Switch>
       </Suspense>
