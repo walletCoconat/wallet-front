@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { walletApi } from '../../services';
 
-// axios.defaults.baseURL = 'https://wallet-coconat.herokuapp.com';
+axios.defaults.baseURL = 'https://wallet-coconat.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:4040';
 
 export const register = createAsyncThunk('auth/register', async dataUser => {
