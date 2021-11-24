@@ -20,7 +20,29 @@ const formatSum = sum => {
     }
 }
 
-export const getFilterDataTransaction = state => {
+// export const getFilterDataTransaction = state => {
+//     const allTransactions = getFinanceData(state)
+//     if (allTransactions.length === 0) {
+//         return null
+//     }
+
+//     const newArr = [...allTransactions]
+
+//     newArr.sort((a, b) => {
+//         // data: "2021-11-09"
+//         const aa = a.date.split('-').join('.')
+//         const bb = b.date.split('-').join('.')
+//         return new Date(bb).getTime() - new Date(aa).getTime()
+//     })
+
+//     return newArr.map(item => {
+//         item = { ...item, date: formatDate(item.date), type: formatType(item.type), sum: formatSum(item.sum), balance: formatSum(item.balance)}
+//         // console.log('ITEM', item)
+//         return item
+//     })
+// };
+
+export const getUpdateDataTransaction = state => {
     const allTransactions = getFinanceData(state)
     if (allTransactions.length === 0) {
         return null
@@ -28,12 +50,12 @@ export const getFilterDataTransaction = state => {
 
     const newArr = [...allTransactions]
 
-    newArr.sort((a, b) => {
-        // data: "2021-11-09"
-        const aa = a.date.split('-').join('.')
-        const bb = b.date.split('-').join('.')
-        return new Date(bb).getTime() - new Date(aa).getTime()
-    })
+    // newArr.sort((a, b) => {
+    //     // data: "2021-11-09"
+    //     const aa = a.date.split('-').join('.')
+    //     const bb = b.date.split('-').join('.')
+    //     return new Date(bb).getTime() - new Date(aa).getTime()
+    // })
 
     return newArr.map(item => {
         item = { ...item, date: formatDate(item.date), type: formatType(item.type), sum: formatSum(item.sum), balance: formatSum(item.balance)}

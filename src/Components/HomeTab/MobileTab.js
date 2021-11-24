@@ -1,11 +1,11 @@
 // import React from 'react';
 import { useSelector } from 'react-redux';
-import { getFilterDataTransaction } from '../../redux/finance/financeSelector';
+import { getUpdateDataTransaction } from '../../redux/finance/financeSelector';
 // import { getFinanceData } from '../../redux/finance/financeSelector'
 import style from './HomeTab.scss';
 
 const MobileTab = () => {
-  const transactions = useSelector(getFilterDataTransaction);
+  const transactions = useSelector(getUpdateDataTransaction);
 
   return (
     <>
@@ -21,6 +21,7 @@ const MobileTab = () => {
                   }}
                 ></div> */}
 
+
                 <div className="">
                   <ul className="verticalList">
                     <li className="listItem">
@@ -32,7 +33,7 @@ const MobileTab = () => {
                         }}
                       ></div>{' '}
                       <span className="category">Дата</span>
-                      <span className="data">{transactions.date}</span>
+                      <span className="data">{transaction.date}</span>
                     </li>
                     <li className="listItem">
                       <span className="category">Тип</span>
@@ -58,6 +59,7 @@ const MobileTab = () => {
                   </ul>
                 </div>
               </li>
+
             ))}
           </ul>
         </>

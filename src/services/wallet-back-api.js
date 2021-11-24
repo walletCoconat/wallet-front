@@ -112,32 +112,39 @@ class WalletApi {
   getAllTransactions = () =>
     this.API.get(`/api/transaction/`, this.withoutCookie);
 
-  async getTransactions() {
-    const { data } = await axios.get(
-      `/api/transaction/?offset=${this.page}&limit=${this.perPage}`,
-    );
-    return data;
-  }
-
-  async postTransaction(newTransaction) {
-    const { data } = await this.API.post('/api/transaction/', newTransaction);
-    return data;
-  }
-
-  async getAllStatistic() {
-    const { data } = await this.API.get('/api/transaction/statistic/');
-    return data;
-  }
-
-  async getStatistic() {
+  // async getTransactions() {
+  //   const { data } = await axios.get(
+  //     `/api/transaction/?offset=${this.page}&limit=${this.perPage}`,
+  //   );
+  //   return data;
+  // }
+  getTransactions = async () => {
     const { data } = await this.API.get(
-      `/api/transaction/statistic/?year=${this.year}&month=${this.month}`,
+      `/api/transaction/?offset=${this.page}&limit=${this.perPage}`, this.withoutCookie
     );
     return data;
   }
 
-  async getUserCarrent() {
-    const { data } = await this.API.get('/api/user/current');
+   postTransaction = async (newTransaction) => {
+    const { data } = await this.API.post('/api/transaction/', newTransaction, this.withoutCookie);
+    return data;
+  }
+
+  getAllStatistic = async () => {
+    const { data } = await this.API.get('/api/transaction/statistic/', this.withoutCookie);
+    return data;
+  }
+
+  // async getStatistic() {
+  //   const { data } = await this.API.get(
+  //     `/api/transaction/statistic/?year=${this.year}&month=${this.month}`,
+  //   );
+  //   return data;
+  // }
+   getStatistic = async () => {
+    const { data } = await this.API.get(
+      `/api/transaction/statistic/?year=${this.year}&month=${this.month}`, this.withoutCookie
+    );
     return data;
   }
 

@@ -212,7 +212,7 @@ function TransactionForm({ onSubmit, options }) {
       [e.target.name]: e.target.value,
     });
 
-    // console.log(e.target.name);
+    console.log(e.target.name);
   };
 
   // const chekedIsEmptyField = (quantity, selectedFile, date) => {
@@ -239,13 +239,15 @@ function TransactionForm({ onSubmit, options }) {
   };
 
   const formSubmit = (dataObj, date) => {
+    // console.log('ПРИШЛА ДАТА', date)
     const { quantity, option, comments } = dataObj;
     const uixdata = new Date(date).getTime();
     // console.log('DATE -FORM SUBMIT', date)
     let newTransaction = {};
 
-    const dec = decrement.filter(el => el.value === option);
-    if (dec.length > 0) {
+    const [dec] = decrement.filter(el => el.value === option);
+    // if (dec.length > 0) {
+    if (dec !== undefined) {
       newTransaction = {
         type: true,
         category: dec.type,
@@ -290,11 +292,16 @@ function TransactionForm({ onSubmit, options }) {
           options={options}
           required
         >
+          {/* -------------------------------------- */}
           <option value="" disabled selected>
             Выберите категорию
           </option>
-          {options.map((option, id) => (
+          {/* {options.map((option, id) => (
             <option key={id} value={option.value}>
+              {option.label}
+            </option> */}
+                    {options.map((option, id) => (
+            <option key={id} value={option.type}>
               {option.label}
             </option>
           ))}
