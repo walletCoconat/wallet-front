@@ -69,11 +69,26 @@
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+
+    background: #6a7d9b;
+  }
+
   &:nth-child(2) {
     top: 125px;
   }
 
   @media screen and(min-width: 768px) {
+    overflow: auto;
+    // width: 300px;
+    height: 200px;
     top: 55px;
 
     &:nth-child(2) {
@@ -97,6 +112,7 @@
 }
 
 .diagramTab__ul {
+  margin-right: 4px;
   display: inline-flex;
   flex-direction: column;
   color: $main-text-color;
