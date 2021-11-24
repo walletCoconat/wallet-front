@@ -53,7 +53,7 @@ const Statistics = () => {
                       <MobileChart allStat={allStat} />
                     </div>
                     <div className="Dashboard_stats_table">
-                      <DiagramTab />
+                      <DiagramTab setMonth={setMonth} setYear={setYear} />
                       <StatisticTab allStat={allStat} />
                     </div>
                   </div>
@@ -71,7 +71,7 @@ const Statistics = () => {
                         <Chart allStat={allStat} />
                       </div>
                       <div className="Dashboard_stats_table">
-                        <DiagramTab />
+                        <DiagramTab setMonth={setMonth} setYear={setYear} />
                         <StatisticTab allStat={allStat} />
                       </div>
                     </div>

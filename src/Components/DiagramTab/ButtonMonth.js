@@ -1,9 +1,9 @@
-import React, { useDispatch, useState } from 'react';
+import React, { useDispatch, useState, useEffect } from 'react';
 import './DiagramTab.scss';
 // import Button from '../Button/Button';
 import sprite from '../../images/sprite.svg';
 
-const DiagramTab = () => {
+const DiagramTab = ({ onChange }) => {
   const initialMonthsState = [
     'Январь',
     'Февраль',
@@ -34,31 +34,35 @@ const DiagramTab = () => {
     });
   };
 
+  useEffect(() => {
+    onChange(currentMonth);
+  }, [currentMonth, onChange]);
+
   return (
     <>
-        <div className="diagramTab__dropdown">
-          <button className="diagramTab__button" onClick={handleClickMonth}>
-            Месяц
-            <svg className="diagramTab__icons" width="18px" height="9px">
-              <use xlinkHref={`${sprite}#icon-arrow`}></use>
-            </svg>
-          </button>
-          {isModal && (
-            <div className="diagramTab__selectContainer">
-              <ul className="diagramTab__ul">
-                {months.map((option, id) => (
-                  <li
-                    key={id}
-                    className="diagramTab__li"
-                    onClick={handleChangeMonth}
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+      <div className="diagramTab__dropdown">
+        <button className="diagramTab__button" onClick={handleClickMonth}>
+          Месяц
+          <svg className="diagramTab__icons" width="18px" height="9px">
+            <use xlinkHref={`${sprite}#icon-arrow`}></use>
+          </svg>
+        </button>
+        {isModal && (
+          <div className="diagramTab__selectContainer">
+            <ul className="diagramTab__ul">
+              {months.map((option, id) => (
+                <li
+                  key={id}
+                  className="diagramTab__li"
+                  onClick={handleChangeMonth}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </>
   );
 };
