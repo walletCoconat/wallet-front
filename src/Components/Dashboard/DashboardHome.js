@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchAllTransactions } from '../../redux/finance/financeOperations';
+import { fetchAllTransactions, fetchUserCurrent } from '../../redux/finance/financeOperations';
 
 import TotalBalance from '../TotalBalance/index';
 import HomeTab from '../HomeTab/index';
@@ -14,7 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(fetchAllTransactions()), []);
-  // useEffect(()=>dispatch(fetchUserCurrent()), [])
+  useEffect(()=>dispatch(fetchUserCurrent()), [])
 
   return (
     <div>

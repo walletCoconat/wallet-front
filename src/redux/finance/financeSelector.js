@@ -20,6 +20,10 @@ const formatSum = sum => {
     }
 }
 
+export const getBalance = state => {
+    const totalBalance = getTotalBalance(state)
+    return formatSum(totalBalance)
+}
 // export const getFilterDataTransaction = state => {
 //     const allTransactions = getFinanceData(state)
 //     if (allTransactions.length === 0) {
@@ -59,7 +63,8 @@ export const getUpdateDataTransaction = state => {
 
     return newArr.map(item => {
         item = { ...item, date: formatDate(item.date), type: formatType(item.type), sum: formatSum(item.sum), balance: formatSum(item.balance)}
-        // console.log('ITEM', item)
+        console.log('BALANCE', formatSum(item.balance))
+        console.log('ITEM', item)
         return item
     })
 };

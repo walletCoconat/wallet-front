@@ -83,10 +83,11 @@ export const fetchUserCurrent = createAsyncThunk(
   'userCurrent/',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await walletApi.getCurrentUser();
-      console.log('res-USER-USER', response)
+      // const { response } = await walletApi.getCurrentUser();
+      const { data } = await walletApi.getCurrentUser();
+      console.log('res-USER-USER', data.response)
       // return response.balance;
-      return response;
+      return data.response;
     } catch (error) {
       // console.log('error', error);
       return rejectWithValue(error.message);

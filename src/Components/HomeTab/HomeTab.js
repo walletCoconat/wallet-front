@@ -1,6 +1,10 @@
 import { useSelector } from 'react-redux';
 
-import { getFilterDataTransaction, getUpdateDataTransaction, getFinanceData } from '../../redux/finance/financeSelector'
+import {
+  // getFilterDataTransaction,
+  getUpdateDataTransaction, getCategoryIncrement, getCategoryDecrement,
+  // getFinanceData
+} from '../../redux/finance/financeSelector'
 import style from './HomeTab.scss'
 
 
@@ -8,7 +12,15 @@ const HomeTab = () => {
   // const transactions = useSelector(getFilterDataTransaction);
   // const transactions = useSelector(getFinanceData);
   const transactions = useSelector(getUpdateDataTransaction);
+  const increment = useSelector(getCategoryIncrement);
+  const decrement = useSelector(getCategoryDecrement);
 
+  const allCard = [...increment, ...decrement].reduce((acc, item) => {
+    acc = { ...acc, [item.type]:item.value }
+    return acc
+  }, {})
+
+// console.log('ALLCARDWWWWWWWWWWWWWWWWWWWWWWWWWW', allCard)
   return (
   <>
     { transactions ? 
@@ -35,7 +47,7 @@ const HomeTab = () => {
               <tr key={transaction.id} className="TableRow">
                   <td className="TableTd">{transaction.date}</td>
                   <td className="TableTd">{transaction.type}</td>
-                  <td className="TableTd">{transaction.category}</td>
+                  <td className="TableTd">{allCard[transaction.category]}</td>
                   <td className="TableTd">{transaction.comments}</td>
                   <td className="TableTd">{transaction.sum}</td>
                   <td className="TableTd">{transaction.balance}</td>

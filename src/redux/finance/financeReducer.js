@@ -7,24 +7,26 @@ import {
   addTransaction,
   fetchAllStatistic,
   fetchStatistic,
-  // fetchUserCurrent,
+  fetchUserCurrent,
 } from './financeOperations';
 
-import { login } from '../auth/authOperation';
+// import { login } from '../auth/authOperation';
 
 const categoryDecrement = createReducer([], {
-  [login.fulfilled]: (state, { payload }) => payload.response.categories.categoryDecrement,
+  // [login.fulfilled]: (state, { payload }) => payload.response.categories.categoryDecrement,
+  [fetchUserCurrent.fulfilled]: (state, { payload }) => payload.categories.categoryDecrement,
   // [getCurrentUSer.fulfilled]: (state, { payload }) => payload.response.categories.categoryDecrement
 });
 
 const categoryIncrement = createReducer([], {
-  [login.fulfilled]: (state, { payload }) => payload.response.categories.categoryIncrement,
+  // [login.fulfilled]: (state, { payload }) => payload.response.categories.categoryIncrement,
+  [fetchUserCurrent.fulfilled]: (state, { payload }) => payload.categories.categoryIncrement,
   // [getCurrentUSer.fulfilled]: (state, { payload }) => payload.response.categories.categoryIncrement,
 });
 
 const balanceReducer = createReducer(0, {
-  // [fetchUserCurrent.fulfilled]: (state, { payload }) => payload.user.balance,
-  [login.fulfilled]: (state, { payload }) => payload.response.user.balance,
+  [fetchUserCurrent.fulfilled]: (state, { payload }) => payload.user.balance,
+  // [login.fulfilled]: (state, { payload }) => payload.response.user.balance,
   [addTransaction.fulfilled]: (state, { payload }) => payload.balance,
 });
 
