@@ -19,9 +19,9 @@ import Reexit from './Reexit/Reexit.js';
 import Reenter from './Reenter/Reenter.js';
 
 import Dashboard from './Dashboard/index';
-import { walletApi } from '../services';
 import { getCurrentUSer } from '../redux/auth/authOperation';
 import { addToken } from '../redux/auth/authSlice';
+import { walletApi } from '../services';
 
 function App() {
   const { isShowing, toggle } = useModal();

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchAllStatistic } from '../../redux/finance/financeOperations';
 import Media from 'react-media';
 import MainInfo from './Dashboard_main_info';
@@ -7,12 +7,33 @@ import Chart from '../Chart/Chart';
 import MobileChart from '../Chart/MobileChart';
 import DiagramTab from '../DiagramTab/DiagramTab';
 import StatisticTab from '../StatisticTab/';
+import { walletApi } from '../../services';
+
+async function getStat(year, month) {
+  try {
+    const { data } = await walletApi.getMyStat(year, month);
+    return data.response;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const Statistics = () => {
-  const dispatch = useDispatch();
+  const [allStat, setAllStat] = useState({});
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
 
-  useEffect(() => dispatch(fetchAllStatistic()), []);
+  useEffect(() => {
+    (async () => {
+      const resp = await getStat(year, month);
 
+      console.log(resp);
+      setAllStat(resp);
+    })();
+  }, [year, month]);
+  console.log(22222220003948472789, allStat);
+
+  console.log(22222220003948472789, allStat);
   return (
     <>
       <div>
