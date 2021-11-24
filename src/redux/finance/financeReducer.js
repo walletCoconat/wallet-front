@@ -7,20 +7,24 @@ import {
   addTransaction,
   fetchAllStatistic,
   fetchStatistic,
+  // fetchUserCurrent,
 } from './financeOperations';
 
 import { login } from '../auth/authOperation';
 
 const categoryDecrement = createReducer([], {
-  [login.fulfilled]: (state, { payload }) => payload.response.categoryDecrement,
+  [login.fulfilled]: (state, { payload }) => payload.response.categories.categoryDecrement,
+  // [getCurrentUSer.fulfilled]: (state, { payload }) => payload.response.categories.categoryDecrement
 });
 
 const categoryIncrement = createReducer([], {
-  [login.fulfilled]: (state, { payload }) => payload.response.categoryIncrement,
+  [login.fulfilled]: (state, { payload }) => payload.response.categories.categoryIncrement,
+  // [getCurrentUSer.fulfilled]: (state, { payload }) => payload.response.categories.categoryIncrement,
 });
 
 const balanceReducer = createReducer(0, {
-  // [fetchUserCurrent.fulfilled]: (state, { payload }) => payload,
+  // [fetchUserCurrent.fulfilled]: (state, { payload }) => payload.user.balance,
+  [login.fulfilled]: (state, { payload }) => payload.response.user.balance,
   [addTransaction.fulfilled]: (state, { payload }) => payload.balance,
 });
 
@@ -30,8 +34,8 @@ const financeDataReducer = createReducer([], {
   // добавть проверку на пустой массив при запросе првой страницы
   // не забудь про пагинацию
 
-  // [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
-  [addTransaction.fulfilled]: (state, { payload }) => state,
+  [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
+  // [addTransaction.fulfilled]: (state, { payload }) => state,
 });
 
 const StatisticReducer = createReducer(null, {

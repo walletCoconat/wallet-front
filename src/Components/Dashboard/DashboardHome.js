@@ -14,9 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(fetchAllTransactions()), []);
-
   // useEffect(()=>dispatch(fetchUserCurrent()), [])
-  // useEffect(() => dispatch(addTransaction(newTransaction)), []);
 
   return (
     <div>
