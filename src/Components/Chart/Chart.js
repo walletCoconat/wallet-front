@@ -16,7 +16,7 @@ const Chart = ({ allStat }) => {
   const balance = useSelector(getTotalBalance);
   // console.log('BALANCE-DDDDDDDDDDDDDDDDDDD', balance)
   const statistics = allStat.list;
-
+  console.log('aaaaaaaaaaaaa', allStat);
   //* Colors
   const OtherExpColor = '#00AD84';
   const AutoColor = '#FD9498';

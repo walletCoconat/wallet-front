@@ -33,7 +33,6 @@ const Statistics = () => {
   }, [year, month]);
   console.log(22222220003948472789, allStat);
 
-  console.log(22222220003948472789, allStat);
   return (
     <>
       <div>
@@ -73,7 +72,7 @@ const Statistics = () => {
                       </div>
                       <div className="Dashboard_stats_table">
                         <DiagramTab />
-                        <StatisticTab />
+                        <StatisticTab allStat={allStat} />
                       </div>
                     </div>
                   </div>
