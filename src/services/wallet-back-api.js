@@ -93,7 +93,11 @@ class WalletApi {
   }
 
   async login(dataUser) {
-    const res = await this.API.post('/api/user/login', dataUser);
+    const res = await this.API.post(
+      '/api/user/login',
+      dataUser,
+      this.withCookie,
+    );
 
     this.LOGIN = true;
     this.TOKEN = res.data.loginToken;
@@ -107,6 +111,19 @@ class WalletApi {
     return res;
   };
 
+  async getMyStat(year, month) {
+    let options = '';
+    if (month || year) {
+      options = `?${year ? `year=${this.year}` : ''}${year ? `&` : ''}${
+        month ? `month=${this.month}` : ''
+      }`;
+    }
+
+    return await this.API.get(
+      `/api/transaction/statistic${options}`,
+      this.withoutCookie,
+    ).catch(console.error);
+  }
   // getAllTransactions = () => this.API.get('/api/user/test', this.withoutCookie);
 
   getAllTransactions = () =>
@@ -120,20 +137,28 @@ class WalletApi {
   // }
   getTransactions = async () => {
     const { data } = await this.API.get(
-      `/api/transaction/?offset=${this.page}&limit=${this.perPage}`, this.withoutCookie
+      `/api/transaction/?offset=${this.page}&limit=${this.perPage}`,
+      this.withoutCookie,
     );
     return data;
-  }
+  };
 
-   postTransaction = async (newTransaction) => {
-    const { data } = await this.API.post('/api/transaction/', newTransaction, this.withoutCookie);
+  postTransaction = async newTransaction => {
+    const { data } = await this.API.post(
+      '/api/transaction/',
+      newTransaction,
+      this.withoutCookie,
+    );
     return data;
-  }
+  };
 
   getAllStatistic = async () => {
-    const { data } = await this.API.get('/api/transaction/statistic/', this.withoutCookie);
+    const { data } = await this.API.get(
+      '/api/transaction/statistic/',
+      this.withoutCookie,
+    );
     return data;
-  }
+  };
 
   // async getStatistic() {
   //   const { data } = await this.API.get(
@@ -141,12 +166,13 @@ class WalletApi {
   //   );
   //   return data;
   // }
-   getStatistic = async () => {
+  getStatistic = async () => {
     const { data } = await this.API.get(
-      `/api/transaction/statistic/?year=${this.year}&month=${this.month}`, this.withoutCookie
+      `/api/transaction/statistic/?year=${this.year}&month=${this.month}`,
+      this.withoutCookie,
     );
     return data;
-  }
+  };
 
   incrementPage() {
     this.page += 1;
