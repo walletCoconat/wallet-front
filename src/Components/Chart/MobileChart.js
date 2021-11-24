@@ -10,8 +10,8 @@ import s from './Chart.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const MobileChart = () => {
-  const statistics = useSelector(getStatistic);
+const MobileChart = ({ allStat }) => {
+  const statistics = allStat.list;
   const balance = useSelector(getTotalBalance);
 
   //* Colors

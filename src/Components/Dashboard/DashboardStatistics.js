@@ -50,11 +50,11 @@ const Statistics = () => {
                   <h1 className="Dashboard_stats_title">Статистика</h1>
                   <div className="Dashboard_stats">
                     <div className="Dashboard_stats_diagram">
-                      <MobileChart />
+                      <MobileChart allStat={allStat} />
                     </div>
                     <div className="Dashboard_stats_table">
                       <DiagramTab />
-                      <StatisticTab />
+                      <StatisticTab allStat={allStat} />
                     </div>
                   </div>
                 </div>
