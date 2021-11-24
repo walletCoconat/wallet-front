@@ -27,24 +27,25 @@ const StatisticTab = () => {
 
         <ul className={style.StatisticTabList}>
           <li className={style.StatisticTabListItem}>
-            <div className={style.ItemContainer}>
-              <div className={style.ItemMarker}></div>
-              <p className={style.CategoryName}></p>
-            </div>
+            {/* <div className={style.ItemContainer}> */}
+            <div className={style.ItemMarker}></div>
 
-            <p className={style.CategorySum}></p>
+            <p className={style.CategoryName}>Категория</p>
+            {/* </div> */}
+
+            <p className={style.CategorySum}>255456.55</p>
           </li>
         </ul>
 
         <ul className={style.StatisticTabTotal}>
           <li className={style.StatisticTabTotalItem}>
-            <p className={style.CategoryTotalName}></p>
-            <p className={style.CategoryTotalSum}></p>
+            <p>Расходы:</p>
+            <p className={style.Expenses}>25000.55</p>
           </li>
 
           <li className={style.StatisticTabTotalItem}>
-            <p className={style.CategoryTotalName}></p>
-            <p className={style.CategoryTotalSum}></p>
+            <p>Доходы:</p>
+            <p className={style.Income}>5000.66</p>
           </li>
         </ul>
       </div>
