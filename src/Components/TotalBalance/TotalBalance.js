@@ -1,10 +1,11 @@
 // import React from 'react';
 import { useSelector } from 'react-redux';
-import { getTotalBalance } from '../../redux/finance/financeSelector'
+import { getTotalBalance, getBalance } from '../../redux/finance/financeSelector'
 import style from './TotalBalance.module.scss'
 
 const TotalBalance = () => {
-  const balance = useSelector(getTotalBalance);
+  // const balance = useSelector(getTotalBalance);
+  const balance = useSelector(getBalance);
 
   return (
     <div className={style.TotalBalanceContainer}>
