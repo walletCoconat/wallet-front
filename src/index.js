@@ -12,15 +12,15 @@ import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
   <CookiesProvider>
-    {/* <React.StrictMode> */}
-    <Provider store={store.store}>
-      <PersistGate loading={<SpinnerLoader />} persistor={store.persist}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-    {/* </React.StrictMode> */}
+    <React.StrictMode>
+      <Provider store={store.store}>
+        <PersistGate loading={<SpinnerLoader />} persistor={store.persist}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    </React.StrictMode>
   </CookiesProvider>,
   document.getElementById('root'),
 );
