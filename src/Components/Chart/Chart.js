@@ -15,18 +15,8 @@ const Chart = ({ allStat }) => {
   // console.log('DDDDDDDDDDDDDDDDDDDDDD', statistics)
   const balance = useSelector(getTotalBalance);
   // console.log('BALANCE-DDDDDDDDDDDDDDDDDDD', balance)
-  const statistics = allStat.list;
+  const statistics = allStat?.list;
   console.log('aaaaaaaaaaaaa', allStat);
-  //* Colors
-  const OtherExpColor = '#00AD84';
-  const AutoColor = '#FD9498';
-  const ProductsColor = '#FFD8D0';
-  const MainExpColor = '#FED057';
-  const PersonalExpColor = '#C5BAFF';
-  const ChildExpColor = '#6E78E8';
-  const HouseExpColor = '#4A56E2';
-  const EducationColor = '#81E1FF';
-  const LeisureColor = '#24CCA7';
 
   return (
     <>

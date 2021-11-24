@@ -1,11 +1,23 @@
 // import React from 'react';
 import { useSelector } from 'react-redux';
-import { getUpdateDataTransaction } from '../../redux/finance/financeSelector';
+import {
+  getUpdateDataTransaction,
+  getCategoryIncrement,
+  getCategoryDecrement,
+} from '../../redux/finance/financeSelector';
 // import { getFinanceData } from '../../redux/finance/financeSelector'
 import style from './HomeTab.scss';
 
 const MobileTab = () => {
   const transactions = useSelector(getUpdateDataTransaction);
+
+  const increment = useSelector(getCategoryIncrement);
+  const decrement = useSelector(getCategoryDecrement);
+
+  const allCard = [...increment, ...decrement].reduce((acc, item) => {
+    acc = { ...acc, [item.type]: item.value };
+    return acc;
+  }, {});
 
   return (
     <>
@@ -34,7 +46,9 @@ const MobileTab = () => {
                     <li className="listItem">
                       <span className="category">Категория</span>
 
-                      <span className="data">{transaction.category}</span>
+                      <span className="data">
+                        {allCard[transaction.category]}
+                      </span>
                     </li>
                     <li className="listItem">
                       <span className="category">Комментарий:</span>
