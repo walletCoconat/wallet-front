@@ -3,8 +3,8 @@ import axios from 'axios';
 // var jwt = require('jsonwebtoken');
 
 class WalletApi {
-  // BASE_URL = 'http://localhost:4040';
-  BASE_URL = 'https://wallet-coconat.herokuapp.com';
+  BASE_URL = 'http://localhost:4040';
+  // BASE_URL = 'https://wallet-coconat.herokuapp.com';
   API;
   OLD_TOKEN = null;
   TOKEN = null;
@@ -29,7 +29,9 @@ class WalletApi {
       console.log('this.TOKEN', this.TOKEN);
 
       console.log('options', options);
-      options.headers['Authorization'] = `Bearer ${this.TOKEN}`;
+      if (this.TOKEN) {
+        options.headers['Authorization'] = `Bearer ${this.TOKEN}`;
+      }
       return options;
     });
     this.API.interceptors.response.use(
@@ -98,7 +100,7 @@ class WalletApi {
       dataUser,
       this.withCookie,
     );
-
+    console.log(22222222222222, res);
     this.LOGIN = true;
     this.TOKEN = res.data.loginToken;
 
