@@ -35,17 +35,7 @@ const MobileChart = () => {
             data={{
               datasets: [
                 {
-                  data: [
-                    statistics[0].summary,
-                    statistics[1].summary,
-                    statistics[2].summary,
-                    statistics[3].summary,
-                    statistics[4].summary,
-                    statistics[5].summary,
-                    statistics[6].summary,
-                    statistics[7].summary,
-                    statistics[8].summary,
-                  ],
+                  data: statistics.map(item => item.summary),
                   backgroundColor: [
                     '#00AD84',
                     '#FD9498',
